@@ -1,0 +1,15 @@
+[user]
+	email = stian.myklebostad@schibsted.com
+	name = StianM
+[core]
+	excludesfile = ~/.gitignore.global
+	autocrlf = false
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  sta = subtree add --squash --prefix
+  stu = subtree pull --squash --prefix
+  stp = subtree push --prefix

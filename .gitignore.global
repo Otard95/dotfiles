@@ -1,0 +1,12 @@
+**/NetrwTreeListing*
+**/*.swo
+**/*.swn
+*.vim
+*.BAK
+.vscode/
+**.swp
+**/ctags-index-files.rc
+**/tags
+.php_cs
+.ngm
+*.pem
