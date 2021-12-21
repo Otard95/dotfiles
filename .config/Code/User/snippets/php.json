@@ -1,0 +1,110 @@
+{
+	// Place your snippets for php here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"CheckMark": {
+		"prefix": "q",
+		"body": " // ✅"
+	},
+	"Static function": {
+		"prefix": "funs",
+		"body": [
+			"${1:public} static function ${2:FunctionName}(${3:${4:${5:Type} }$${6:var}${7: = ${8:null}}}) {",
+			"\t${9:# code...}",
+			"}"
+		]
+	},
+	"Section header": {
+		"prefix": "header",
+		"body": [
+			"/**",
+    	" * ###############################################",
+    	" *",
+    	" * ${2:              }${1:Section Name}",
+    	" *",
+    	" * ###############################################",
+    	" */"
+		]
+	},
+	"Class": {
+		"prefix": "class",
+		"body": [
+			"",
+			"/**",
+			" * @classid ${1:<UUID>}",
+			" * @author: Stian Myklebostad",
+			" * @date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" * @description: ${2:Description}",
+			" *",
+			" * ${3:${2:Description}}",
+			" */",
+			"class ${4:ClassName} ${6:extends ${5:ExtendClass} }{",
+			"    public function __construct() {",
+			"        ${7:parent::__construct();}",
+			"    }",
+			"}",
+		]
+	},
+	"Dart API": {
+		"prefix": "dartapi",
+		"body": [
+			"",
+			"/**",
+			" * @semanticUrl api/${1:<url>}",
+			" * @classid ${2:<UUID>}",
+			" * @sec ${3:<sec-tag>}",
+			" *",
+			" * @author: Stian Myklebostad",
+			" * @date: $CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE",
+			" * @description: ${4:Description}",
+			" */",
+			"class ${5:<API NAME>} extends ViewBase {",
+			"    public function __construct() {",
+			"        parent::__construct(ViewBase::REST);",
+			"    }",
+			"",
+			"    public function run() {",
+			"        // does nothing!",
+			"    }",
+			"",
+			"    protected function delete():string {",
+			"        \\$rest = \\$this->rest();",
+			"        return \\$rest->render();",
+			"    }",
+			"",
+			"    protected function save():string {",
+			"        \\$rest = \\$this->rest();",
+			"        return \\$rest->render();",
+			"    }",
+			"",
+			"    protected function update():string {",
+			"        \\$rest = \\$this->rest();",
+			"        return \\$rest->render();",
+			"    }",
+			"",
+			"    protected function get() {",
+			"        \\$rest = \\$this->rest();",
+			"        return \\$rest->render();",
+			"    }",
+			"}"
+		]
+	},
+	"Dart Method not supported": {
+		"prefix": "dartnotsupported",
+		"body": [
+			"HttpTool::setMethodNotAllowed([${1:<supported methods>}]);",
+      "\\$this->setErrorNotAvailable();",
+      "return \\$this->rest()->render();"
+		]
+	}
+}

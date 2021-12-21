@@ -1,0 +1,112 @@
+{
+    "workbench.list.keyboardNavigation": "simple",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "editor.fontSize": 12,
+    "debug.console.fontSize": 12,
+    "markdown.preview.fontSize": 12,
+    "terminal.integrated.fontSize": 9,
+    "search.exclude": {
+        "**/node_modules": false
+    },
+    "search.useIgnoreFiles": false,
+    "window.titleBarStyle": "custom",
+    "editor.tabSize": 2,
+    "files.watcherExclude": {
+        "**/build/**": true,
+        "**/dist/**": true
+    },
+    "editor.minimap.maxColumn": 60,
+    "cSpell.userWords": [
+        "abandonable",
+        "APIOH",
+        "Bugsnag",
+        "Cmds",
+        "creds",
+        "endregion",
+        "Hectowatt",
+        "Kubernetes",
+        "lerp",
+        "Melvis",
+        "metaregtime",
+        "metaunit",
+        "metauptime",
+        "Microservice",
+        "microservices",
+        "Mittanbud",
+        "MLAPI",
+        "Sailthrough",
+        "sailthru",
+        "schibsted",
+        "Stian",
+        "submodule",
+        "submodules",
+        "towbar",
+        "worktype",
+        "worktypes",
+        "xdebug"
+    ],
+    "todohighlight.isEnable": true,
+    "todohighlight.defaultStyle": {
+        "color": "#333",
+        "backgroundColor": "#00aaef",
+        "overviewRulerColor": "#00aaef"
+    },
+    "color-highlight.markerType": "dot-before",
+    "window.title": "${dirty}[ ${rootName} ]${separator}${activeEditorShort}${separator}${appName}",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "extensions.ignoreRecommendations": false,
+    "editor.quickSuggestions": {
+        "comments": true
+    },
+    "php.suggest.basic": false,
+    "php-cs-fixer.executablePath": "/opt/php-cs-fixer/php-cs-fixer",
+    "php-cs-fixer.onsave": false,
+    "php-cs-fixer.rules": "@PSR2",
+    "php-cs-fixer.config": "~/.php_cs;~/.php_cs.dist",
+    "php-cs-fixer.allowRisky": false,
+    "php-cs-fixer.pathMode": "override",
+    "php-cs-fixer.exclude": [],
+    "php-cs-fixer.autoFixByBracket": true,
+    "php-cs-fixer.autoFixBySemicolon": false,
+    "php-cs-fixer.formatHtml": false,
+    "php-cs-fixer.documentFormattingProvider": true,
+    "[php]": {
+        "editor.defaultFormatter": "junstyle.php-cs-fixer"
+    },
+    "scm.alwaysShowRepositories": true,
+    "explorer.compactFolders": false,
+    "files.exclude": {
+        "node_modules/": true
+    },
+    "C_Cpp.updateChannel": "Insiders",
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.rulers": [
+      80, 120
+    ],
+    "liveshare.authenticationProvider": "GitHub",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter.notebook.ipynb"
+    },
+    "workbench.colorTheme": "Better Solarized Dark",
+    "editor.cursorStyle": "line",
+    "editor.lineNumbers": "on",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.wordWrap": "off",
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single",
+    "discord.removeRemoteRepository": true,
+    "discord.removeLowerDetails": true,
+    "discord.detailsDebugging": "Debugging",
+    "discord.detailsEditing": "Coding ⌨️",
+    "discord.detailsIdling": "Procrastinating ™️",
+    "editor.suggestSelection": "recentlyUsedByPrefix",
+    "scm.defaultViewMode": "tree",
+    "svelte.enable-ts-plugin": true,
+    "editor.inlineSuggest.enabled": true,
+}
