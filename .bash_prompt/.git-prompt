@@ -1,0 +1,45 @@
+
+# Parse git status in $1 used in prompt
+git_prompt () {
+  if [ ! -d $1/.git ]; then
+    return
+  fi
+
+  readarray -t st < <(git -C $1 status --porcelain=v2 -b | grep -e '^#')
+  changes=""
+  branch=""
+  ahead=0
+  behind=0
+
+  if ! git diff-index --quiet HEAD --; then
+    changes="*"
+  fi
+
+  for l in "${st[@]}"; do
+    case "$(cut -d ' ' -f2 <<< $l)" in
+      branch.head)
+        branch=$(cut -d ' ' -f3 <<< $l)
+        ;;
+      branch.upstream)
+        branch=$(cut -d ' ' -f3 <<< $l)
+        ;;
+      branch.ab)
+        ahead=$(echo $l | cut -d ' ' -f3 | sed 's/\+//')
+        behind=$(echo $l | cut -d ' ' -f4 | sed 's/-//')
+        ;;
+    esac
+  done
+
+  if (($ahead+$behind > 0)); then
+    echo " \e[0;36m[$changes$branch\e[0m \e[0;31m$behind ⇃\e[0m\e[0;32m↾ $ahead\e[0m\e[0;36m]\e[0m"
+  else
+    echo " \e[0;36m[$changes$branch]\e[0m"
+  fi
+}
+
+# Bash prompt                                                                                                                    
+prompt () {
+export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(git_prompt $PWD)
+ λ "
+}
+export PROMPT_COMMAND="$PROMPT_COMMAND ; prompt"
