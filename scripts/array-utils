@@ -1,0 +1,5 @@
+#!/bin/bash
+
+function arr_join { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d}"; }
+export -f arr_join
+

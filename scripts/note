@@ -1,0 +1,321 @@
+#!/bin/bash
+
+source ~/scripts/print-utils
+
+usage() {
+  less << EOF
+  usage: note [COMMAND] [OPTIONS]
+
+    COMMANDS
+
+      list            List all notes. Default
+      show    [name]  Display all or the specified note(s)   
+      add     <name>  Crete a new note
+      edit    <name>  Edit an existing note
+      remove  <name>  Delete a note
+      remind  <name>  Manage reminders for individual notes.
+
+    OPTIONS
+
+      -h | --help    Show this...
+      -n [num]       Numbered: Applicable to 'list', 'show', 'edit' and 'remove'.
+                       Use it with list to get a numbered list of all notes, now
+                       you can use that number with the '-n <num>' option instead
+                       of the note name.
+
+      -t <cron-time> Time: Applicable only to 'remind' and is required to set
+                       a new reminder. The value must be enclosed in double qoutes.
+      -r             Remove: Applicable only to 'remind'. If set remove the
+                       reminder instead of creating one.
+
+    EXAMPLES
+
+      <X>     -- Requrired 
+      <X | Y> -- Choice 
+
+      List notes
+       $ note
+
+      Numberes list of notes
+       $ note list -n
+
+      Show all notes
+       $ note show
+
+      Show, edit or remove a note
+       $ note <show|edit|remove> < <name> | -n <num> >
+
+EOF
+}
+
+name_to_file() {
+  printf "$(printf "$*" | sed "s/ /_/g")"
+}
+
+file_to_name() {
+  printf "$(printf "$*" | sed "s/_/ /g")"
+}
+
+get_note_files() {
+  echo "$(ls ~/.notes/ -p | sort | grep -v /)"
+}
+
+list() {
+  if [[ -n "$*" ]]; then
+    if [ "$*" = "-n" ]; then
+      echo "$(get_note_files | sed "s/_/ /g" | cat --number)"
+    else
+      printf "unknown option '$*'  ::"
+      echo "$(usage | head -n 1)"
+      echo "    use the -h or --help option for more info."
+      exit 1
+    fi
+  else
+    echo "$(file_to_name "$(get_note_files)")"
+  fi
+}
+
+show() {
+  if [ "$1" = "-n" ]; then
+    [[ ! $2 -gt 0 ]] && {
+      printf "invalid/missing <num>  ::"
+      echo "$(usage | head -n 1)"
+      echo "    use the -h or --help option for more info."
+      exit 1
+    }
+    files=($(get_note_files))
+    note_files="${files[$2-1]}"
+  elif [ -n "$*" ]; then
+    note_files="$(name_to_file "$*")"
+  else
+    note_files="$(get_note_files)"
+  fi
+
+  notes=""
+  for note_file in $note_files
+  do
+    name="$(file_to_name $note_file)"
+    [[ ! -f ~/.notes/$note_file ]] && {
+      echo "Note '$name' not found"
+      exit 1
+    }
+    notes+=$(print_color "$name" "Light_Cyan")
+    contents=$(pandoc -f markdown ~/.notes/$note_file | lynx -stdin --dump)
+    notes+="\n\n$contents\n\n"
+  done
+  printf "$notes" | less -R
+}
+
+add() {
+  file="$(name_to_file "$*")"
+  [[ -f ~/.notes/$file ]] && {
+    printf "note allready exists  ::"
+    echo "$(usage | head -n 1)"
+    echo "    use the -h or --help option for more info."
+    exit 1
+  }
+  if [ -n "$EDITOR" ]; then
+    eval "$EDITOR ~/.notes/$file"
+  else
+    editor $file
+  fi
+}
+
+edit() {
+  if [ "$1" = "-n" ]; then
+    [[ ! $2 -gt 0 ]] && {
+      printf "invalid/missing <num>  ::"
+      echo "$(usage | head -n 1)"
+      echo "    use the -h or --help option for more info."
+      exit 1
+    }
+    files=($(get_note_files))
+    file="${files[$2-1]}"
+  elif [ -n "$*" ]; then
+    file="$(name_to_file "$*")"
+  else
+    printf "no note specified  ::"
+    echo "$(usage | head -n 1)"
+    echo "    use the -h or --help option for more info."
+    exit 1
+  fi
+
+  [[ ! -f ~/.notes/$file ]] && {
+    printf "no note with that name  ::"
+    echo "$(usage | head -n 1)"
+    echo "    use the -h or --help option for more info."
+    exit 1
+  }
+  if [ -n "$EDITOR" ]; then
+    eval "$EDITOR ~/.notes/$file"
+  else
+    editor $file
+  fi
+}
+
+remove() {
+  if [ "$1" = "-n" ]; then
+    [[ ! $2 -gt 0 ]] && {
+      printf "invalid/missing <num>  ::"
+      echo "$(usage | head -n 1)"
+      echo "    use the -h or --help option for more info."
+      exit 1
+    }
+    files=($(get_note_files))
+    file="${files[$2-1]}"
+  elif [ -n "$*" ]; then
+    file="$(name_to_file "$*")"
+  else
+    printf "no note specified  ::"
+    echo "$(usage | head -n 1)"
+    echo "    use the -h or --help option for more info."
+    exit 1
+  fi
+
+  [[ ! -f ~/.notes/$file ]] && {
+    printf "no note with that name  ::"
+    echo "$(usage | head -n 1)"
+    echo "    use the -h or --help option for more info."
+    exit 1
+  }
+  remind "$(file_to_name "$file")" -r
+  rm ~/.notes/$file
+  echo "Removed!"
+}
+
+remind() {
+  NOOPT=()
+  remove=0
+  cron_time=""
+  while [[ $# -gt 0 ]]
+  do
+  case "$1" in
+    -n)
+      shift
+      [[ ! $1 -gt 0 ]] && {
+        printf "invalid/missing <num>  ::"
+        echo "$(usage | head -n 1)"
+        echo "    use the -h or --help option for more info."
+        exit 1
+      }
+      files=($(get_note_files))
+      file="${files[$1-1]}"
+      shift
+      ;;
+    -r)
+      remove=1
+      shift
+      ;;
+    -t)
+      shift
+      set -f
+      cron_time=$1
+      shift
+      ;;
+    *)
+      NOOPT+=("$1")
+      shift
+      ;;
+  esac
+  done
+
+  [[ ${#NOOPT[@]} -gt 0 ]] && file=$(name_to_file "${NOOPT[*]}")
+  [[ -z "$file" ]] && {
+    printf "pleace specify a note  ::"
+    echo "$(usage | head -n 1)"
+    echo "    use the -h or --help option for more info."
+    exit 1
+  }
+
+  name="$(file_to_name "$file")"
+
+  [[ ! -f ~/.notes/$file ]] && {
+    printf "no note with that name  ::"
+    echo "$(usage | head -n 1)"
+    echo "    use the -h or --help option for more info."
+    exit 1
+  }
+
+  crontab_content="$(crontab -l 2>/dev/null)"
+
+  if [ $remove -eq 1 ]; then
+    printf "$crontab_content" | grep -v "pandoc -f markdown ~/.notes/$file" | crontab -
+  else
+    [[ -z "$cron_time" ]] && {
+      printf "no time specified  ::"
+      echo "$(usage | head -n 1)"
+      echo "    use the -h or --help option for more info."
+      exit 1
+    }
+
+    crontab_content+="\n$cron_time XDG_RUNTIME_DIR=/run/user/\$(id -u) /usr/bin/notify-send \"$name\" \"\$(pandoc -f markdown ~/.notes/$file | lynx -stdin --dump)\" | XDG_RUNTIME_DIR=/run/user/\$(id -u) aplay /home/otard/.config/notification-pop.wav\n"
+    printf "$crontab_content" | crontab -
+  fi
+  
+}
+
+if [ $# -eq 0 ]; then
+  list
+  exit 0
+fi
+
+COMMAND="list"
+COMMAND_SET=0
+OPTS=()
+
+while [[ $# -gt 0 ]]
+do
+case "$1" in
+
+  list | show | add | edit | remove | remind)
+    if [ $COMMAND_SET -eq 1 ]; then 
+      OPTS+=("$1")
+    else
+      COMMAND=$1
+      COMMAND_SET=1
+    fi
+    shift
+    ;;
+
+  -h|--help)
+    usage
+    exit 0
+    ;;
+
+  *)
+    [[ $COMMAND_SET -ne 1 ]] && {
+      usage
+      exit 1
+    }
+    OPTS+=("$1")
+    shift
+    ;;
+
+esac
+done
+
+case "$COMMAND" in
+  list)
+    list "${OPTS[@]}"
+    ;;
+  show)
+    show "${OPTS[@]}"
+    ;;
+  add)
+    add "${OPTS[@]}"
+    ;;
+  edit)
+    edit "${OPTS[@]}" 
+    ;;
+  remove)
+    remove "${OPTS[@]}"
+    ;;
+  remind)
+    remind "${OPTS[@]}"
+    ;;
+  *)
+    usage
+    exit 0
+    ;;
+esac
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cat | vim --clean --ttyfail -c ':w ~/.mod.tmp' -
+
+if [ "$(sed -n '1p' ~/.mod.tmp)" = "!" ]; then
+  sed '1d' ~/.mod.tmp | bash
+else
+  xclip ~/.mod.tmp
+  xclip -o | xclip -selection clipboard
+fi
+
+rm ~/.mod.tmp
+

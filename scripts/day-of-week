@@ -1,0 +1,6 @@
+#!/bin/bash
+
+DAY=$(date +%u)
+
+echo $DAY
+

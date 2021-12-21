@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# args $1=delim, $2=text, $3=outvar
+function str_split {
+  IFS="$1" read -a tmp <<< "$2"
+  echo $tmp
+}
+
+export -f str_split
+

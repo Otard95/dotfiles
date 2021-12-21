@@ -1,0 +1,279 @@
+#!/bin/bash
+
+usage() {
+  if [ "$1" == "simple" ]; then
+    echo "
+  usage: install-appimage [...OPTIONS] <path/to/app-image>
+    use the -h option for more info.
+"
+  else
+    echo "
+  usage: install-appimage [...OPTIONS] <path/to/app-image>
+
+  DESCRIPTION
+
+    This tool takes an existing AppImage and creates and moves it to a desired
+    directory, and optionally creates a symlink for(by default in /usr/local/bin).
+    It may also rename the AppImage and/or the symlink.
+
+    NOTE: This script must be run with sudo. So make sure to read through it
+      and verify you really want to run this!
+
+  OPTIONS
+
+    -h | --help  Show this.
+
+    -n <appName> | --name <appName>
+
+        Name the app. Defaults to the name of the AppImage(excluding the extension).
+
+    -p <path> | --path <path>
+
+        Path to where your AppImage will live.
+        Defaults to '/opt' (final file-path '/opt/<appName>/<app-image>').
+
+    -b <binPath>  | --bin <binPath>
+
+        The path to bin folder. Defaults to '/usr/local/bin'.
+        Used with '-l'|'--link' option.
+
+    -l <linkName> | --link <linkName>
+
+        The name of the symlink in <binPath>.
+        Defaults to <appName> where capital letters are replaced with
+        its lowercase counterpart prepended with '-' unless it's the first character.
+        If set to 'none' no link will be created.
+
+        Example:
+          SomeApp => some-app
+
+    -s               | --shortcut                        Create a desktop shortcut. 
+    -sd <desc>       | --shortcut-description <desc>     Set a description for the shortcut.
+    -si <icon/path>  | --shortcut-icon <icon/path>       Set a icon for the shortcut.
+    -sc <categories> | --shortcut-category <icon/path>   Semicolon separated list of categories.
+    -sp <path>       | --shortcut-path <path>            Put .desktop file here. Default '~/.local/share/applications'
+
+"
+  fi
+}
+
+dotDesktopTemplate() {
+  echo "[Desktop Entry]
+Name=$1
+GenericName=$1
+X-GNOME-FullName=$1
+Comment=$3
+Exec=$2
+Terminal=false
+Type=Application
+Icon=$5
+Categories=$4
+"
+}
+
+argv=("${@:1}")
+
+newAppImage=""
+location="/opt"
+appName=""
+bin="/usr/local/bin"
+link=""
+createLink=1
+
+createShortcut=0
+scDesc=""
+scIcon=""
+scCat="Other"
+scPath="/home/$SUDO_USER/.local/share/applications"
+
+while [ ! ${#argv[@]} -eq 0 ]; do
+  case "${argv[0]}" in
+
+    -h|--help)
+      usage
+      exit 0
+      ;;
+
+    -n|--name)
+      appName="${argv[1]}"
+      argv=("${argv[@]:2}")
+      ;;
+
+    -p|--path)
+      location="${argv[1]}"
+      argv=("${argv[@]:2}")
+      ;;
+
+    -b|--bin)
+      bin="${argv[1]}"
+      argv=("${argv[@]:2}")
+      ;;
+
+    -l|--link)
+      link="${argv[1]}"
+      argv=("${argv[@]:2}")
+      ;;
+
+    -s|--shortcut)
+      createShortcut=1
+      argv=("${argv[@]:1}")
+      ;;
+
+    -sd|--shortcut-description)
+      scDesc="${argv[1]}"
+      argv=("${argv[@]:2}")
+      ;;
+
+    -si|--shortcut-icon)
+      scIcon="${argv[1]}"
+      argv=("${argv[@]:2}")
+      ;;
+
+    -sc|--shortcut-category)
+      scCat="${argv[1]}"
+      argv=("${argv[@]:2}")
+      ;;
+
+    -sp|--shortcut-path)
+      scPath="${argv[1]}"
+      argv=("${argv[@]:2}")
+      ;;
+
+    *)
+      if [ -z "$newAppImage" ]; then
+        newAppImage="${argv[0]}"
+        argv=("${argv[@]:1}")
+      else
+        echo " [ERROR] Unexpectd non-option argument: ${argv[0]}"
+        usage simple
+        exit 1
+      fi
+      ;;
+  
+  esac
+done
+
+if [ "$EUID" -ne 0 ]; then
+  echo " [ERROR] This script must be run with 'sudo'"
+  usage simple
+  exit 100
+fi
+user=$SUDO_USER
+
+if [ "$newAppImage" == "" ]; then
+  echo " [ERROR] No AppIamge specified!"
+  usage simple
+  exit 2
+fi
+if [ ! -f "$newAppImage" ]; then
+  echo " [ERROR] Specified AppImage is not a file!"
+  usage simple
+  exit 3
+fi
+if [ "$(file -b --mime-type "$newAppImage")" != "application/x-executable" ]; then
+  echo " [ERROR] The specified file is not an AppImage"
+  usage simple
+  exit 4
+fi
+
+if [ -z "$appName" ]; then
+  appName=$(basename -s .AppImage "$newAppImage")
+fi
+
+if [ "$link" == "none" ]; then
+  createLink=0
+fi
+if [ -z "$link" ]; then
+  link=$(echo "$appName" | sed -e 's:\([A-Z]\):-\L\1:gm' -e 's:^-::')
+fi
+
+newAppImageFile="$location/$appName/$(basename "$newAppImage")"
+linkFile="$bin/$link"
+scFile="$scPath/$appName.desktop"
+
+echo "
+  AppImage to install: $newAppImage
+  App name: $appName
+  Place AppIamge in: $location [ $newAppImageFile ]
+
+  Create link: $([ $createLink -eq 1 ] && echo "yes" || echo "no")
+  Bin path: $bin
+  Link name: $link [ $linkFile ]
+
+  Create shortcut: $([ $createShortcut -eq 1 ] && echo "yes" || echo "no")
+  Shortcut file: $scFile
+  Shortcut description: $scDesc
+  Shortcut category: $scCat
+  Shortcut icon: $scIcon
+"
+
+read -p "  Continue with these options? (Y/n): "
+case "${REPLY}" in
+  n|N|no|NO|No)
+    echo -e "\nAborting..."
+    exit 0
+    ;;
+  y|Y|Yes|YES|yes)
+  ;;
+  *)
+    if [ -n "${REPLY}" ]; then
+      echo -e "\n [ERROR] Unrecognizeed response!\n"
+      exit 5
+    fi
+    ;;
+esac
+
+echo -e "\nCreate '$location/$appName' directory."
+mkdir -p "$location/$appName"
+
+if [ -f "$newAppImageFile" ]; then \
+  echo "Found existing file '$newAppImageFile'"
+  echo "Creating a backup."
+  sudo mv "$newAppImageFile" "$newAppImageFile.$(date '+%d%m%Y-%H%M%S').BAK"
+fi
+
+echo "Copying AppImage to '$newAppImageFile'."
+cp "$newAppImage" "$newAppImageFile"
+if [ ! $? -eq 0 ]; then
+  echo " [ERROR] Failed to move the AppImage"
+  exit 6
+fi
+
+echo "Make sure the AppImage is executable and app directory is ownd by '$user'"
+chmod +x "$newAppImageFile"
+if [ ! $? -eq 0 ]; then
+  echo " [ERROR] Failed to make the AppImage executable"
+  exit 7
+fi
+chown $user:$user "$location/$appName"
+chown $user:$user "$newAppImageFile"
+if [ ! $? -eq 0 ]; then
+  echo " [ERROR] Failed to make the app directory owned by '$user''"
+fi
+
+if [ $createLink -eq 0 ]; then
+  echo " Done!"
+  exit 0
+fi
+
+if test -L "$linkFile"; then
+  echo "Found existing symlink, removing it."
+  rm "$linkFile"
+fi
+
+echo "Create symlink to AppImage"
+ln -s -T "$newAppImageFile" "$linkFile"
+chown $user:$user "$linkFile"
+
+if [ $createShortcut -eq 0 ]; then
+  echo "Done!"
+  exit 0
+fi 
+
+echo "Create shortcut"
+mkdir -p "$scPath"
+dotDesktopTemplate "$appName" "$linkFile" "$scDesc" "$scCat" "$scIcon" > "$scFile"
+chown $SUDO_USER:$SUDO_USER "$scFile"
+
+echo "Done!"
+

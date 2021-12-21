@@ -1,0 +1,61 @@
+#!/bin/bash
+
+exists(){
+  if [ "$2" != in ]; then
+    echo "Incorrect usage."
+    echo "Correct usage: exists {key} in {array}"
+    return
+  fi
+  eval '[ ${'$3'[$1]+muahaha} ]'
+}
+
+extensions=($(find . -type f | sed 's!^.*/!!' | grep -e "\w\+\.\w\+" | sed 's!^.*\.!!' | sed 's!^\s+!!' | sed 's!\s+$!!'))
+
+declare -A languages=( \
+[js]=0 \
+[ts]=0 \
+[php]=0 \
+[sql]=0 \
+[html]=0 \
+[twig]=0 \
+[coffee]=0 \
+[scss]=0 \
+[py]=0 \
+[sass]=0 \
+[css]=0 \
+)
+total=0
+
+for ext in "${extensions[@]}"
+do
+  if exists "$ext" in languages; then
+    let new_val=(${languages[$ext]}+1)
+    languages[$ext]=$new_val
+    let new_total=($total + 1)
+    total=$new_total
+  fi
+done
+
+[[ $total -eq 0 ]] && {
+  echo "No files found!"
+  exit 1
+}
+
+echo "Totoal files: $total"
+for ext in "${!languages[@]}"
+do
+  let pt=(${languages[$ext]} \* 10000)
+  let percent=($pt / $total)
+  printf "$ext -- "
+  if [[ ${#percent} -eq 4 ]]; then
+    printf "${percent::2}.${percent:2}"
+  elif [[ ${#percent} -eq 3 ]]; then
+    printf "0${percent::1}.${percent:1}"
+  elif [[ ${#percent} -eq 2 ]]; then
+    printf "00.$percent"
+  elif [[ ${#percent} -eq 1 ]]; then
+    printf "00.0$percent"
+  fi
+  echo "% [ ${languages[$ext]} ]"
+done
+
