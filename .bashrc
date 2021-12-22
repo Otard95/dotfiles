@@ -26,10 +26,10 @@ fi
 # GitHub CLI
 if [[ -f ./.secret/.github-cli ]]; then
   source ./.secret/.github-cli
-if 
+fi 
 
 # Prompt
 git --version &> /dev/null
 if [[ $? -eq 0 && -f ./.bash_prompt/.git-prompt ]]; then
   source ./.bash_prompt/.git-prompt
-if 
+fi 
