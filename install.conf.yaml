@@ -14,8 +14,8 @@
 
 - link:
     ~/.bash_prompt: bash_prompt
-    ~/.bash_aliases: ./.bash_aliases
+    ~/.bash_aliases: .bash_aliases
     ~/.thefuck: thefuck
-    ~/scripts/: scripts
-    ~/.gitconfig: ./.gitconfig
-    ~/.gitignore.global: ./.gitignore.global
+    ~/scripts: scripts
+    ~/.gitconfig: .gitconfig
+    ~/.gitignore.global: .gitignore.global
