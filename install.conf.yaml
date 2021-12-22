@@ -13,11 +13,15 @@
   - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-  ~/.bash_prompt:
-  ~/.bash_aliases:
-  ~/.thefuck:
-  ~/scripts/:
-    create: true
-    path: ./scripts/**
-  ~/.gitconfig:
-  ~/.gitignore.global:
+    ~/.bash_prompt:
+      create: true
+      path: ./.bash_prompt/**
+    ~/.bash_aliases: ./.bash_aliases
+    ~/.thefuck:
+      create: true
+      path: ./.thefuck/**
+    ~/scripts/:
+      create: true
+      path: ./scripts/**
+    ~/.gitconfig: ./.gitconfig
+    ~/.gitignore.global: ./.gitignore.global
