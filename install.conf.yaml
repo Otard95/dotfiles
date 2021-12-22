@@ -7,15 +7,39 @@
 - create:
     ~/.ssh:
       mode: 0700
+    ~/.config:
+      mode: 740
 
 - shell:
-  - [cat ./.bashrc >> ~/.bashrc, Concatenate bashrc]
   - [git submodule update --init --recursive, Installing submodules]
 
 - link:
+
+    # bash
     ~/.bash_prompt: bash_prompt
     ~/.bash_aliases: .bash_aliases
+    ~/.bashrc:
+      path: .bashrc
+      force: true
+
+    # config
+    ~/.config/i3/config:
+      force: true
+      path: config/i3/config
+    ~/.config/kitty/kitty.conf:
+      force: true
+      path: config/kitty/kitty.conf
+    ~/.config/Code:
+      force: true
+      path: config/Code
+    ~/.config/gh:
+      force: true
+      path: config/gh
+
+    # thefuck
     ~/.thefuck: thefuck
+
+    # general
     ~/scripts: scripts
     ~/.gitconfig: .gitconfig
     ~/.gitignore.global: .gitignore.global
