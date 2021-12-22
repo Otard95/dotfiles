@@ -4,22 +4,20 @@
 
 - clean: ['~']
 
-- link:
-  # bash
-  ~/.bash_prompt: .bash_prompt
-  ~/.bash_aliases: .bash_aliases
-  # thefuck
-  ~/.thefuck: .thefuck
-  # custom scripts
-  ~/scripts: scripts
-  # git
-  ~/.gitconfig: .gitconfig
-  ~/.gitignore.global: .gitignore.global
-
 - create:
     ~/.ssh:
       mode: 0700
 
 - shell:
-  - [cat ~/.bashrc ./.bashrc > ~/.bashrc, Concatenate bashrc]
+  - [cat ./.bashrc >> ~/.bashrc, Concatenate bashrc]
   - [git submodule update --init --recursive, Installing submodules]
+
+- link:
+  ~/.bash_prompt:
+  ~/.bash_aliases:
+  ~/.thefuck:
+  ~/scripts/:
+    create: true
+    path: ./scripts/**
+  ~/.gitconfig:
+  ~/.gitignore.global:
