@@ -114,7 +114,7 @@ fi
 ################
 
 # Update path with npm bin and user bin
-PATH="$PATH:/home/otard/.npm/bin:/usr/bin"
+PATH="$PATH:/home/otard/.npm/bin:/usr/bin:/snap/bin"
 
 # Set default shell editor to vim with custom rc
 export EDITOR="vim -u ./.vimrc-simple"
@@ -143,3 +143,6 @@ git --version &> /dev/null
 if [[ $? -eq 0 && -f ./.bash_prompt/.git-prompt ]]; then
   source ./.bash_prompt/.git-prompt
 fi 
+
+neofetch
+
