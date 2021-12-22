@@ -9,13 +9,26 @@
       mode: 0700
 
 - shell:
-  - [cat ./.bashrc >> ~/.bashrc, Concatenate bashrc]
   - [git submodule update --init --recursive, Installing submodules]
 
 - link:
+
+    # bash
     ~/.bash_prompt: bash_prompt
     ~/.bash_aliases: .bash_aliases
+    ~/.bashrc:
+      path: .bashrc
+      force: true
+
+    # config
+    ~/.config:
+      force: true
+      path: bash_prompt
+
+    # thefuck
     ~/.thefuck: thefuck
+
+    # general
     ~/scripts: scripts
     ~/.gitconfig: .gitconfig
     ~/.gitignore.global: .gitignore.global
