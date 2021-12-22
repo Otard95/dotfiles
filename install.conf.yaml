@@ -21,9 +21,18 @@
       force: true
 
     # config
-    ~/.config:
+    ~/.config/i3/config:
       force: true
-      path: bash_prompt
+      path: config/i3/config
+    ~/.config/kitty/kitty.conf:
+      force: true
+      path: config/kitty/kitty.conf
+    ~/.config/Code:
+      force: true
+      path: config/Code
+    ~/.config/gh:
+      force: true
+      path: config/gh
 
     # thefuck
     ~/.thefuck: thefuck
