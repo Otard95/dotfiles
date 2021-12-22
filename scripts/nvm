@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt remove -y nodejs
+sudo apt remove -y nodejs nodejs-doc
 
 curl -fsSL https://deb.nodesource.com/setup_$1.x | sudo -E bash -
 sudo apt-get install -y nodejs
