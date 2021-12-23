@@ -8,7 +8,7 @@
     ~/.ssh:
       mode: 0700
     ~/.config:
-      mode: 740
+      mode: 0740
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
@@ -39,12 +39,18 @@
       force: true
       create: true
       path: config/neofetch/config.conf
-    ~/.config/Code:
+    ~/.config/Code/User/snippets:
       force: true
-      path: config/Code
-    ~/.config/gh:
+      path: config/Code/User/snippets
+    ~/.config/Code/User/keybindings.json:
       force: true
-      path: config/gh
+      path: config/Code/User/keybindings.json
+    ~/.config/Code/User/settings.json:
+      force: true
+      path: config/Code/User/seettings.json
+    ~/.config/gh/config.yml:
+      force: true
+      path: config/gh/config.yml
 
     # thefuck
     ~/.thefuck: thefuck
