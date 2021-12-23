@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [[ -z "$1" ]]; then
+  echo "usage: $0 <email>"
+fi
+
+ssh-keygen -t rsa -b 4096 -C "$1"
+eval "$(ssh-agent -s)"
+sleep 1
+echo "use 'ssh-add ~/.ssh/<key name>' to complente the setup"
+
