@@ -47,7 +47,7 @@
       path: config/Code/User/keybindings.json
     ~/.config/Code/User/settings.json:
       force: true
-      path: config/Code/User/seettings.json
+      path: config/Code/User/settings.json
     ~/.config/gh/config.yml:
       force: true
       path: config/gh/config.yml
