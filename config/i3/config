@@ -178,7 +178,13 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        position top
+        font pango:Fira Code 8
         status_command i3status
+        colors {
+                background #073642
+                inactive_workspace #073642 #002B36 #93A1A1
+        }
 }
 
 # Execs
