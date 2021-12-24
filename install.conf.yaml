@@ -27,10 +27,22 @@
       force: true
       create: true
       path: config/i3/config
+    ~/.config/i3/background/wp.jpg:
+      force: true
+      create: true
+      path: config/i3/background/wp.jpg
     ~/.config/kitty/kitty.conf:
       force: true
       create: true
       path: config/kitty/kitty.conf
+    ~/.config/nitrogen/bg-saved.cfg:
+      force: true
+      create: true
+      path: config/nitrogen/bg-saved.cfg
+    ~/.config/nitrogen/nitrogen.cfg:
+      force: true
+      create: true
+      path: config/nitrogen/nitrogen.cfg
     ~/.config/kitty/kitty-themes:
       force: true
       create: true
@@ -41,15 +53,19 @@
       path: config/neofetch/config.conf
     ~/.config/Code/User/snippets:
       force: true
+      create: true
       path: config/Code/User/snippets
     ~/.config/Code/User/keybindings.json:
       force: true
+      create: true
       path: config/Code/User/keybindings.json
     ~/.config/Code/User/settings.json:
       force: true
+      create: true
       path: config/Code/User/settings.json
     ~/.config/gh/config.yml:
       force: true
+      create: true
       path: config/gh/config.yml
 
     # thefuck
