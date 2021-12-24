@@ -1,11 +1,17 @@
 #!/bin/bash
 
-if [[ -z "$1" ]]; then
-  echo "usage: $0 <email>"
+if [[ -z "$1" ]]; then
+  echo "usage: $0 <email> <key file>"
+  exit
+fi
+if [[ -z "$2" ]]; then
+  echo "usage: $0 <email> <key file>"
+  exit
 fi
 
-ssh-keygen -t rsa -b 4096 -C "$1"
+ssh-keygen -t rsa -b 4096 -C "$1" -f "$2"
 eval "$(ssh-agent -s)"
 sleep 1
-echo "use 'ssh-add ~/.ssh/<key name>' to complente the setup"
-
+ssh-add ~/.ssh/$2
+xclip -selection clipboard ~/.ssh/$2.pub
+echo "Key added and public key  copied to your clipboard"
