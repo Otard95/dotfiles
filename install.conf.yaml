@@ -31,6 +31,14 @@
       force: true
       create: true
       path: config/i3/background/wp.jpg
+    ~/.config/i3blocks/config:
+      force: true
+      create: true
+      path: config/i3blocks/config
+    ~/.config/i3blocks/status-commands:
+      force: true
+      create: true
+      path: config/i3blocks/status-commands
     ~/.config/kitty/kitty.conf:
       force: true
       create: true
@@ -51,6 +59,14 @@
       force: true
       create: true
       path: config/neofetch/config.conf
+    ~/.config/neofetch/art:
+      force: true
+      create: true
+      path: config/neofetch/art
+    ~/.config/ranger/rc.conf:
+      force: true
+      create: true
+      path: config/ranger/rc.conf
     ~/.config/Code/User/snippets:
       force: true
       create: true
