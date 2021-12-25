@@ -1,0 +1,38 @@
+color=#eeeeee
+
+[usb]
+command=~/.config/i3blocks/status-commands/usb --IGNORE_LIST '["nvme1n1p1", "nvme0n1p2"]' --INFO_TEXT_COLOR '#eeeeee'
+markup=pango
+# signal=1 ## can be updated on plug/unplug (https://github.com/vivien/i3blocks-contrib/tree/master/usb#installation)
+interval=10
+#IGNORE_LIST=[]
+#IGNORE_LIST=["nvme0n1p1", "nvme0n1p2"]
+#INFO_TEXT_COLOR=#eeeeee
+#MOUNTED_COLOR=green
+#PLUGGED_COLOR=gray
+#LOCKED_COLOR=gray
+#UNLOCKED_NOT_MOUNTED_COLOR=yellow
+#PARTITIONLESS_COLOR=red
+#PARTITIONLESS_TEXT=no partitions
+#SEPARATOR=<span color='gray'> | </span>
+#LOCKED_INDICATOR= 
+#UNLOCKED_INDICATOR= 
+#READONLY_INDICATOR=ro
+#TRUNCATE_FS_LABELS=[not set by default, accepts +/- integers]
+
+[wifi]
+command=~/.config/i3blocks/status-commands/wifi.sh
+interval=5
+
+[battery]
+command=~/.config/i3blocks/status-commands/bat
+markup=pango
+interval=5
+
+[time]
+command=date +%d\ %b\ %Y\ %T ; date +%T
+interval=5
+
+[power]
+full_text=  
+command=systemctl poweroff
