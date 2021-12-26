@@ -1,4 +1,4 @@
 #!/bin/bash
 
-source ~/.profile
-source ~/.xinitrc
+. ~/.profile
+. ~/.xinitrc
