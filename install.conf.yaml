@@ -21,6 +21,15 @@
     ~/.bashrc:
       path: .bashrc
       force: true
+    ~/.profile:
+      path: .profile
+      force: true
+    ~/.xinitrc:
+      path: .xinitrc
+      force: true
+    ~/.xsessionrc:
+      path: .xsessionrc
+      force: true
 
     # config
     ~/.config/i3/config:

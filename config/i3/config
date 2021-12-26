@@ -187,11 +187,3 @@ bar {
                 inactive_workspace #073642 #002B36 #93A1A1
         }
 }
-
-# Execs
-# Start complimentary servises like picom and nitrogen
-# for window opasity and backgrounds respectivly
-# TODO: Move to own file when debian package gets updated to 4.20
-exec picom -b
-exec nitrogen --restore &
-
