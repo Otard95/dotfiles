@@ -48,10 +48,16 @@
       force: true
       create: true
       path: config/i3blocks/status-commands
+
     ~/.config/kitty/kitty.conf:
       force: true
       create: true
       path: config/kitty/kitty.conf
+    ~/.config/kitty/kitty-themes:
+      force: true
+      create: true
+      path: config/kitty/kitty-themes
+
     ~/.config/nitrogen/bg-saved.cfg:
       force: true
       create: true
@@ -60,10 +66,6 @@
       force: true
       create: true
       path: config/nitrogen/nitrogen.cfg
-    ~/.config/kitty/kitty-themes:
-      force: true
-      create: true
-      path: config/kitty/kitty-themes
     ~/.config/neofetch/config.conf:
       force: true
       create: true
@@ -72,10 +74,12 @@
       force: true
       create: true
       path: config/neofetch/art
+
     ~/.config/ranger/rc.conf:
       force: true
       create: true
       path: config/ranger/rc.conf
+
     ~/.config/Code/User/snippets:
       force: true
       create: true
@@ -88,6 +92,7 @@
       force: true
       create: true
       path: config/Code/User/settings.json
+
     ~/.config/gh/config.yml:
       force: true
       create: true
