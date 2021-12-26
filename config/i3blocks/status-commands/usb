@@ -6,15 +6,6 @@
 # i3blocks blocklet script to output connected usb storage device info.
 
 import os
-import sys
-
-def _arg(name, default='', arg_type=str)
-    val = default
-    for i in range(0, len(sys.argv))
-      if sys.argv[i] == name
-        val = sys.argv[i+1]
-        break
-    return arg_type(val)
 
 def _default(name, default='', arg_type=str):
     val = default
@@ -32,7 +23,7 @@ def _default(name, default='', arg_type=str):
 
 
 # Color options, can be a color name or #RRGGBB
-INFO_TEXT_COLOR = _arg("INFO_TEXT_COLOR", "white")
+INFO_TEXT_COLOR = _default("INFO_TEXT_COLOR", "#eeeeee")
 MOUNTED_COLOR = _default("MOUNTED_COLOR", "green")
 PLUGGED_COLOR = _default("PLUGGED_COLOR", "gray")
 LOCKED_COLOR = _default("LOCKED_COLOR", "gray")
@@ -58,7 +49,7 @@ TRUNCATE_FS_LABELS = _default("TRUNCASE_FS_LABELS", None)
 
 # List of devices to ignore. Must be a valid python3 representation of a list
 # of strings
-IGNORE_LIST = _arg("IGNORE_LIST", "[]")
+IGNORE_LIST = _default("IGNORE_LIST", "[]")
 if IGNORE_LIST:
     import ast
     IGNORE_LIST = list(map(lambda p:
