@@ -3,3 +3,18 @@
 function arr_join { local d=$1; shift; echo -n "$1"; shift; printf "%s" "${@/#/$d}"; }
 export -f arr_join
 
+function index_of {
+  needle=$1
+  shift
+  set=($@)
+
+  for i in "${!set[@]}"; do
+    if [[ "${set[$i]}" = "${needle}" ]]; then
+      echo "${i}";
+      exit 0
+    fi
+  done
+
+  echo "-1"
+}
+export -f index_of
