@@ -1,5 +1,9 @@
 color=#eeeeee
 
+[kbkang]
+command=echo "lang: $(setxkbmap -query | awk '/layout/{print $2}')"
+interval=5
+
 [usb]
 command=~/.config/i3blocks/status-commands/usb -i nvme0n1p1 -i nvme0n1p2
 markup=pango
@@ -22,6 +26,10 @@ interval=10
 
 [wifi]
 command=~/.config/i3blocks/status-commands/wifi.sh
+interval=5
+
+[volume]
+command=~/.config/i3blocks/status-commands/volume.sh
 interval=5
 
 [battery]
