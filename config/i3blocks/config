@@ -1,19 +1,37 @@
 color=#eeeeee
 
+separator=false
+separator_block_width=0
+# border_top=0
+# border_left=0
+# border_right=0
+# border_bottom=0
+
+_powerline_symbol_left=
+_powerline_symbol_right=
+markup=pango
+
+
 [kbkang]
-command=echo "lang: $(setxkbmap -query | awk '/layout/{print $2}')"
+command=~/.config/i3blocks/status-commands/lang.sh
 interval=5
+_left=<span color="#008877"></span><span background="#008877"> </span>
+_right=<span color="#007766" background="#008877"> </span>
+_color=#008877
 
 [usb]
-command=~/.config/i3blocks/status-commands/usb -i nvme0n1p1 -i nvme0n1p2
+command=~/.config/i3blocks/status-commands/usb
 markup=pango
 # signal=1 ## can be updated on plug/unplug (https://github.com/vivien/i3blocks-contrib/tree/master/usb#installation)
 interval=10
+_left=<span background="#007766"> </span>
+_right=<span color="#006655" background="#007766"> </span>
+_color=#007766
 #IGNORE_LIST=[]
-#IGNORE_LIST=["nvme0n1p1", "nvme0n1p2"]
+IGNORE_LIST=["nvme0n1p1", "nvme0n1p2"]
 #INFO_TEXT_COLOR=#eeeeee
 #MOUNTED_COLOR=green
-#PLUGGED_COLOR=gray
+PLUGGED_COLOR=#aaa
 #LOCKED_COLOR=gray
 #UNLOCKED_NOT_MOUNTED_COLOR=yellow
 #PARTITIONLESS_COLOR=red
@@ -27,20 +45,38 @@ interval=10
 [wifi]
 command=~/.config/i3blocks/status-commands/wifi.sh
 interval=5
+_left=<span background="#006655"> </span>
+_right=<span color="#005544" background="#006655"> </span>
+_color=#006655
 
 [volume]
 command=~/.config/i3blocks/status-commands/volume.sh
 interval=5
+_left=<span background="#005544"> </span>
+_right=<span color="#004433" background="#005544"> </span>
+_color=#005544
 
 [battery]
 command=~/.config/i3blocks/status-commands/bat
 markup=pango
 interval=5
+_left=<span background="#004433"> </span>
+_right=<span color="#003322" background="#004433"> </span>
+_color=#004433
 
 [time]
-command=date +%d\ %b\ %Y\ %T ; date +%T
+command=~/.config/i3blocks/status-commands/time.sh
 interval=5
+_left=<span background="#003322"> </span>
+_right=<span color="#002211" background="#003322"> </span>
+_color=#003322
 
 [power]
-full_text=  
+full_text=<span background="#002211">  </span>
 command=systemctl poweroff
+
+#002211
+#003322
+#004433
+#005544
+#006655

@@ -182,9 +182,10 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         position top
-        font pango:FontAwesome 8
+        font pango:Fira Code 9
+        # font pango:FontAwesome 9
         status_command i3blocks
-        separator_symbol ":|:"
+        # separator_symbol "​"
         colors {
                 background #073642
                 inactive_workspace #073642 #002B36 #93A1A1

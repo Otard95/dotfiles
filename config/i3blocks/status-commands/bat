@@ -79,7 +79,7 @@ else:
     def color(percent):
         if percent < 10:
             # exit code 33 will turn background red
-            return config.get("color_10", "#FFFFFF")
+            return config.get("color_10", "#eeeeee")
         if percent < 20:
             return config.get("color_20", "#FF3300")
         if percent < 30:
@@ -100,7 +100,9 @@ else:
     fulltext += form.format(color(percentleft), percentleft)
     fulltext += timeleft
 
-print(fulltext)
-print(fulltext)
+left=config.get("_left", "")+"<span background=\"{}\">".format(config.get("_color", ""))
+right="</span>"+config.get("_right", "")
+print(left+fulltext+right)
+print(left+fulltext+right)
 if percentleft < 10:
     exit(33)

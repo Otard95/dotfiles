@@ -7,11 +7,11 @@ muted="$(pactl list sinks | grep '^[[:space:]]Mute:' | head -n $(( $SINK + 1 )) 
 # echo "$SINK $volume $muted"
 
 if [[ $muted == "yes" ]]; then
-  echo " $volume"
+  echo "$_left<span background=\"$_color\"> $volume</span>$_right"
 elif [[ $volume -lt 30 ]]; then
-  echo " $volume"
+  echo "$_left<span background=\"$_color\"> $volume</span>$_right"
 elif [[ $volume -lt 60 ]]; then
-  echo " $volume"
+  echo "$_left<span background=\"$_color\"> $volume</span>$_right"
 else
-  echo " $volume"
+  echo "$_left<span background=\"$_color\"> $volume</span>$_right"
 fi

@@ -3,16 +3,16 @@
 status=$(nmcli -c no device wifi | grep '*')
 
 if [[ -z "$status" ]]; then
-  echo " Not Connected"
-  echo ""
+  echo "$_left<span background=\"$_color\"> Not Connected</span>$_right"
+  echo "$_left<span background=\"$_color\"></span>$_right"
   echo "#aaaaaa"
 fi
 
 signal=$(awk '{print $8}' <<< "$status")
 ssid=$(awk '{print $3}' <<< "$status")
 
-echo "$signal% $ssid"
-echo "$signal%"
+echo "$_left<span background=\"$_color\">$signal% $ssid</span>$_right"
+echo "$_left<span background=\"$_color\">$signal%</span>$_right"
 
 [ $signal -le 10 ] exit 33
 
