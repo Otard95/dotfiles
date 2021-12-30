@@ -7,7 +7,7 @@ if [[ ${#langs[@]} -eq 0 ]]; then
   exit 1
 fi
 
-source ./array-utils
+source ~/scripts/array-utils
 
 current=`setxkbmap -query | awk '/layout/{print $2}'`
 current_index="$(index_of $current ${langs[@]})"
