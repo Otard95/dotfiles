@@ -1,0 +1,21 @@
+#!/bin/bash
+
+langs=($@)
+
+if [[ ${#langs[@]} -eq 0 ]]; then
+  echo "usage: $0 <lang 1> [<lang 2> [... <lang n>]]"
+  exit 1
+fi
+
+source ./array-utils
+
+current=`setxkbmap -query | awk '/layout/{print $2}'`
+current_index="$(index_of $current ${langs[@]})"
+
+current_index=$((current_index+1))
+
+if [[ -z "${langs[$current_index]}" ]]; then
+  current_index=0
+fi
+
+setxkbmap -layout ${langs[$current_index]}
