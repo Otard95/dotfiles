@@ -13,7 +13,7 @@
 for_window [class=".*"] border pixel 0
 # gaps [inner|outer|horizontal|vertical|top|left|bottom|right] <px>
 gaps inner 10
-gaps outer 10
+# gaps outer 10
 
 # Set mod key
 set $mod Mod4
