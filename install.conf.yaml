@@ -98,6 +98,11 @@
       create: true
       path: config/gh/config.yml
 
+    ~/.config/gtk-3.0/settings.ini:
+      force: true
+      create: true
+      path: config/gtk-3.0/settings.ini
+
     # thefuck
     ~/.thefuck: thefuck
 
