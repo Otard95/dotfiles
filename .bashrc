@@ -139,9 +139,8 @@ if [[ -f ~/.secret/.github-cli ]]; then
 fi 
 
 # Prompt
-git --version &> /dev/null
-if [[ $? -eq 0 && -f ~/.bash_prompt/.git-prompt ]]; then
-  source ~/.bash_prompt/.git-prompt
+if [[ -f ~/.bash_prompt/.prompt ]]; then
+  source ~/.bash_prompt/.prompt
 fi 
 
 neofetch

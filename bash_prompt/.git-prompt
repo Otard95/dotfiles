@@ -1,7 +1,9 @@
 
 # Parse git status in $1 used in prompt
 git_prompt () {
-  if [ ! -d $1/.git ]; then
+
+  git status &> /dev/null
+  if [[ $? -ne 0 ]]; then
     return
   fi
 
@@ -36,16 +38,4 @@ git_prompt () {
     echo " \e[0;36m[$changes$branch]\e[0m"
   fi
 }
-
-# Bash prompt                                                                                                                    
-prompt () {
-export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(git_prompt $PWD)
- λ "
-}
-if [[ -z "$PROMPT_COMMAND" ]]; then
-  export PROMPT_COMMAND="prompt"
-elif [[ "$PROMPT_COMMAND" =~ "prompt" ]]; then
-  export PROMPT_COMMAND="$PROMPT_COMMAND"
-else
-  export PROMPT_COMMAND="$PROMPT_COMMAND; prompt"
-fi
+export -f git_prompt
