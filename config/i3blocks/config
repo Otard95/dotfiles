@@ -21,7 +21,6 @@ _color=#008877
 
 [usb]
 command=~/.config/i3blocks/status-commands/usb
-markup=pango
 # signal=1 ## can be updated on plug/unplug (https://github.com/vivien/i3blocks-contrib/tree/master/usb#installation)
 interval=10
 _left=<span background="#007766"> </span>
@@ -58,7 +57,6 @@ _color=#005544
 
 [battery]
 command=~/.config/i3blocks/status-commands/bat
-markup=pango
 interval=5
 _left=<span background="#004433"> </span>
 _right=<span color="#003322" background="#004433"> </span>
