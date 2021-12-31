@@ -22,7 +22,7 @@ _color=#008877
 
 [usb]
 command=~/.config/i3blocks/status-commands/usb
-# signal=1 ## can be updated on plug/unplug (https://github.com/vivien/i3blocks-contrib/tree/master/usb#installation)
+signal=3 ## can be updated on plug/unplug (https://github.com/vivien/i3blocks-contrib/tree/master/usb#installation)
 interval=10
 _left=<span background="#007766"> </span>
 _right=<span color="#006655" background="#007766"> </span>
