@@ -6,3 +6,5 @@ alias mine='sudo chown $USER:$GROUP -R $1'
 alias mod='~/scripts/mod'
 alias note='~/scripts/note'
 alias ssh-new-key='~/scripts/ssh-new-key'
+alias nvm='~/scripts/nvm'
+
