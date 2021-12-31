@@ -73,7 +73,7 @@ _color=#003322
 
 [lock]
 full_text=<span background="#002211">  </span>
-command=i3lock-fancy
+command=betterlockscreen -l
 
 [power]
 full_text=<span background="#002211">  </span>
