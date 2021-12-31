@@ -14,7 +14,8 @@ markup=pango
 
 [kbkang]
 command=~/.config/i3blocks/status-commands/lang.sh
-interval=5
+interval=once
+signal=2
 _left=<span color="#008877"></span><span background="#008877"> </span>
 _right=<span color="#007766" background="#008877"> </span>
 _color=#008877
@@ -50,7 +51,8 @@ _color=#006655
 
 [volume]
 command=~/.config/i3blocks/status-commands/volume.sh
-interval=5
+interval=once
+signal=1
 _left=<span background="#005544"> </span>
 _right=<span color="#004433" background="#005544"> </span>
 _color=#005544
