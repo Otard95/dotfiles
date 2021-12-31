@@ -1,8 +1,19 @@
 #!/bin/bash
 
-sudo mv /etc/lightdm/lightdm.conf /etc/lightdm/lightdm.conf.$(date +%s).BAK
-sudo cp ./lightdm.conf /etc/lightdm/
-sudo mv /etc/lightdm/ukui-greeter.conf /etc/lightdm/ukui-greeter.conf.$(date +%s).BAK
-sudo cp ./ukui-greeter.conf /etc/lightdm/
-sudo mv /usr/share/ukui-greeter/images/wp_blurred.jpg /usr/share/ukui-greeter/images/wp_blurred.jpg.$(date +%s).BAK
-sudo cp ./wp_blurred.jpg /usr/share/ukui-greeter/images/
+DIRNAME=$(dirname $0 | xargs realpath)
+
+update_file() {
+  if [[ -f $1 ]]; then
+    sudo mv $1 $1.$(date +%s).BAK
+    sudo cp $2 $1
+    echo "Update: $1 <- $2"
+  else
+    sudo cp $2 $1
+    echo "Create: $1 <- $2"
+  fi
+}
+
+update_file /etc/lightdm/lightdm.conf $DIRNAME/root/lightdm.conf
+update_file /etc/lightdm/ukui-greeter.conf $DIRNAME/root/ukui-greeter.conf
+update_file /usr/share/ukui-greeter/images/wp_blurred.jpg $DIRNAME/root/wp_blurred.jpg
+update_file /etc/udev/rules.d/70-user.i3blocks.usb.rules $DIRNAME/root/70-user.i3blocks.usb.rules
