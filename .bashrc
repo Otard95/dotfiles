@@ -113,20 +113,6 @@ fi
 ##   Custom   ##
 ################
 
-# Update path with npm bin, user bin, and 
-if [ -d "$HOME/.npm/bin" ] ; then
-  PATH="$HOME/.npm/bin:$PATH"
-fi
-
-if [ -d "/usr/bin" ] ; then
-  PATH="/usr/bin:$PATH"
-fi
-
-if [ -d "/snap/bin" ] ; then
-  PATH="/snap/bin:$PATH"
-fi
-
-
 # Set default shell editor to vim with custom rc
 export EDITOR="vim -u ~/.vimrc-simple"
 
