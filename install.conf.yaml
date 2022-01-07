@@ -104,7 +104,7 @@
       path: config/gtk-3.0/settings.ini
 
     # thefuck
-    ~/.thefuck: thefuck
+    ~/.config/thefuck: config/thefuck
 
     # fzf
     ~/.fzf: fzf

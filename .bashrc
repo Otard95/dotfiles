@@ -126,8 +126,8 @@ fi
 
 # thefuck
 thefuck -v &> /dev/null
-if [[ $? -eq 0 && -f ~/.thefuck/.alias ]]; then
-  source ~/.thefuck/.alias
+if [[ $? -eq 0 && -f ~/.config/thefuck/.alias ]]; then
+  source ~/.config/thefuck/.alias
 fi
 
 # fzf

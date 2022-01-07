@@ -1,1 +1,3 @@
 .secret/
+config/thefuck/__pycache__
+config/thefuck/rules
