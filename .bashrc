@@ -130,6 +130,12 @@ if [[ $? -eq 0 && -f ~/.thefuck/.alias ]]; then
   source ~/.thefuck/.alias
 fi
 
+# fzf
+fzf --version &> /dev/null
+if [[ $? -eq 0 && -f ~/.fzf/.fzfrc ]]; then
+  source ~/.fzf/.fzfrc
+fi
+
 # GitHub CLI
 if [[ -f ~/.secret/.github-cli ]]; then
   source ~/.secret/.github-cli

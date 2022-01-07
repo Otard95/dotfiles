@@ -106,6 +106,9 @@
     # thefuck
     ~/.thefuck: thefuck
 
+    # fzf
+    ~/.fzf: fzf
+
     # general
     ~/scripts: scripts
     ~/.gitconfig: .gitconfig
