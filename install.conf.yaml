@@ -14,6 +14,13 @@
   - [git submodule update --init --recursive, Installing submodules]
 
 - link:
+    # general
+    ~/scripts: scripts
+    ~/.gitconfig: .gitconfig
+    ~/.gitignore.global: .gitignore.global
+    ~/.vimrc: .vimrc
+    ~/.vimrc-simple: .vimrc-simple
+    ~/.vim: vim
 
     # bash
     ~/.bash_prompt: bash_prompt
@@ -109,7 +116,3 @@
     # fzf
     ~/.fzf: fzf
 
-    # general
-    ~/scripts: scripts
-    ~/.gitconfig: .gitconfig
-    ~/.gitignore.global: .gitignore.global
