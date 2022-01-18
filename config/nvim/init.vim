@@ -25,6 +25,7 @@ set relativenumber
 set number
 set termguicolors
 set spell
+set spellfile=~/.config/nvim/dictionary.latin1.add,./dictionary.latin1.add
 set ignorecase
 set smartcase
 set wildmode=longest:full,full
@@ -62,6 +63,10 @@ vnoremap <leader>p "_dP
 " Easy insert of trailing ; or , from insert mode
 imap ;; <Esc>A;<Esc>
 imap ,, <Esc>A,<Esc>
+
+" Add word to project dictionary
+nmap gzg 2zg
+nmap gzw 2zw
 
 "-------------------------------
 " Plugins
