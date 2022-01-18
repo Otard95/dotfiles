@@ -18,9 +18,7 @@
     ~/scripts: scripts
     ~/.gitconfig: .gitconfig
     ~/.gitignore.global: .gitignore.global
-    ~/.vimrc: .vimrc
-    ~/.vimrc-simple: .vimrc-simple
-    ~/.vim: vim
+    ~/.fzf: fzf
 
     # bash
     ~/.bash_prompt: bash_prompt
@@ -38,7 +36,9 @@
       path: .xsessionrc
       force: true
 
-    # config
+    ### config
+
+    # i3
     ~/.config/i3/config:
       force: true
       create: true
@@ -56,15 +56,27 @@
       create: true
       path: config/i3blocks/status-commands
 
+    # Kitty
     ~/.config/kitty/kitty.conf:
       force: true
       create: true
       path: config/kitty/kitty.conf
+    ~/.config/kitty/pager.sh:
+      force: true
+      create: true
+      path: config/kitty/pager.sh
     ~/.config/kitty/kitty-themes:
       force: true
       create: true
       path: config/kitty/kitty-themes
 
+    # nvim
+    ~/.config/nvim:
+      force: true
+      create: true
+      path: config/nvim
+
+    # Nitrogen
     ~/.config/nitrogen/bg-saved.cfg:
       force: true
       create: true
@@ -82,11 +94,13 @@
       create: true
       path: config/neofetch/art
 
+    # Ranger
     ~/.config/ranger/rc.conf:
       force: true
       create: true
       path: config/ranger/rc.conf
 
+    # VSCode
     ~/.config/Code/User/snippets:
       force: true
       create: true
@@ -100,11 +114,13 @@
       create: true
       path: config/Code/User/settings.json
 
+    # GH CLI
     ~/.config/gh/config.yml:
       force: true
       create: true
       path: config/gh/config.yml
 
+    # gtk
     ~/.config/gtk-3.0/settings.ini:
       force: true
       create: true
@@ -112,7 +128,4 @@
 
     # thefuck
     ~/.config/thefuck: config/thefuck
-
-    # fzf
-    ~/.fzf: fzf
 
