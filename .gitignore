@@ -3,3 +3,4 @@ config/thefuck/__pycache__
 config/thefuck/rules
 config/nvim/plugins/
 config/nvim/autoload
+

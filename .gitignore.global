@@ -1,4 +1,5 @@
 **/NetrwTreeListing*
+**/.netrwhist
 **/*.swo
 **/*.swn
 *.vim
@@ -10,3 +11,6 @@
 .php_cs
 .ngm
 *.pem
+dictionary.latin1.add
+dictionary.latin1.add.spl
+
