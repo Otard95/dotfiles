@@ -25,7 +25,7 @@ set relativenumber
 set number
 set termguicolors
 set spell
-set spellfile=~/.config/nvim/dictionary.latin1.add,./dictionary.latin1.add
+set spellfile=./dictionary.latin1.add,~/.config/nvim/dictionary.latin1.add
 set ignorecase
 set smartcase
 set wildmode=longest:full,full
@@ -83,7 +83,19 @@ call plug#begin(data_dir . '/plugins')
 source ~/.config/nvim/config/plugins/airline.vim
 source ~/.config/nvim/config/plugins/fzf.vim
 source ~/.config/nvim/config/plugins/surround.vim
-source ~/.config/nvim/config/plugins/autopairs.vim
+" source ~/.config/nvim/config/plugins/autopairs.vim
+source ~/.config/nvim/config/plugins/coc.vim
+source ~/.config/nvim/config/plugins/commentary.vim
 
 call plug#end()
+
+"-------------------------------
+" Theme
+"-------------------------------
+
+hi Pmenu guibg=#003366 gui=NONE
+hi PmenuSel guibg=#115588 gui=NONE
+hi PmenuSbar guibg=#bcbcbc
+hi PmenuThumb guibg=#585858
+
 
