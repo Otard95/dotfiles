@@ -2,12 +2,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
 
 let g:coc_global_extensions = [
-    \ 'coc-css',
     \ 'coc-diagnostic',
-    \ 'coc-emmet',
     \ 'coc-eslint',
     \ 'coc-git',
-    \ 'coc-html',
     \ 'coc-json',
     \ 'coc-pairs',
     \ 'coc-phpls',
@@ -15,10 +12,7 @@ let g:coc_global_extensions = [
     \ 'coc-sh',
     \ 'coc-snippets',
     \ 'coc-sql',
-    \ 'coc-svg',
-    \ 'https://github.com/rodrigore/coc-tailwind-intellisense',
     \ 'coc-tsserver',
-    \ '@yaegassy/coc-volar',
 \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
