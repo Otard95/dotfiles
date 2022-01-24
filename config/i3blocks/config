@@ -75,9 +75,13 @@ _color=#003322
 full_text=<span background="#002211">  </span>
 command=i3-msg -q exec betterlockscreen -- -l
 
+[reboot]
+full_text=<span background="#002211">  </span>
+command=/sbin/shutdown -r now
+
 [power]
 full_text=<span background="#002211">  </span>
-command=pkill brave; wait; systemctl poweroff
+command=/sbin/shutdown -P now
 
 #002211
 #003322
