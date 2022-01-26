@@ -17,3 +17,5 @@ update_file /etc/lightdm/lightdm.conf $DIRNAME/root/lightdm.conf
 update_file /etc/lightdm/ukui-greeter.conf $DIRNAME/root/ukui-greeter.conf
 update_file /usr/share/ukui-greeter/images/wp_blurred.jpg $DIRNAME/root/wp_blurred.jpg
 update_file /etc/udev/rules.d/70-user.i3blocks.usb.rules $DIRNAME/root/70-user.i3blocks.usb.rules
+update_file /etc/modprobe.d/nvidia-drm-modeset.conf $DIRNAME/root/nvidia-drm-modeset.conf
+
