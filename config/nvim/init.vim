@@ -86,6 +86,7 @@ source ~/.config/nvim/config/plugins/surround.vim
 " source ~/.config/nvim/config/plugins/autopairs.vim
 source ~/.config/nvim/config/plugins/coc.vim
 source ~/.config/nvim/config/plugins/commentary.vim
+source ~/.config/nvim/config/plugins/visual-multi.vim
 
 call plug#end()
 
