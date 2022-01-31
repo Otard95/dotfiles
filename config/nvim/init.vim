@@ -41,8 +41,8 @@ set sidescrolloff=10
 
 let mapleader = "\<space>"
 
-nmap <leader>ve :edit ~/.vimrc<cr>
-nmap <leader>vr :so ~/.vimrc<cr>
+nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
+nmap <leader>vr :so ~/.config/nvim/init.vim<cr>
 
 nmap <leader>Q :bufdo bdelete<cr>
 
@@ -98,5 +98,6 @@ hi Pmenu guibg=#003366 gui=NONE
 hi PmenuSel guibg=#115588 gui=NONE
 hi PmenuSbar guibg=#bcbcbc
 hi PmenuThumb guibg=#585858
-
+hi DiffAdd guibg=DarkGreen
+hi DiffChange guibg=DarkBlue
 
