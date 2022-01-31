@@ -47,6 +47,11 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec kitty
+# start terminal as quake
+bindsym Mod1+q exec ~/.config/i3/kitty-quake.sh
+for_window [class="^quake$"] floating enable
+for_window [class="^quake$"] resize set 1600 800
+for_window [class="^quake$"] move absolute position center
 
 # kill focused window
 bindsym $mod+Shift+q kill
