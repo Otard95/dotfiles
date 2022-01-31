@@ -9,8 +9,11 @@ alias um='sudo umount $@'
 alias vim='nvim'
 alias vi='nvim'
 
+alias bt='bluetoothctl'
+
 alias mod='~/scripts/mod'
 alias note='~/scripts/note'
 alias ssh-new-key='~/scripts/ssh-new-key'
 alias nvm='~/scripts/nvm'
+alias auto-bt='~/scripts/auto-bt.sh'
 
