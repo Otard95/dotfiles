@@ -34,6 +34,7 @@ set list
 set listchars=tab:->\ ,trail:⋅
 set scrolloff=10
 set sidescrolloff=10
+set clipboard+=unnamedplus
 
 "-------------------------------
 " Key maps
