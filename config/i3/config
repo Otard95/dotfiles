@@ -204,3 +204,8 @@ bar {
                 inactive_workspace #073642 #002B36 #93A1A1
         }
 }
+
+# Other bindings
+
+bindsym Mod1+Shift+2 exec flameshot gui
+
