@@ -29,7 +29,10 @@ function connect {
         return 0
       else
         ((TRIES++))
-        if [[ TRIES -gt 3 ]]; then return 1; fi
+        if [[ TRIES -gt 3 ]]; then
+          echo "$1 - Connection failed."
+          return 1;
+        fi
         echo "$1 - Connection failed. Retrying..."
         sleep 1
       fi
