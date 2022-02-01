@@ -205,6 +205,12 @@ bar {
         }
 }
 
+# Initialize workspaces
+
+workspace 1 output DP-0
+workspace 2 output DP-6
+workspace 3 output DP-4
+
 # Other bindings
 
 bindsym Mod1+Shift+2 exec flameshot gui
