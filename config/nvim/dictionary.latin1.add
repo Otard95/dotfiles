@@ -33,3 +33,6 @@ app
 middleware
 plugins
 gui
+url
+cms
+api
