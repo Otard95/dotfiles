@@ -88,6 +88,7 @@ source ~/.config/nvim/config/plugins/surround.vim
 source ~/.config/nvim/config/plugins/coc.vim
 source ~/.config/nvim/config/plugins/commentary.vim
 source ~/.config/nvim/config/plugins/visual-multi.vim
+source ~/.config/nvim/config/plugins/copilot.vim
 
 call plug#end()
 
