@@ -32,3 +32,4 @@ GQL
 app
 middleware
 plugins
+gui
