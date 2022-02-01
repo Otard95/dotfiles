@@ -51,7 +51,8 @@ bindsym $mod+Return exec kitty
 bindsym Mod1+q exec ~/.config/i3/kitty-quake.sh
 for_window [class="^quake$"] floating enable
 for_window [class="^quake$"] resize set 1600 800
-for_window [class="^quake$"] move absolute position center
+for_window [class="^quake$"] move position center
+for_window [class="^quake$"] sticky enable
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -150,6 +151,12 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
+# move workspace and containers to outputs
+bindsym $mod+Mod1+j move container to output left
+bindsym $mod+Mod1+k move container to output right
+bindsym $mod+Mod1+h move workspace to output left
+bindsym $mod+Mod1+l move workspace to output right
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
