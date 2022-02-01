@@ -155,8 +155,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # move workspace and containers to outputs
 bindsym $mod+Mod1+j move container to output left
 bindsym $mod+Mod1+k move container to output right
-bindsym $mod+Mod1+h move workspace to output left
-bindsym $mod+Mod1+l move workspace to output right
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -210,6 +208,14 @@ bar {
 workspace 1 output DP-0
 workspace 2 output DP-6
 workspace 3 output DP-4
+
+workspace 4 output DP-0
+workspace 5 output DP-6
+workspace 6 output DP-4
+
+workspace 7 output DP-0
+workspace 8 output DP-6
+workspace 9 output DP-4
 
 # Other bindings
 
