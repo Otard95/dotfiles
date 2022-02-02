@@ -70,6 +70,14 @@ imap ,, <Esc>A,<Esc>
 nmap gzg 2zg
 nmap gzw 2zw
 
+" Buffer cleaning
+function BufOnly ()
+  let l:winview = winsaveview()
+  execute "%bd|e#|bd#"
+  call winrestview(l:winview)
+endfunction
+nmap <leader>bo :call BufOnly()<CR>
+
 "-------------------------------
 " Plugins
 "-------------------------------
@@ -91,6 +99,7 @@ source ~/.config/nvim/config/plugins/coc.vim
 source ~/.config/nvim/config/plugins/commentary.vim
 source ~/.config/nvim/config/plugins/visual-multi.vim
 source ~/.config/nvim/config/plugins/copilot.vim
+source ~/.config/nvim/config/plugins/graphql.vim
 
 call plug#end()
 
@@ -104,4 +113,5 @@ hi PmenuSbar guibg=#bcbcbc
 hi PmenuThumb guibg=#585858
 hi DiffAdd guibg=DarkGreen
 hi DiffChange guibg=DarkBlue
+hi SignColumn guibg=bg
 
