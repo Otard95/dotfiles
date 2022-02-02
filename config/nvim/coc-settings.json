@@ -23,6 +23,7 @@
     "git.removedSign.text": "-",
     "git.topRemovedSign.text": "▔",
     "git.changeRemovedSign.text": "▔",
+    "git.addGBlameToVirtualText": true,
     "phpls.path": "/usr/local/bin/intelephense",
     "php-cs-fixer.config": ".php-cs-fixer.dist.php",
     "php-cs-fixer.enableFormatProvider": true,
