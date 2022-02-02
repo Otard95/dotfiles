@@ -5,7 +5,10 @@ if [[ $# -eq 0 ]]; then
   exit 1
 fi
 
-DEVICES=( "$@" )
+DEVICES=( "Nothing ear (1)" "MX Master 2S" "WH-1000XM4" )
+if [[ $# -gt 0 ]]; then
+  DEVICES=( "$@" )
+fi
 
 function mac_by_name {
   bluetoothctl devices | grep "$1" | awk '{print $2}'
