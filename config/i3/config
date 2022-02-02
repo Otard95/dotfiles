@@ -217,6 +217,10 @@ workspace 7 output DP-0
 workspace 8 output DP-6
 workspace 9 output DP-4
 
+# Mouse warning
+
+mouse_warping none
+
 # Other bindings
 
 bindsym Mod1+Shift+2 exec flameshot gui
