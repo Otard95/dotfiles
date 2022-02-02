@@ -35,6 +35,7 @@ set listchars=tab:->\ ,trail:⋅
 set scrolloff=10
 set sidescrolloff=10
 set clipboard+=unnamedplus
+set cmdheight=2
 
 "-------------------------------
 " Key maps
@@ -82,6 +83,7 @@ endif
 call plug#begin(data_dir . '/plugins')
 
 source ~/.config/nvim/config/plugins/airline.vim
+source ~/.config/nvim/config/plugins/fugitive.vim
 source ~/.config/nvim/config/plugins/fzf.vim
 source ~/.config/nvim/config/plugins/surround.vim
 " source ~/.config/nvim/config/plugins/autopairs.vim
