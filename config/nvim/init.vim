@@ -114,4 +114,6 @@ hi PmenuThumb guibg=#585858
 hi DiffAdd guibg=DarkGreen
 hi DiffChange guibg=DarkBlue
 hi SignColumn guibg=bg
+hi CocWarningHighlight guibg=DarkYellow guifg=Black
+hi Visual guibg=#004466
 
