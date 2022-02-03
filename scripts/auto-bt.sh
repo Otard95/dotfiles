@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [[ $# -eq 0 ]]; then
-  echo "usage: $0 <...devices>"
-  exit 1
-fi
-
 DEVICES=( "Nothing ear (1)" "MX Master 2S" "WH-1000XM4" )
 if [[ $# -gt 0 ]]; then
   DEVICES=( "$@" )
