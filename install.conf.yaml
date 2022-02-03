@@ -43,6 +43,10 @@
       force: true
       create: true
       path: config/i3/config
+    ~/.config/i3/work.conf:
+      force: true
+      create: true
+      path: config/i3/work.conf
     ~/.config/i3/kitty-quake.sh:
       force: true
       create: true
@@ -73,22 +77,6 @@
       force: true
       create: true
       path: config/kitty/kitty-themes
-
-    # nvim
-    ~/.config/nvim:
-      force: true
-      create: true
-      path: config/nvim
-
-    # Nitrogen
-    ~/.config/nitrogen/bg-saved.cfg:
-      force: true
-      create: true
-      path: config/nitrogen/bg-saved.cfg
-    ~/.config/nitrogen/nitrogen.cfg:
-      force: true
-      create: true
-      path: config/nitrogen/nitrogen.cfg
     ~/.config/neofetch/config.conf:
       force: true
       create: true
@@ -97,6 +85,12 @@
       force: true
       create: true
       path: config/neofetch/art
+
+    # nvim
+    ~/.config/nvim:
+      force: true
+      create: true
+      path: config/nvim
 
     # Ranger
     ~/.config/ranger/rc.conf:

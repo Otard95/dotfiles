@@ -203,6 +203,10 @@ bar {
         }
 }
 
+# Setup specific
+
+include ~/.config/i3/work.conf
+
 # Initialize workspaces
 
 workspace 1 output DP-0
