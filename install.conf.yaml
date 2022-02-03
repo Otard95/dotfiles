@@ -36,6 +36,9 @@
       path: .xsessionrc
       force: true
 
+    # tig
+    ~/.tigrc: .tigrc
+
     ### config
 
     # i3
@@ -63,6 +66,16 @@
       force: true
       create: true
       path: config/i3blocks/status-commands
+
+    # gtk
+    ~/.config/gtk-3.0/settings.ini:
+      force: true
+      create: true
+      path: config/gtk-3.0/settings.ini
+    ~/.icons/default/index.theme:
+      force: true
+      create: true
+      path: icons/default/index.theme
 
     # Kitty
     ~/.config/kitty/kitty.conf:
@@ -117,12 +130,6 @@
       force: true
       create: true
       path: config/gh/config.yml
-
-    # gtk
-    ~/.config/gtk-3.0/settings.ini:
-      force: true
-      create: true
-      path: config/gtk-3.0/settings.ini
 
     # thefuck
     ~/.config/thefuck: config/thefuck
