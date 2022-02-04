@@ -44,8 +44,8 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 nmap <silent> <leader>d <Plug>(coc-diagnostic-info)
 
 " GoTo code navigation.
@@ -54,8 +54,11 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-nmap <silent> ]h <Plug>(coc-git-nextchunk)
-nmap <silent> [h <Plug>(coc-git-prevchunk)
+nmap <silent> <leader>gi <Plug>(coc-git-chunkinfo)
+nmap <silent> ]g <Plug>(coc-git-nextchunk)
+nmap <silent> [g <Plug>(coc-git-prevchunk)
+nmap <silent> <leader>gu :CocCommand git.chunkUndo<cr>
+nmap <silent> <leader>gs :CocCommand git.chunkStage<cr>
 
 " apply autofix to problem on the current line.
 nmap <leader>af  <plug>(coc-fix-current)
