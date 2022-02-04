@@ -100,6 +100,7 @@ source ~/.config/nvim/config/plugins/commentary.vim
 source ~/.config/nvim/config/plugins/visual-multi.vim
 source ~/.config/nvim/config/plugins/copilot.vim
 source ~/.config/nvim/config/plugins/graphql.vim
+source ~/.config/nvim/config/plugins/tig.vim
 
 call plug#end()
 
