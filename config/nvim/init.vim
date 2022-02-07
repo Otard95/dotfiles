@@ -79,6 +79,9 @@ noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 " Paste replace visual selection without copy
 vnoremap <leader>p "_dP
 
+" Stop highlight
+nnoremap <tab> :noh<CR>
+
 " Easy insert of trailing ; or , from insert mode
 imap ;; <Esc>A;<Esc>
 imap ,, <Esc>A,<Esc>
