@@ -83,7 +83,7 @@ vnoremap <leader>p "_dP
 imap ;; <Esc>A;<Esc>
 imap ,, <Esc>A,<Esc>
 
-" Add word to project dictionary
+" Add word to global dictionary
 nmap gzg 2zg
 nmap gzw 2zw
 
