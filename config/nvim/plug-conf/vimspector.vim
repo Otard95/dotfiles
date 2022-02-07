@@ -1,12 +1,12 @@
 
 Plug 'puremourning/vimspector'
 
-nmap <C-g>s <Plug>VimspectorContinue
-nmap <C-g>ss <Plug>VimspectorStop
-nmap <C-g>b <Plug>VimspectorToggleBreakpoint
-nmap <C-g><space> <Plug>VimspectorRunToCursor
-nmap <C-g>n <Plug>VimspectorStepOver
-nmap <C-g>i <Plug>VimspectorStepInto
-nmap <C-g>o <Plug>VimspectorStepOut
-nmap <C-g>k <Plug>VimspectorBalloonEval
+nmap <C-g><C-s> <Plug>VimspectorContinue
+nmap <C-g><C-s><C-s> <Plug>VimspectorStop
+nmap <C-g><C-b> <Plug>VimspectorToggleBreakpoint
+nmap <C-g><C-l> <Plug>VimspectorRunToCursor
+nmap <C-g><C-n> <Plug>VimspectorStepOver
+nmap <C-g><C-i> <Plug>VimspectorStepInto
+nmap <C-g><C-o> <Plug>VimspectorStepOut
+nmap <C-g><C-k> <Plug>VimspectorBalloonEval
 

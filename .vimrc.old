@@ -91,7 +91,7 @@ endfunction
 
 "" Keyboard shortcuts and commands
 
-nnoremap <tab> :noh<return><esc>
+nnoremap <tab> :noh<CR>
 
 command! UUID call s:UUID()
 function! s:UUID()
