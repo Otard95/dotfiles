@@ -1,3 +1,4 @@
+"
 "       _/|       |\_
 "      /  |       |  \
 "     |    \     /    |
@@ -32,10 +33,24 @@ set wildmode=longest:full,full
 set nowrap
 set list
 set listchars=tab:->\ ,trail:⋅
-set scrolloff=10
+set scrolloff=20
 set sidescrolloff=10
 set clipboard+=unnamedplus
 set cmdheight=2
+" Explorer
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 15
+
+
+"-------------------------------
+" Custom Commands
+"-------------------------------
+
+source ~/.config/nvim/cmds/uuid.vim
+source ~/.config/nvim/cmds/buffers.vim
 
 "-------------------------------
 " Key maps
@@ -45,6 +60,8 @@ let mapleader = "\<space>"
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vr :so ~/.config/nvim/init.vim<cr>
+
+nmap <leader>\ :Lexplore<CR>
 
 nmap <leader>Q :bufdo bdelete<cr>
 
@@ -71,11 +88,6 @@ nmap gzg 2zg
 nmap gzw 2zw
 
 " Buffer cleaning
-function BufOnly ()
-  let l:winview = winsaveview()
-  execute "%bd|e#|bd#"
-  call winrestview(l:winview)
-endfunction
 nmap <leader>bo :call BufOnly()<CR>
 
 "-------------------------------
@@ -94,14 +106,13 @@ source ~/.config/nvim/plug-conf/airline.vim
 source ~/.config/nvim/plug-conf/fugitive.vim
 source ~/.config/nvim/plug-conf/fzf.vim
 source ~/.config/nvim/plug-conf/surround.vim
-" source ~/.config/nvim/plug-conf/autopairs.vim
 source ~/.config/nvim/plug-conf/coc.vim
 source ~/.config/nvim/plug-conf/commentary.vim
 source ~/.config/nvim/plug-conf/visual-multi.vim
 source ~/.config/nvim/plug-conf/copilot.vim
 source ~/.config/nvim/plug-conf/graphql.vim
 source ~/.config/nvim/plug-conf/tig.vim
-source ~/.config/nvim/plug-conf/ranger.vim
+" source ~/.config/nvim/plug-conf/ranger.vim
 source ~/.config/nvim/plug-conf/vimspector.vim
 
 call plug#end()
