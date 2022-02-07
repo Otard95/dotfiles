@@ -1,0 +1,3 @@
+
+Plug 'codeindulgence/vim-tig'
+

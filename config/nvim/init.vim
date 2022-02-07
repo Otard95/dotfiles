@@ -90,17 +90,19 @@ endif
 
 call plug#begin(data_dir . '/plugins')
 
-source ~/.config/nvim/config/plugins/airline.vim
-source ~/.config/nvim/config/plugins/fugitive.vim
-source ~/.config/nvim/config/plugins/fzf.vim
-source ~/.config/nvim/config/plugins/surround.vim
-" source ~/.config/nvim/config/plugins/autopairs.vim
-source ~/.config/nvim/config/plugins/coc.vim
-source ~/.config/nvim/config/plugins/commentary.vim
-source ~/.config/nvim/config/plugins/visual-multi.vim
-source ~/.config/nvim/config/plugins/copilot.vim
-source ~/.config/nvim/config/plugins/graphql.vim
-source ~/.config/nvim/config/plugins/tig.vim
+source ~/.config/nvim/plug-conf/airline.vim
+source ~/.config/nvim/plug-conf/fugitive.vim
+source ~/.config/nvim/plug-conf/fzf.vim
+source ~/.config/nvim/plug-conf/surround.vim
+" source ~/.config/nvim/plug-conf/autopairs.vim
+source ~/.config/nvim/plug-conf/coc.vim
+source ~/.config/nvim/plug-conf/commentary.vim
+source ~/.config/nvim/plug-conf/visual-multi.vim
+source ~/.config/nvim/plug-conf/copilot.vim
+source ~/.config/nvim/plug-conf/graphql.vim
+source ~/.config/nvim/plug-conf/tig.vim
+source ~/.config/nvim/plug-conf/ranger.vim
+source ~/.config/nvim/plug-conf/vimspector.vim
 
 call plug#end()
 
