@@ -13,4 +13,5 @@
 *.pem
 **/dictionary.latin1.add
 **/dictionary.latin1.add.spl
+**/.vimspector.json
 
