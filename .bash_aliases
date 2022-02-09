@@ -17,4 +17,7 @@ alias ssh-new-key='~/scripts/ssh-new-key'
 alias nvm='~/scripts/nvm'
 alias auto-bt='~/scripts/auto-bt.sh'
 
-alias gql-gc='/opt/graphql-config-generator/gql-gc'
+if [[ -f ~/.bash_aliases_personal ]]; then
+    source ~/.bash_aliases_personal
+fi
+
