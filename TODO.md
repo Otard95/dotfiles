@@ -9,7 +9,7 @@
  - [ ] coc customize order imports
  - [ ] :term - terminal args
  - [ ] telescope plugin?
- - [-] treesitter - syntax highlighting (coc does this but maybe treesitter is better)
+ - [x] treesitter - syntax highlighting - coc does this but treesitter is better and works side by side
  - [-] nvim-ts-rainbow (might require treesitter - maybe there's something for coc)
  - [-] ranger (No up to date plugins)
  - [x] nvim/config/plugin -> nvim/plug-conf
