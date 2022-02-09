@@ -130,8 +130,8 @@ hi Pmenu guibg=#003366 gui=NONE
 hi PmenuSel guibg=#115588 gui=NONE
 hi PmenuSbar guibg=#bcbcbc
 hi PmenuThumb guibg=#585858
-hi DiffAdd guibg=DarkGreen
-hi DiffChange guibg=DarkBlue
+hi DiffAdd guibg=bg guifg=DarkGreen gui=bold
+hi DiffChange guibg=bg guifg=DarkYellow gui=bold
 hi SignColumn guibg=bg
 hi CocWarningHighlight guibg=DarkYellow guifg=Black
 hi Visual guibg=#004466

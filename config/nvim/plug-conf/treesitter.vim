@@ -30,7 +30,7 @@ require'nvim-treesitter.configs'.setup {
   rainbow = {
     enable = true,
     -- List of bright contrasting colors for syntax highlighting
-    colors = { '#FF0000', '#00FF00', '#8888FF', '#FFFF00', '#00FFFF', '#FF00FF' },
+    colors = { '#FF4444', '#00FF00', '#8888FF', '#FFFF00', '#00FFFF', '#FF00FF' },
   },
 }
 EOF
