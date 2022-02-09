@@ -28,6 +28,11 @@
     "php-cs-fixer.config": ".php-cs-fixer.dist.php",
     "php-cs-fixer.enableFormatProvider": true,
     "intelephense.environment.phpVersion": "7.4",
-    "prettier.requireConfig": true
+    "prettier.requireConfig": true,
+    "cSpell.language": "en-US",
+    "cSpell.userWords": [
+      "Bugsnag",
+      "schibsted"
+    ]
 }
 

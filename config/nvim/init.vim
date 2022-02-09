@@ -25,8 +25,8 @@ set tabstop=2
 set relativenumber
 set number
 set termguicolors
-set spell
-set spellfile=./dictionary.latin1.add,~/.config/nvim/dictionary.latin1.add
+" set spell
+" set spellfile=./dictionary.latin1.add,~/.config/nvim/dictionary.latin1.add
 set ignorecase
 set smartcase
 set wildmode=longest:full,full
@@ -86,9 +86,9 @@ nnoremap <tab> :noh<CR>
 imap ;; <Esc>A;<Esc>
 imap ,, <Esc>A,<Esc>
 
-" Add word to global dictionary
-nmap gzg 2zg
-nmap gzw 2zw
+" " Add word to global dictionary
+" nmap gzg 2zg
+" nmap gzw 2zw
 
 " Buffer cleaning
 nmap <leader>bo :call BufOnly()<CR>
