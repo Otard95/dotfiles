@@ -1,1 +1,7 @@
 bind status C !git commit -S
+bind status I !git add -i %(file)
+
+bind generic B !git checkout -b "%(prompt Enter branch name: )"
+
+bind refs B !git branch "%(prompt Enter branch name: )"
+
