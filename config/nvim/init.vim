@@ -114,7 +114,6 @@ source ~/.config/nvim/plug-conf/treesitter.vim
 source ~/.config/nvim/plug-conf/commentary.vim
 source ~/.config/nvim/plug-conf/visual-multi.vim
 source ~/.config/nvim/plug-conf/copilot.vim
-source ~/.config/nvim/plug-conf/graphql.vim
 source ~/.config/nvim/plug-conf/tig.vim
 " source ~/.config/nvim/plug-conf/ranger.vim
 source ~/.config/nvim/plug-conf/vimspector.vim
