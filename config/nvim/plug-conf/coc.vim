@@ -13,7 +13,6 @@ let g:coc_global_extensions = [
     \ 'coc-snippets',
     \ 'coc-sql',
     \ 'coc-tsserver',
-    \ 'coc-graphql',
     \ 'coc-spell-checker',
 \ ]
 
