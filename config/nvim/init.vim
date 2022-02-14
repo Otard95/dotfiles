@@ -105,18 +105,22 @@ endif
 
 call plug#begin(data_dir . '/plugins')
 
+" Looks
 source ~/.config/nvim/plug-conf/airline.vim
+" Conveniance
 source ~/.config/nvim/plug-conf/fugitive.vim
 source ~/.config/nvim/plug-conf/fzf.vim
-source ~/.config/nvim/plug-conf/surround.vim
-source ~/.config/nvim/plug-conf/coc.vim
-source ~/.config/nvim/plug-conf/treesitter.vim
-source ~/.config/nvim/plug-conf/commentary.vim
-source ~/.config/nvim/plug-conf/visual-multi.vim
 source ~/.config/nvim/plug-conf/copilot.vim
-source ~/.config/nvim/plug-conf/tig.vim
-" source ~/.config/nvim/plug-conf/ranger.vim
+source ~/.config/nvim/plug-conf/commentary.vim
+source ~/.config/nvim/plug-conf/surround.vim
+source ~/.config/nvim/plug-conf/visual-multi.vim
+" Language
+source ~/.config/nvim/plug-conf/coc.vim
 source ~/.config/nvim/plug-conf/vimspector.vim
+source ~/.config/nvim/plug-conf/treesitter.vim
+" Tools
+source ~/.config/nvim/plug-conf/tig.vim
+source ~/.config/nvim/plug-conf/quickmaths.vim
 
 call plug#end()
 doautocmd User PlugLoaded
