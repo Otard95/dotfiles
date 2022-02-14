@@ -32,8 +32,15 @@
   "cSpell.language": "en-US",
   "cSpell.userWords": [
     "Bugsnag",
+    "Cloudinary",
     "Melvis",
+    "Nums",
     "TLDR",
+    "XDEBUG",
+    "codegen",
+    "dataloader",
+    "datasource",
+    "errmsg",
     "microservices",
     "mittanbud",
     "schibsted"
