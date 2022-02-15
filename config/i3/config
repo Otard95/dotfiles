@@ -50,7 +50,7 @@ bindsym $mod+Return exec kitty
 # start terminal as quake
 bindsym Mod1+q exec ~/.config/i3/kitty-quake.sh
 for_window [class="^quake$"] floating enable
-for_window [class="^quake$"] resize set 1600 800
+for_window [class="^quake$"] resize set 80ppt 75ppt
 for_window [class="^quake$"] move position center
 for_window [class="^quake$"] sticky enable
 
