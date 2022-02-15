@@ -72,15 +72,15 @@ _right=<span color="#002211" background="#003322"> </span>
 _color=#003322
 
 [lock]
-full_text=<span background="#002211">  </span>
+full_text=<span background="#002211">    </span>
 command=i3-msg -q exec betterlockscreen -- -l
 
 [reboot]
-full_text=<span background="#002211">  </span>
+full_text=<span background="#002211">   </span>
 command=/sbin/shutdown -r now
 
 [power]
-full_text=<span background="#002211">  </span>
+full_text=<span background="#002211">    </span>
 command=/sbin/shutdown -P now
 
 #002211
