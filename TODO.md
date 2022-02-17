@@ -14,6 +14,6 @@
  - [-] ranger (No up to date plugins)
  - [x] nvim/config/plugin -> nvim/plug-conf
 
- - [x] i3 move and resize floating without borders (default: $mod+mouse_drag and $mod+Shift+mouse_drag)
+ - [x] i3 move and resize floating without borders (default: $mod+mouse_drag and $mod+right_mouse_drag)
  - [x] i3 % size floating windows
 
