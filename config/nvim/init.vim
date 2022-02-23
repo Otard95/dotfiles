@@ -25,9 +25,11 @@ set tabstop=2
 set relativenumber
 set number
 set termguicolors
+"" Use coc-spell-checker instead
 " set spell
 " set spellfile=./dictionary.latin1.add,~/.config/nvim/dictionary.latin1.add
 set ignorecase
+set autoindent
 set smartcase
 set wildmode=longest:full,full
 set nowrap
