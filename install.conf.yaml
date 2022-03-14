@@ -50,6 +50,10 @@
       force: true
       create: true
       path: config/i3/work.conf
+    ~/.config/i3/home.conf:
+      force: true
+      create: true
+      path: config/i3/home.conf
     ~/.config/i3/kitty-quake.sh:
       force: true
       create: true
