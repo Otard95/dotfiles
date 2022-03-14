@@ -95,6 +95,14 @@ imap ,, <Esc>A,<Esc>
 " Buffer cleaning
 nmap <leader>bo :call BufOnly()<CR>
 
+"" Resizing
+nmap <leader>> :vertical resize +4<CR>
+nmap <leader>< :vertical resize -4<CR>
+
+"" Files
+nmap <leader>c :!cp %:. %:h/
+
+
 "-------------------------------
 " Plugins
 "-------------------------------
