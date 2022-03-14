@@ -14,6 +14,7 @@ let g:coc_global_extensions = [
     \ 'coc-sql',
     \ 'coc-tsserver',
     \ 'coc-spell-checker',
+    \ 'coc-docker',
 \ ]
 
 " Use tab for trigger completion with characters ahead and navigate.
