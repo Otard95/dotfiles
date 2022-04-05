@@ -53,6 +53,10 @@ let g:netrw_winsize = 15
 
 source ~/.config/nvim/cmds/uuid.vim
 source ~/.config/nvim/cmds/buffers.vim
+source ~/.config/nvim/cmds/php-indent.vim
+
+au BufEnter Dockerfile.* setlocal ft=dockerfile
+au BufEnter *.php call PHPIndent()
 
 "-------------------------------
 " Key maps
