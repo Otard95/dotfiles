@@ -1,6 +1,7 @@
 {
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.formatOnType": true,
+  "explorer.icon.enableNerdfont": true,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualText": true,
   "diagnostic.enableMessage": "jump",
@@ -32,19 +33,25 @@
   "cSpell.language": "en-US",
   "cSpell.userWords": [
     "Bugsnag",
+    "Cacheable",
     "Cloudinary",
     "Kubernetes",
     "Melvis",
+    "Myklebostad",
     "Nums",
     "Stian",
     "TLDR",
     "XDEBUG",
+    "apioh",
+    "cachable",
     "codegen",
     "dataloader",
     "datasource",
     "errmsg",
     "microservices",
     "mittanbud",
+    "printf",
+    "remppatori",
     "schibsted"
   ]
 }
