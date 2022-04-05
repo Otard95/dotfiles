@@ -41,6 +41,12 @@
 
     ### config
 
+    # autorandr
+    ~/.config/autorandr:
+      force: true
+      create: true
+      path: config/autorandr
+
     # i3
     ~/.config/i3/config:
       force: true

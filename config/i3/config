@@ -205,8 +205,8 @@ bar {
 
 # Setup specific
 
-# include ~/.config/i3/work.conf
-include ~/.config/i3/home.conf
+include ~/.config/i3/work.conf
+# include ~/.config/i3/home.conf
 
 # Mouse warning
 

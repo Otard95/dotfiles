@@ -1,0 +1,27 @@
+output DP-1
+off
+output DP-2
+off
+output DP-3
+off
+output DP-5
+off
+output DP-7
+off
+output DP-4
+crtc 1
+mode 2560x1440
+pos 4480x0
+rate 59.95
+rotate right
+output DP-6
+crtc 2
+mode 2560x1440
+pos 1920x350
+rate 59.95
+output DP-0
+crtc 0
+mode 1920x1200
+pos 0x440
+primary
+rate 59.95
