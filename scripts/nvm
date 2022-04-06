@@ -1,7 +1,7 @@
 #!/bin/bash
 
-sudo apt remove -y nodejs nodejs-doc
+sudo apt remove -y nodejs nodejs-doc npm
 
-curl -fsSL https://deb.nodesource.com/setup_$1.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -fsSL https://deb.nodesource.com/setup_14.x | bash -
+sudo apt install -y nodejs npm
 
