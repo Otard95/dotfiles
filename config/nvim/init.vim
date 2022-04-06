@@ -30,6 +30,7 @@ set termguicolors
 " set spellfile=./dictionary.latin1.add,~/.config/nvim/dictionary.latin1.add
 set ignorecase
 set autoindent
+set smartindent
 set smartcase
 set wildmode=longest:full,full
 set nowrap
@@ -66,8 +67,6 @@ let mapleader = "\<space>"
 
 nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
 nmap <leader>vr :so ~/.config/nvim/init.vim<cr>
-
-nmap <leader>\ :Lexplore<CR>
 
 nmap <leader>Q :bufdo bdelete<cr>
 
