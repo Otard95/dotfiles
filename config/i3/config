@@ -53,6 +53,11 @@ for_window [class="^quake$"] floating enable
 for_window [class="^quake$"] resize set 80ppt 75ppt
 for_window [class="^quake$"] move position center
 for_window [class="^quake$"] sticky enable
+# start calculator
+bindsym $mod+c exec ~/.config/i3/kitty-calc.sh
+for_window [class="^calculator$"] floating enable
+for_window [class="^calculator$"] resize set 500px 700px
+for_window [class="^calculator$"] sticky enable
 
 # kill focused window
 bindsym $mod+Shift+q kill
