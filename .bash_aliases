@@ -17,6 +17,9 @@ alias ssh-new-key='~/scripts/ssh-new-key'
 alias nvm='~/scripts/nvm'
 alias auto-bt='~/scripts/auto-bt.sh'
 
+alias g='git'
+__git_complete g __git_main
+
 if [[ -f ~/.bash_aliases_personal ]]; then
     source ~/.bash_aliases_personal
 fi
