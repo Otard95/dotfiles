@@ -64,6 +64,10 @@
       force: true
       create: true
       path: config/i3/kitty-quake.sh
+    ~/.config/i3/kitty-calc.sh:
+      force: true
+      create: true
+      path: config/i3/kitty-calc.sh
     ~/.config/i3/background/wp.jpg:
       force: true
       create: true

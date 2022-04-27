@@ -55,9 +55,11 @@ let g:netrw_winsize = 15
 source ~/.config/nvim/cmds/uuid.vim
 source ~/.config/nvim/cmds/buffers.vim
 source ~/.config/nvim/cmds/php-indent.vim
+source ~/.config/nvim/cmds/reference.vim
 
 au BufEnter Dockerfile.* setlocal ft=dockerfile
 au BufEnter *.php call PHPIndent()
+au BufEnter *.hbs set ft=html
 
 "-------------------------------
 " Key maps
@@ -98,6 +100,10 @@ imap ,, <Esc>A,<Esc>
 " Buffer cleaning
 nmap <leader>bo :call BufOnly()<CR>
 
+" Copy reference
+nmap <leader>cr <Cmd>call Reference()<CR>
+vmap <leader>cr <Cmd>call Reference()<CR>
+
 "" Resizing
 nmap <leader>> :vertical resize +4<CR>
 nmap <leader>< :vertical resize -4<CR>
@@ -131,6 +137,7 @@ source ~/.config/nvim/plug-conf/visual-multi.vim
 source ~/.config/nvim/plug-conf/coc.vim
 source ~/.config/nvim/plug-conf/vimspector.vim
 source ~/.config/nvim/plug-conf/treesitter.vim
+source ~/.config/nvim/plug-conf/jsonc.vim
 " Tools
 source ~/.config/nvim/plug-conf/tig.vim
 source ~/.config/nvim/plug-conf/quickmaths.vim

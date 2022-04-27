@@ -2,6 +2,7 @@
   "coc.preferences.extensionUpdateCheck": "daily",
   "coc.preferences.formatOnType": true,
   "explorer.icon.enableNerdfont": true,
+  "explorer.file.showHiddenFiles": true,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualText": true,
   "diagnostic.enableMessage": "jump",
@@ -52,7 +53,8 @@
     "mittanbud",
     "printf",
     "remppatori",
-    "schibsted"
+    "schibsted",
+    "xclip"
   ]
 }
 

@@ -1,12 +1,16 @@
+#!/bin/bash
 
 source ~/.bash_prompt/.git-prompt
 source ~/.bash_prompt/.keep-pwd
 
-# Bash prompt                                                                                                                    
+# Bash prompt
 prompt () {
   keep_pwd
-export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(git_prompt $PWD)
+# \[\e[0;1;38;5;236;48;5;37m\]\u\[\e[0;38;5;37;48;5;30m\]\[\e[0;1;38;5;236;48;5;30m\]\h\[\e[0;38;5;30;48;5;23m\]\[\e[0;1;38;5;234;48;5;23m\]\w\[\e[0;38;5;23m\]\[\e[0m\]
+export PS1="\[\e[0;1;38;5;234;48;5;37m\] \u \[\e[0;38;5;37;48;5;30m\]\[\e[0;1;38;5;234;48;5;30m\] \h \[\e[0;38;5;30;48;5;23m\]\[\e[0;1;38;5;234;48;5;23m\] \w \[\e[0m\]$(git_prompt $PWD)
  λ "
+# export PS1="\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(git_prompt $PWD)
+#  λ "
 }
 if [[ -z "$PROMPT_COMMAND" ]]; then
   export PROMPT_COMMAND="prompt"

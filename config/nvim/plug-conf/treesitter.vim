@@ -6,7 +6,7 @@ function TSSetup()
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-  ensure_installed = {{ 'typescript', 'javascript', 'php' }},
+  ensure_installed = {{ 'typescript', 'javascript', 'php', 'html' }},
 
   -- Install languages synchronously (only applied to `ensure_installed`)
   sync_install = false,

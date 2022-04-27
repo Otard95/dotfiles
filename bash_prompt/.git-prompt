@@ -1,9 +1,14 @@
+#!/bin/bash
+
+BEHIND_ICON="⇃"
+AHEAD_ICON="↾"
 
 # Parse git status in $1 used in prompt
 git_prompt () {
 
   git status &> /dev/null
   if [[ $? -ne 0 ]]; then
+    echo "\[\e[0;38;5;23m\]\[\e[0m\]"
     return
   fi
 
@@ -14,7 +19,7 @@ git_prompt () {
   behind=0
 
   if ! git diff-index --quiet HEAD --; then
-    changes="*"
+    changes="⚡"
   fi
 
   for l in "${st[@]}"; do
@@ -32,10 +37,12 @@ git_prompt () {
     esac
   done
 
+  # \[\e[0;38;5;23;43m\]\[\e[0;1;38;5;235;43m\]  branch change \[\e[0;33;41m\]\[\e[0;41m\] behind ahead \[\e[0;31m\]\[\e[0m\]
+
   if (($ahead+$behind > 0)); then
-    echo " \e[0;36m[$changes$branch\e[0m \e[0;31m$behind ⇃\e[0m\e[0;32m↾ $ahead\e[0m\e[0;36m]\e[0m"
+    echo "\[\e[0;38;5;23;43m\]\[\e[0;1;38;5;235;43m\]  $branch $changes \[\e[0;33;41m\]\[\e[0;41m\] $behind $BEHIND_ICON $AHEAD_ICON $ahead \[\e[0;31m\]\[\e[0m\]"
   else
-    echo " \e[0;36m[$changes$branch]\e[0m"
+    echo "\[\e[0;38;5;23;43m\]\[\e[0;1;38;5;235;43m\]  $branch $changes \[\e[0;33m\]\[\e[0m\]"
   fi
 }
 export -f git_prompt

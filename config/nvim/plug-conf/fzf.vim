@@ -14,6 +14,11 @@ command! -bang -nargs=? -complete=dir Files
 command! -bang -nargs=? -complete=dir AllFiles
     \ call fzf#run(fzf#wrap('allfiles', fzf#vim#with_preview({ 'dir': <q-args>, 'sink': 'e', 'source': 'rg --files --hidden --no-ignore' }), <bang>0))
 
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case --no-ignore -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
 nmap <leader>f :Files<cr>
 nmap <leader>F :AllFiles<cr>
 nmap <leader>b :Buffers<cr>
