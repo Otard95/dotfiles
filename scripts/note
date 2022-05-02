@@ -9,8 +9,9 @@ usage() {
     COMMANDS
 
       list            List all notes. Default
-      show    [name]  Display all or the specified note(s)   
+      show    [name]  Display all or the specified note(s)
       add     <name>  Crete a new note
+      tmp     <name>  Create a new temporary note
       edit    <name>  Edit an existing note
       remove  <name>  Delete a note
       remind  <name>  Manage reminders for individual notes.
@@ -30,8 +31,8 @@ usage() {
 
     EXAMPLES
 
-      <X>     -- Requrired 
-      <X | Y> -- Choice 
+      <X>     -- Requrired
+      <X | Y> -- Choice
 
       List notes
        $ note
@@ -57,7 +58,16 @@ file_to_name() {
 }
 
 get_note_files() {
-  echo "$(ls ~/.notes/ -p | sort | grep -v /)"
+  echo "$(ls ~/.notes/ -p | sort | grep -v "/.")"
+}
+
+open_file_in_editor() {
+  local file="$1"
+  if [ -n "$EDITOR" ]; then
+    eval "$EDITOR $file"
+  else
+    editor $file
+  fi
 }
 
 list() {
@@ -114,11 +124,25 @@ add() {
     echo "    use the -h or --help option for more info."
     exit 1
   }
-  if [ -n "$EDITOR" ]; then
-    eval "$EDITOR ~/.notes/$file"
-  else
-    editor $file
+
+  open_file_in_editor "~/.notes/$file"
+}
+
+tmp() {
+  file="$(name_to_file "$*")"
+  if [[ -f ~/.notes/.temps/$file ]]; then
+    tmp_file="$(cat ~/.notes/.temps/$file)"
+    if [[ -f "$tmp_file" ]]; then
+      open_file_in_editor "$tmp_file"
+      return
+    else
+      rm ~/.notes/.temps/$file
+    fi
   fi
+
+  tmp_file="$(mktemp)"
+  echo "$tmp_file" > ~/.notes/.temps/$file
+  open_file_in_editor "$tmp_file"
 }
 
 edit() {
@@ -146,11 +170,8 @@ edit() {
     echo "    use the -h or --help option for more info."
     exit 1
   }
-  if [ -n "$EDITOR" ]; then
-    eval "$EDITOR ~/.notes/$file"
-  else
-    editor $file
-  fi
+
+  open_file_in_editor "~/.notes/$file"
 }
 
 remove() {
@@ -251,7 +272,7 @@ remind() {
     crontab_content+="\n$cron_time XDG_RUNTIME_DIR=/run/user/\$(id -u) /usr/bin/notify-send \"$name\" \"\$(pandoc -f markdown ~/.notes/$file | lynx -stdin --dump)\" | XDG_RUNTIME_DIR=/run/user/\$(id -u) aplay /home/otard/.config/notification-pop.wav\n"
     printf "$crontab_content" | crontab -
   fi
-  
+
 }
 
 if [ $# -eq 0 ]; then
@@ -267,8 +288,8 @@ while [[ $# -gt 0 ]]
 do
 case "$1" in
 
-  list | show | add | edit | remove | remind)
-    if [ $COMMAND_SET -eq 1 ]; then 
+  list | show | add | tmp | edit | remove | remind)
+    if [ $COMMAND_SET -eq 1 ]; then
       OPTS+=("$1")
     else
       COMMAND=$1
@@ -304,8 +325,11 @@ case "$COMMAND" in
   add)
     add "${OPTS[@]}"
     ;;
+  tmp)
+    tmp "${OPTS[@]}"
+    ;;
   edit)
-    edit "${OPTS[@]}" 
+    edit "${OPTS[@]}"
     ;;
   remove)
     remove "${OPTS[@]}"
@@ -318,4 +342,3 @@ case "$COMMAND" in
     exit 0
     ;;
 esac
-
