@@ -3,11 +3,30 @@
 BEHIND_ICON="⇃"
 AHEAD_ICON="↾"
 
+is_git_repo() {
+  git status &> /dev/null
+  if [ $? -eq 0 ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+git_dirty() {
+  if ! is_git_repo; then
+    return 1
+  fi
+  if ! git diff-index --quiet HEAD --; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 # Parse git status in $1 used in prompt
 git_prompt () {
 
-  git status &> /dev/null
-  if [[ $? -ne 0 ]]; then
+  if ! is_git_repo; then
     echo "\[\e[0;38;5;23m\]\[\e[0m\]"
     return
   fi
@@ -18,7 +37,7 @@ git_prompt () {
   ahead=0
   behind=0
 
-  if ! git diff-index --quiet HEAD --; then
+  if git_dirty; then
     changes="⚡"
   fi
 
