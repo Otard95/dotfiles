@@ -42,3 +42,4 @@ fi
 if [ -d "/snap/bin" ] ; then
   PATH="/snap/bin:$PATH"
 fi
+. "$HOME/.cargo/env"

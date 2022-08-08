@@ -5,7 +5,7 @@
     "editor.fontSize": 12,
     "debug.console.fontSize": 12,
     "markdown.preview.fontSize": 12,
-    "terminal.integrated.fontSize": 9,
+    "terminal.integrated.fontSize": 12,
     "search.exclude": {
         "**/node_modules": false
     },
@@ -109,5 +109,6 @@
     "scm.defaultViewMode": "tree",
     "svelte.enable-ts-plugin": true,
     "editor.inlineSuggest.enabled": true,
+    "terminal.integrated.fontFamily": "Fira Code",
 }
 

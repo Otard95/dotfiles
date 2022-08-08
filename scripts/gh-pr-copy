@@ -1,0 +1,11 @@
+#!/bin/bash
+
+parts="$(gh pr view --json title,url,number,headRepository,headRepositoryOwner)"
+title=$(echo $parts | jq -r '.title')
+url=$(echo $parts | jq -r '.url')
+number=$(echo $parts | jq -r '.number')
+repo=$(echo $parts | jq -r '.headRepository.name')
+owner=$(echo $parts | jq -r '.headRepositoryOwner.login')
+printf "*[$repo](https://github.com/$owner/$repo)* - $title [#$number]($url)
+Requested: " | xclip -selection clipboard
+echo "Copied to clipboard"

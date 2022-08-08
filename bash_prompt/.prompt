@@ -1,11 +1,11 @@
 #!/bin/bash
 
 source ~/.bash_prompt/.git-prompt
-source ~/.bash_prompt/.keep-pwd
+# source ~/.bash_prompt/.keep-pwd
 
 # Bash prompt
 prompt () {
-  keep_pwd
+  # keep_pwd
 # \033]0;New terminal title\a - set title
 # \[\e[0;1;38;5;236;48;5;37m\]\u\[\e[0;38;5;37;48;5;30m\]\[\e[0;1;38;5;236;48;5;30m\]\h\[\e[0;38;5;30;48;5;23m\]\[\e[0;1;38;5;234;48;5;23m\]\w\[\e[0;38;5;23m\]\[\e[0m\]
 export PS1="\033]0;kitty • \w $(is_git_repo && echo "") $(git_dirty && echo "⚡")\a\[\e[0;1;38;5;234;48;5;37m\] \u \[\e[0;38;5;37;48;5;30m\]\[\e[0;1;38;5;234;48;5;30m\] \h \[\e[0;38;5;30;48;5;23m\]\[\e[0;1;38;5;234;48;5;23m\] \w \[\e[0m\]$(git_prompt $PWD)

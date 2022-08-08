@@ -91,6 +91,12 @@
       create: true
       path: icons/default/index.theme
 
+    # picom
+  ~/.config/picom.conf:
+      force: true
+      create: true
+      path: config/picom.conf
+
     # Kitty
     ~/.config/kitty/kitty.conf:
       force: true

@@ -114,7 +114,7 @@ fi
 ################
 
 # Set default shell editor to vim with custom rc
-export EDITOR="vim -u ~/.vimrc-simple"
+export EDITOR="nvim -u NONE"
 
 # Set key repeat delay and rate
 xset r rate 160 45
@@ -141,10 +141,17 @@ if [[ -f ~/.secret/.github-cli ]]; then
   source ~/.secret/.github-cli
 fi 
 
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Rust Cargo
+. "$HOME/.cargo/env"
+
 # Prompt
 if [[ -f ~/.bash_prompt/.prompt ]]; then
   source ~/.bash_prompt/.prompt
 fi 
 
 neofetch
-

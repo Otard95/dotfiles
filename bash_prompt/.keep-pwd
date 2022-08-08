@@ -1,3 +1,4 @@
+#!/bin/bash
 
 if [[ -f /tmp/prompt-keep-pwd ]]; then
   cd `cat /tmp/prompt-keep-pwd`

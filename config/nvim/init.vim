@@ -56,10 +56,17 @@ source ~/.config/nvim/cmds/uuid.vim
 source ~/.config/nvim/cmds/buffers.vim
 source ~/.config/nvim/cmds/php-indent.vim
 source ~/.config/nvim/cmds/reference.vim
+source ~/.config/nvim/cmds/on-exit.vim
+
+au BufEnter *.php call PHPIndent()
+
+"-------------------------------
+" Filetype Settings
+"-------------------------------
 
 au BufEnter Dockerfile.* setlocal ft=dockerfile
-au BufEnter *.php call PHPIndent()
 au BufEnter *.hbs set ft=html
+au BufEnter *.twig set ft=html
 
 "-------------------------------
 " Key maps
@@ -111,6 +118,8 @@ nmap <leader>< :vertical resize -4<CR>
 "" Files
 nmap <leader>c :!cp %:. %:h/
 
+" Rename terminal
+nmap <leader>trn :keepalt file term:
 
 "-------------------------------
 " Plugins
@@ -138,9 +147,12 @@ source ~/.config/nvim/plug-conf/coc.vim
 source ~/.config/nvim/plug-conf/vimspector.vim
 source ~/.config/nvim/plug-conf/treesitter.vim
 source ~/.config/nvim/plug-conf/jsonc.vim
+source ~/.config/nvim/plug-conf/guess-indent.vim
 " Tools
 source ~/.config/nvim/plug-conf/tig.vim
 source ~/.config/nvim/plug-conf/quickmaths.vim
+source ~/.config/nvim/plug-conf/markdown-preview.vim
+source ~/.config/nvim/plug-conf/align.vim
 
 call plug#end()
 doautocmd User PlugLoaded

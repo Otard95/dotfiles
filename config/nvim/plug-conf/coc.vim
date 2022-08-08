@@ -18,6 +18,7 @@ let g:coc_global_extensions = [
     \ 'coc-html',
     \ 'coc-emmet',
     \ 'coc-explorer',
+    \ 'coc-rust-analyzer',
 \ ]
 
 :nmap <space>\ <Cmd>CocCommand explorer<CR>
