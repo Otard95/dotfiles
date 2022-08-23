@@ -19,18 +19,31 @@
 " General settings
 "-------------------------------
 
+" Indenting
 set expandtab
 set shiftwidth=2
 set tabstop=2
-set relativenumber
-set number
-set termguicolors
-"" Use coc-spell-checker instead
-" set spell
-" set spellfile=./dictionary.latin1.add,~/.config/nvim/dictionary.latin1.add
 set ignorecase
 set autoindent
 set smartindent
+
+" Line numbers
+set relativenumber
+set number
+
+" Colors
+set termguicolors
+
+"" Use coc-spell-checker instead
+" set spell
+" set spellfile=./dictionary.latin1.add,~/.config/nvim/dictionary.latin1.add
+
+" Folding
+set foldmethod=syntax
+set foldlevel=2
+" set foldclose=all
+
+" Misc
 set smartcase
 set wildmode=longest:full,full
 set nowrap
@@ -40,12 +53,13 @@ set scrolloff=20
 set sidescrolloff=10
 set clipboard+=unnamedplus
 set cmdheight=2
-" Explorer
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 15
+
+" Explorer (Using coc-explorer)
+" let g:netrw_banner = 0
+" let g:netrw_liststyle = 3
+" let g:netrw_browse_split = 4
+" let g:netrw_altv = 1
+" let g:netrw_winsize = 15
 
 
 "-------------------------------
