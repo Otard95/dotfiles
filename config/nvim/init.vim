@@ -156,6 +156,7 @@ source ~/.config/nvim/plug-conf/copilot.vim
 source ~/.config/nvim/plug-conf/commentary.vim
 source ~/.config/nvim/plug-conf/surround.vim
 source ~/.config/nvim/plug-conf/visual-multi.vim
+source ~/.config/nvim/plug-conf/easymotion.vim
 " Language
 source ~/.config/nvim/plug-conf/coc.vim
 source ~/.config/nvim/plug-conf/vimspector.vim

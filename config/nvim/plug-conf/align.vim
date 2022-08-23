@@ -1,0 +1,2 @@
+
+Plug 'RRethy/nvim-align'
