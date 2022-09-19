@@ -135,6 +135,9 @@ nmap <leader>c :!cp %:. %:h/
 " Rename terminal
 nmap <leader>trn :keepalt file term:
 
+" Restart TypeScript server
+nmap <leader>tsr :CocCommand tsserver.restart<CR>
+
 "-------------------------------
 " Plugins
 "-------------------------------
