@@ -81,6 +81,13 @@
       create: true
       path: config/i3blocks/status-commands
 
+    # dunst (notifications)
+    ~/.config/dunst:
+      force: true
+      create: true
+      path: config/dunst
+
+
     # gtk
     ~/.config/gtk-3.0/settings.ini:
       force: true
@@ -92,7 +99,7 @@
       path: icons/default/index.theme
 
     # picom
-  ~/.config/picom.conf:
+    ~/.config/picom.conf:
       force: true
       create: true
       path: config/picom.conf
