@@ -67,7 +67,7 @@ _color=#004433
 [time]
 command=~/.config/i3blocks/status-commands/time.sh
 interval=5
-_left=<span background="#003322"> </span>
+_left=<span background="#003322">  </span>
 _right=<span color="#002211" background="#003322"> </span>
 _color=#003322
 
