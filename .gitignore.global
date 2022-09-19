@@ -16,3 +16,4 @@
 **/.vimspector.json
 **/.watchmanconfig
 **/.tmp
+**/.nvmrc
