@@ -146,6 +146,28 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# NVM auto use if CWD contains .nvmrc
+cdnvm() {
+  command cd "$@"
+  if [[ -s ".nvmrc" && -r ".nvmrc" ]]; then
+    nvm_version=$(<.nvmrc)
+    # `nvm ls` will check all locally-available versions
+    # If there are multiple matching versions, take the latest one
+    # Remove the `->` and `*` characters and spaces
+    # `locally_resolved_nvm_version` will be `N/A` if no local versions are found
+    locally_resolved_nvm_version=$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')
+
+    # If it is not already installed, install it
+    # `nvm install` will implicitly use the newly-installed version
+    if [[ "$locally_resolved_nvm_version" == "N/A" ]]; then
+        nvm install "$nvm_version";
+    elif [[ $(nvm current) != "$locally_resolved_nvm_version" ]]; then
+        nvm use;
+    fi
+  fi
+}
+alias cd='cdnvm'
+
 # Rust Cargo
 . "$HOME/.cargo/env"
 
@@ -155,3 +177,4 @@ if [[ -f ~/.bash_prompt/.prompt ]]; then
 fi 
 
 neofetch
+cdnvm .
