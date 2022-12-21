@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# autorandr -c
-xrandr --output DP-0.8 --pos 0x330 --output DP-4 --pos 5120x0 --rotate right
-xrandr --output DP-6 --pos 2560x330
-picom -b --experimental-backends &
+/home/otard/.screenlayout/work.sh &
+# /home/otard/.screenlayout/home.sh &
+picom -b --experimental-backends --backend glx &
 nitrogen --restore &
 betterlockscreen -u /usr/share/ukui-greeter/images/wp_blurred.jpg &
 emote &
