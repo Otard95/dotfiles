@@ -1,5 +1,5 @@
 # Commands
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -19,6 +19,8 @@ complete -F _openvpn3_completion ov
 alias g='git'
 # __git_complete g __git_main
 
+alias rm='trash'
+
 # Scripts
 alias mod='~/scripts/mod'
 alias note='~/scripts/note'
@@ -34,3 +36,4 @@ fi
 # Executables
 alias gql-gc='/opt/graphql-config-generator/gql-gc'
 alias ngm='/opt/ngm/ngm-linux'
+alias kub='kubectl'

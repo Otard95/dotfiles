@@ -4,6 +4,8 @@
 **/*.swn
 *.vim
 *.BAK
+*-BAK
+*_BAK
 .vscode/
 **.swp
 **/ctags-index-files.rc
