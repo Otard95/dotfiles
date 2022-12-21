@@ -1,3 +1,5 @@
 
 source ~/.fzf/completion
 source ~/.fzf/key-bindings
+
+_fzf_setup_completion path cd ll l
