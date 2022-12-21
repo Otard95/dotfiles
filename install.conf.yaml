@@ -76,28 +76,16 @@
       path: config/picom.conf
 
     # Kitty
-    ~/.config/kitty/kitty.conf:
+    ~/.config/kitty:
       force: true
       create: true
-      path: config/kitty/kitty.conf
-    ~/.config/kitty/pager.sh:
-      force: true
-      create: true
-      path: config/kitty/pager.sh
-    ~/.config/kitty/kitty-themes:
-      force: true
-      create: true
-      path: config/kitty/kitty-themes
+      path: config/kitty
 
     # Neofetch
-    ~/.config/neofetch/config.conf:
+    ~/.config/neofetch:
       force: true
       create: true
-      path: config/neofetch/config.conf
-    ~/.config/neofetch/art:
-      force: true
-      create: true
-      path: config/neofetch/art
+      path: config/neofetch
 
     # nvim
     ~/.config/nvim:
@@ -106,10 +94,10 @@
       path: config/nvim
 
     # Ranger
-    ~/.config/ranger/rc.conf:
+    ~/.config/ranger:
       force: true
       create: true
-      path: config/ranger/rc.conf
+      path: config/ranger
 
     # VSCode
     ~/.config/Code/User/snippets:
