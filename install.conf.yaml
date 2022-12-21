@@ -48,38 +48,10 @@
       path: config/autorandr
 
     # i3
-    ~/.config/i3/config:
+    ~/.config/i3:
       force: true
       create: true
-      path: config/i3/config
-    ~/.config/i3/work.conf:
-      force: true
-      create: true
-      path: config/i3/work.conf
-    ~/.config/i3/home.conf:
-      force: true
-      create: true
-      path: config/i3/home.conf
-    ~/.config/i3/kitty-quake.sh:
-      force: true
-      create: true
-      path: config/i3/kitty-quake.sh
-    ~/.config/i3/kitty-calc.sh:
-      force: true
-      create: true
-      path: config/i3/kitty-calc.sh
-    ~/.config/i3/background/wp.jpg:
-      force: true
-      create: true
-      path: config/i3/background/wp.jpg
-    ~/.config/i3blocks/config:
-      force: true
-      create: true
-      path: config/i3blocks/config
-    ~/.config/i3blocks/status-commands:
-      force: true
-      create: true
-      path: config/i3blocks/status-commands
+      path: config/i3
 
     # dunst (notifications)
     ~/.config/dunst:
