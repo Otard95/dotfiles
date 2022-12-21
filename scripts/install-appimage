@@ -47,7 +47,7 @@ usage() {
         Example:
           SomeApp => some-app
 
-    -s               | --shortcut                        Create a desktop shortcut. 
+    -s               | --shortcut                        Create a desktop shortcut.
     -sd <desc>       | --shortcut-description <desc>     Set a description for the shortcut.
     -si <icon/path>  | --shortcut-icon <icon/path>       Set a icon for the shortcut.
     -sc <categories> | --shortcut-category <icon/path>   Semicolon separated list of categories.
