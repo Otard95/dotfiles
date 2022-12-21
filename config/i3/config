@@ -14,7 +14,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Fira Code 8
+font pango:MesloLGM Nerd Font 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -45,30 +45,26 @@ bindsym Mod1+space exec ~/scripts/kbmap-toggle us no && $refresh_i3blocks_lang
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec kitty
-# start terminal as quake
-bindsym Mod1+q exec ~/.config/i3/kitty-quake.sh
-for_window [class="^quake$"] floating enable
-for_window [class="^quake$"] resize set 80ppt 75ppt
-for_window [class="^quake$"] move position center
-for_window [class="^quake$"] sticky enable
-# start calculator
-bindsym $mod+c exec ~/.config/i3/kitty-calc.sh
-for_window [class="^calculator$"] floating enable
-for_window [class="^calculator$"] resize set 500px 700px
-for_window [class="^calculator$"] sticky enable
-
-# kill focused window
-bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+# bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
+
+bindsym Control+Tab exec rofi -show window
+
+# manage notifications
+mode "notifications" {
+        bindsym $mod+c exec dunstctl close
+        bindsym $mod+h exec dunstctl history-pop
+        bindsym $mod+a exec dunstctl action 0 && dunstctl close
+
+        bindsym $mod+n mode "default"
+}
+bindsym $mod+n mode "notifications"
 
 # change focus
 bindsym $mod+h focus left
@@ -200,7 +196,7 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         tray_output none
-        font pango:Fira Code 9
+        font pango:MesloLGM Nerd Font 9
         status_command i3blocks
         colors {
                 background #073642
@@ -213,11 +209,53 @@ bar {
 include ~/.config/i3/work.conf
 # include ~/.config/i3/home.conf
 
+################
+#   Keybinds   #
+################
+
+# start a terminal
+bindsym $mod+Return exec kitty
+# start terminal as quake
+bindsym Mod1+q exec ~/.config/i3/kitty-quake.sh
+
+# start calculator
+bindsym $mod+c exec ~/.config/i3/kitty-calc.sh
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# start flameshot
+bindsym Mod1+Shift+2 exec flameshot gui
+
+###############
+#   Windows   #
+###############
+
+# quake
+for_window [class="^quake$"] floating enable
+for_window [class="^quake$"] resize set 80ppt 75ppt
+for_window [class="^quake$"] move position center
+for_window [class="^quake$"] sticky enable
+
+# calculator
+for_window [class="^calculator$"] floating enable
+for_window [class="^calculator$"] resize set 700px 1000px
+for_window [class="^calculator$"] move position center
+for_window [class="^calculator$"] sticky enable
+
+# window position system power dialog
+for_window [class="^system-power-dialog$"] floating enable
+for_window [class="^system-power-dialog$"] sticky enable
+
+# window floating protonvpn
+for_window [class="^protonvpn$"] floating enable
+
+# window floating freetube
+for_window [class="^FreeTube$"] floating enable
+
 # Mouse warning
 
 mouse_warping none
 
 # Other bindings
-
-bindsym Mod1+Shift+2 exec flameshot gui
 
