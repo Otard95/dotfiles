@@ -87,6 +87,11 @@
       create: true
       path: config/dunst
 
+    # rofi (launcher)
+    ~/.config/rofi:
+      force: true
+      create: true
+      path: config/rofi
 
     # gtk
     ~/.config/gtk-3.0/settings.ini:
@@ -117,6 +122,8 @@
       force: true
       create: true
       path: config/kitty/kitty-themes
+
+    # Neofetch
     ~/.config/neofetch/config.conf:
       force: true
       create: true
