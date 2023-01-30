@@ -68,7 +68,6 @@ vim.opt.cmdheight = 2
 
 vim.cmd('source ~/.config/nvim/cmds/uuid.vim')
 vim.cmd('source ~/.config/nvim/cmds/buffers.vim')
-vim.cmd('source ~/.config/nvim/cmds/php-indent.vim')
 vim.cmd('source ~/.config/nvim/cmds/reference.vim')
 vim.cmd('source ~/.config/nvim/cmds/on-exit.vim')
 
@@ -76,10 +75,25 @@ vim.cmd('source ~/.config/nvim/cmds/on-exit.vim')
 -- Filetype Settings
 ---------------------------------
 
-vim.cmd('au BufEnter *.php call PHPIndent()')
-vim.cmd('au BufEnter Dockerfile.* setlocal ft=dockerfile')
-vim.cmd('au BufEnter *.hbs set ft=html')
-vim.cmd('au BufEnter *.twig set ft=html')
+vim.g.do_filetype_lua = 1
+
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '*.php',
+  callback = function ()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.autoindent = true
+    vim.opt_local.smartindent = true
+  end
+})
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = 'Dockerfile.*',
+  callback = function() vim.opt_local.filetype = 'dockerfile' end
+})
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = {'*.hbs', '*.twig'},
+  callback = function() vim.opt_local.filetype = 'html' end
+})
 
 ---------------------------------
 -- Key maps
