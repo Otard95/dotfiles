@@ -39,7 +39,8 @@ vim.opt.termguicolors = true
 -- vim.opt.spellfile = './dictionary.latin1.add,~/.config/nvim/dictionary.latin1.add'
 
 -- Folding
-vim.opt.foldmethod = 'syntax'
+vim.opt.foldmethod = 'expr'
+vim.cmd('set foldexpr=nvim_treesitter#foldexpr()')
 vim.opt.foldlevel = 2
 -- vim.opt.foldclose = 'all'
 
