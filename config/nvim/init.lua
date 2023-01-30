@@ -66,10 +66,15 @@ vim.opt.cmdheight = 2
 -- Custom Commands
 ---------------------------------
 
+local home_dir = os.getenv('HOME')
+local nvim_dir = home_dir .. '/.config/nvim'
+package.path = package.path .. ';'.. nvim_dir ..'/cmds/?.lua'
+
 vim.cmd('source ~/.config/nvim/cmds/uuid.vim')
 vim.cmd('source ~/.config/nvim/cmds/buffers.vim')
 vim.cmd('source ~/.config/nvim/cmds/reference.vim')
 vim.cmd('source ~/.config/nvim/cmds/on-exit.vim')
+require('find-replace')
 
 ---------------------------------
 -- Filetype Settings
