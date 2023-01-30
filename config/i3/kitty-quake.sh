@@ -3,8 +3,17 @@ PID=$(ps ux | grep 'kitty --class quake' | grep -v 'grep' | grep -v 'bin' | awk 
 
 if [ -z "$PID" ]; then
   kitty --class quake
-else
-  kill $PID
+  exit 0
 fi
 
+winid=$(xdotool search -class quake)
+
+if [ -n "$(xdotool search -classname quake)" ]; then
+  xdotool set_window --classname hidden $winid
+  i3-msg '[class="^quake$"] focus'
+  i3-msg 'move scratchpad'
+else
+  xdotool set_window --classname quake $winid
+  i3-msg '[class="^quake$"] focus'
+fi
 
