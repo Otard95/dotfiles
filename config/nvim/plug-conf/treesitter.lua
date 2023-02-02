@@ -2,7 +2,7 @@
 function TSSetup()
   require'nvim-treesitter.configs'.setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = {{ 'typescript', 'javascript', 'php', 'html' }},
+    ensure_installed = {{ 'typescript', 'javascript', 'php', 'phpdoc', 'html', 'json', 'json5', 'jsonc', 'jsdoc', 'lua', 'vim' }},
 
     -- Install languages synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -21,13 +21,13 @@ function TSSetup()
       -- -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
       -- -- Using this option may slow down your editor, and you may see some duplicate highlights.
       -- -- Instead of true it can also be a list of languages
-      additional_vim_regex_highlighting = true,
+      -- additional_vim_regex_highlighting = true,
     },
-    rainbow = {
-      enable = true,
-      -- List of bright contrasting colors for syntax highlighting
-      colors = { '#FF4444', '#00FF00', '#8888FF', '#FFFF00', '#00FFFF', '#FF00FF' },
-    },
+    -- rainbow = {
+    --   enable = true,
+    --   -- List of bright contrasting colors for syntax highlighting
+    --   colors = { '#FF4444', '#00FF00', '#8888FF', '#FFFF00', '#00FFFF', '#FF00FF' },
+    -- },
   }
 end
 
@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd('User', {
 
 function treesitter_init(paqInit)
   table.insert(paqInit, {"nvim-treesitter/nvim-treesitter", run=function() vim.cmd "TSUpdate" end})
-  table.insert(paqInit, 'p00f/nvim-ts-rainbow')
+  -- table.insert(paqInit, 'p00f/nvim-ts-rainbow')
 end
 
 return treesitter_init
