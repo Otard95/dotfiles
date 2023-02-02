@@ -1,8 +1,10 @@
 bind status C !git commit -S
 bind status I !git add -i %(file)
+bind status S !git stash
 
 bind generic B !git checkout -b "%(prompt Enter branch name: )"
 bind generic P !git push -u %(remote) %(repo:head)
+bind generic U !git pull
 
 bind refs B !git branch "%(prompt Enter branch name: )"
 
