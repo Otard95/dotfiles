@@ -36,6 +36,12 @@
       path: .xsessionrc
       force: true
 
+    # fonts
+    ~/.config/fontconfig:
+      force: true
+      create: true
+      path: config/fontconfig
+
     # tig
     ~/.tigrc: .tigrc
 
