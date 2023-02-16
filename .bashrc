@@ -111,6 +111,12 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 ################
+##   Zoxide   ##
+################
+
+eval "$(zoxide init bash)"
+
+################
 ##   Custom   ##
 ################
 
