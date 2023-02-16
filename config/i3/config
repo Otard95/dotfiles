@@ -253,9 +253,6 @@ for_window [class="^protonvpn$"] floating enable
 # window floating freetube
 for_window [class="^FreeTube$"] floating enable
 
-# Mouse warning
-
+# Mouse wrapping
 mouse_warping none
-
-# Other bindings
 
