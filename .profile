@@ -16,6 +16,18 @@ if [ -n "$BASH_VERSION" ]; then
   fi
 fi
 
+if [ -d "/usr/bin" ] ; then
+  PATH="/usr/bin:$PATH"
+fi
+
+if [ -d "/usr/local/bin" ] ; then
+  PATH="/usr/local/bin:$PATH"
+fi
+
+if [ -d "/snap/bin" ] ; then
+  PATH="/snap/bin:$PATH"
+fi
+
 if [ -n "$HOME" ]; then
   # set PATH so it includes user's private bin if it exists
   if [ -d "$HOME/bin" ] ; then
@@ -31,17 +43,14 @@ if [ -n "$HOME" ]; then
   if [ -d "$HOME/.npm/bin" ] ; then
     PATH="$HOME/.npm/bin:$PATH"
   fi
+
+  # Update path with tmux plugins
+  # .tmux/plugins/t-smart-tmux-session-manager/bin/
+  if [ -d "$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin" ] ; then
+    PATH="$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
+  fi
+
+  . "$HOME/.cargo/env"
 fi
 
-if [ -d "/usr/bin" ] ; then
-  PATH="/usr/bin:$PATH"
-fi
-
-if [ -d "/usr/local/bin" ] ; then
-  PATH="/usr/local/bin:$PATH"
-fi
-
-if [ -d "/snap/bin" ] ; then
-  PATH="/snap/bin:$PATH"
-fi
-. "$HOME/.cargo/env"
+export TERMINAL=kitty
