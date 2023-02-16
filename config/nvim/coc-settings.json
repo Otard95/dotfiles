@@ -55,6 +55,9 @@
     "codegen",
     "dataloader",
     "datasource",
+    "denormalize",
+    "denormalized",
+    "denormalizing",
     "errmsg",
     "microservices",
     "mittanbud",
@@ -69,6 +72,7 @@
     "tauri",
     "templating",
     "xclip"
-  ]
+  ],
+  "snippets.ultisnips.pythonPrompt": false,
 }
 
