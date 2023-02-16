@@ -112,5 +112,6 @@
     "terminal.integrated.fontFamily": "Fira Code",
     "copy-reference.custom-block": "`{project}/{path}:{line}`{n}```{ext}{n}{selected}{n}```custom",
     "copy-reference.custom-simple": "`{project}/{path}:{line}`custom",
+    "workbench.iconTheme": "vscode-icons",
 }
 
