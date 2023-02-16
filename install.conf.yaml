@@ -128,3 +128,12 @@
     # thefuck
     ~/.config/thefuck: config/thefuck
 
+    # Zellij
+    ~/.config/zellij:
+      force: true
+      create: true
+      path: config/zellij
+
+    # Tmux
+    ~/.tmux.conf: .tmux.conf
+
