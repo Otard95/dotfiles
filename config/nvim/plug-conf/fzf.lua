@@ -28,6 +28,8 @@ function fzf_init(paqInit)
     nmap <leader>r :Rg<cr>
     nmap <leader>R :Rg<space>
     nmap <leader>gb :GBranches<cr>
+    nmap <leader>L :Lines<cr>
+    nmap <leader>l :BLines<cr>
   ]])
 end
 
