@@ -7,4 +7,7 @@ bind generic P !git push -u %(remote) %(repo:head)
 bind generic U !git pull
 
 bind refs B !git branch "%(prompt Enter branch name: )"
+bind refs F !git fetch --all
+
+bind log R !git revert %(commit)
 
