@@ -124,10 +124,10 @@ vim.keymap.set('n', '<silent>', '<expr> j (v:count == 0 ? \'gj\' : \'j\')', { no
 vim.keymap.set('n', '<silent>', '<expr> k (v:count == 0 ? \'gk\' : \'k\')', { noremap = true })
 
 -- Move between windows
-vim.keymap.set('n', '<C-h>', '<C-w>h', {})
-vim.keymap.set('n', '<C-j>', '<C-w>j', {})
-vim.keymap.set('n', '<C-k>', '<C-w>k', {})
-vim.keymap.set('n', '<C-l>', '<C-w>l', {})
+-- vim.keymap.set('n', '<C-h>', '<C-w>h', {})
+-- vim.keymap.set('n', '<C-j>', '<C-w>j', {})
+-- vim.keymap.set('n', '<C-k>', '<C-w>k', {})
+-- vim.keymap.set('n', '<C-l>', '<C-w>l', {})
 
 -- Paste replace visual selection without copy
 vim.keymap.set('v', '<leader>p', '"_dP', { noremap = true })

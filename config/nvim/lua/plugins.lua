@@ -23,6 +23,7 @@ require 'vimspector' (paqInit)
 require 'coc' (paqInit)
 require 'visual-multi' (paqInit)
 -- require 'remote-containers' (paqInit)
+require 'vim-tmux-navigator' (paqInit)
 
 require "paq" (paqInit)
 
