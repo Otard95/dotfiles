@@ -186,7 +186,11 @@ alias cd='cdnvm'
 # Prompt
 if [[ -f ~/.bash_prompt/.prompt ]]; then
   source ~/.bash_prompt/.prompt
-fi 
+fi
 
-neofetch
+if [[ -z "$TMUX" ]]; then
+  neofetch
+else
+  clear
+fi
 cdnvm .
