@@ -12,9 +12,23 @@ is_git_repo() {
   fi
 }
 
+git_is_new() {
+  if ! is_git_repo; then
+    return 1
+  fi
+  if git log &> /dev/null; then
+    return 1
+  else
+    return 0
+  fi
+}
+
 git_dirty() {
   if ! is_git_repo; then
     return 1
+  fi
+  if git_is_new; then
+    return 0
   fi
   if ! git diff-index --quiet HEAD --; then
     return 0
@@ -37,8 +51,12 @@ git_prompt () {
   ahead=0
   behind=0
 
-  if git_dirty; then
-    changes="⚡"
+  if git_is_new; then
+    changes="🚀"
+  else
+    if git_dirty; then
+      changes="⚡"
+    fi
   fi
 
   for l in "${st[@]}"; do
