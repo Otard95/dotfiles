@@ -15,5 +15,7 @@ if [ -n "$(xdotool search -classname quake)" ]; then
 else
   xdotool set_window --classname quake $winid
   i3-msg '[class="^quake$"] focus'
+  i3-msg 'resize set 80ppt 75ppt'
+  i3-msg 'move position center'
 fi
 
