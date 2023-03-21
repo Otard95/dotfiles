@@ -39,8 +39,21 @@ vim.opt.termguicolors = true
 -- vim.opt.spellfile = './dictionary.latin1.add,~/.config/nvim/dictionary.latin1.add'
 
 -- Folding
-vim.opt.foldmethod = 'expr'
-vim.cmd('set foldexpr=nvim_treesitter#foldexpr()')
+-- Temp fix for https://github.com/fannheyward/coc-rust-analyzer/issues/1113
+-- vim.opt.foldmethod = 'expr'
+-- vim.cmd('set foldexpr=nvim_treesitter#foldexpr()')
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = '*',
+  callback = function()
+   vim.opt_local.foldmethod = 'expr'
+    vim.cmd('set foldexpr=nvim_treesitter#foldexpr()')
+  end
+})
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'rust',
+  callback = function() vim.opt_local.foldmethod = 'indent' end
+})
+
 vim.opt.foldlevel = 2
 -- vim.opt.foldclose = 'all'
 
@@ -54,6 +67,7 @@ vim.opt.scrolloff = 20
 vim.opt.sidescrolloff = 10
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cmdheight = 2
+vim.opt.mouse = 'a'
 
 -- Explorer (Using coc-explorer)
 -- let g:netrw_banner = 0
