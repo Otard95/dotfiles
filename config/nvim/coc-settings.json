@@ -27,7 +27,6 @@
   "git.changeRemovedSign.text": "▍",
   "git.addGBlameToVirtualText": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
-  "phpls.path": "/usr/local/bin/intelephense",
   "php-cs-fixer.config": ".php-cs-fixer.dist.php",
   "php-cs-fixer.enableFormatProvider": true,
   "intelephense.environment.phpVersion": "7.4",
