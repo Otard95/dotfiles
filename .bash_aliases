@@ -21,6 +21,14 @@ alias g='git'
 
 alias rm='trash'
 
+# NPM
+alias n='npm'
+alias ni='npm install'
+alias nid='npm install -D'
+alias nie='npm install -E'
+alias nide='npm install -DE'
+alias nr='npm run'
+
 # Scripts
 alias mod='~/scripts/mod'
 alias note='~/scripts/note'
