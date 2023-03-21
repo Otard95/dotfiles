@@ -50,7 +50,9 @@ if [ -n "$HOME" ]; then
     PATH="$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
   fi
 
-  . "$HOME/.cargo/env"
+  if [ -d "$HOME/.cargo/env" ] ; then
+    . "$HOME/.cargo/env"
+  fi
 fi
 
 export TERMINAL=kitty
