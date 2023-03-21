@@ -52,6 +52,11 @@
       force: true
       create: true
       path: config/i3
+    # i3block
+    ~/.config/i3blocks:
+      force: true
+      create: true
+      path: config/i3blocks
 
     # dunst (notifications)
     ~/.config/dunst:
@@ -134,6 +139,11 @@
       create: true
       path: config/zellij
 
+    # btop
+    ~/.config/btop: config/btop
+
     # Tmux
     ~/.tmux.conf: .tmux.conf
+
+    ~/.config/starship.toml: config/starship.toml
 
