@@ -24,6 +24,8 @@ require 'coc' (paqInit)
 require 'visual-multi' (paqInit)
 -- require 'remote-containers' (paqInit)
 require 'vim-tmux-navigator' (paqInit)
+require 'oil-nvim' (paqInit)
+require 'neorg-nvim' (paqInit)
 
 require "paq" (paqInit)
 
