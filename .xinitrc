@@ -7,3 +7,7 @@ nitrogen --restore &
 betterlockscreen -u /usr/share/ukui-greeter/images/wp_blurred.jpg &
 emote &
 
+# Turn off system bell
+set bell-style none &
+xset b off &
+
