@@ -148,10 +148,18 @@ if [[ $? -eq 0 && -f ~/.fzf/.fzfrc ]]; then
   source ~/.fzf/.fzfrc
 fi
 
-# GitHub CLI
-if [[ -f ~/.secret/.github-cli ]]; then
-  source ~/.secret/.github-cli
-fi 
+# Secrets
+if [ -d ~/.secret ]; then
+  for file in $(ls -a ~/.secret); do
+    if [ -f ~/.secret/$file ]; then
+      source ~/.secret/$file
+    fi
+  done
+fi
+
+if npm -v &> /dev/null; then
+  source <(npm completion)
+fi
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
@@ -184,7 +192,9 @@ alias cd='cdnvm'
 . "$HOME/.cargo/env"
 
 # Prompt
-if [[ -f ~/.bash_prompt/.prompt ]]; then
+if starship -V &> /dev/null; then
+  eval "$(starship init bash)"
+elif [[ -f ~/.bash_prompt/.prompt ]]; then
   source ~/.bash_prompt/.prompt
 fi
 
