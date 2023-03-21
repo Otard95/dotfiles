@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Validate the script got exactly one argument
+# And that the argument is a file
+if [ $# -ne 1 ] || [ ! -f "$1" ]; then
+  echo "Usage: $0 <file>"
+  exit 1
+fi
+
+while IFS= read -r line; do
+  # Skip empty lines
+  [ -z "$line" ] && continue
+
+  # Skip comments
+  [[ "$line" =~ ^#.*$ ]] && continue
+
+  # Split the line into an array by spaces
+  IFS=' ' read -r -a parts <<< "$line"
+
+  # Validate the line has exactly two parts
+  # And that the first part is a directory
+  # And that the second part is a number
+  if [ ${#parts[@]} -ne 2 ]; then
+    echo "Invalid line: $line"
+    echo "Expected two elements, got ${#parts[@]}"
+    exit 1
+  fi
+
+  dir="${parts[0]}"
+  depth="${parts[1]}"
+
+  if [ ! -d "`eval echo ${dir//>}`" ]; then
+    echo "Invalid line: $line"
+    echo "Directory does not exist: $dir"
+    exit 1
+  fi
+  if ! [[ "$depth" =~ ^[0-9]+$ ]]; then
+    echo "Invalid line: $line"
+    echo "Expected a number, got $depth"
+    exit 1
+  fi
+
+  # DEBUG: Print the parts with a '|' separator
+  if [ -n "$DEBUG" ]; then
+    echo "|$dir|$depth|"
+  fi
+
+  # Do a `find` on the directory with the depth as maxdepth
+  # and loop over the results to add them to zoxide
+  while IFS= read -r path; do
+    # DEBUG: Print the command that will be runing
+    if [ -n "$DEBUG" ]; then
+      echo "running: zoxide add \"$path\""
+    fi
+    zoxide add "$path"
+  done < <(find "`eval echo ${dir//>}`" -maxdepth "$depth" -type d)
+done < "$1"
+
