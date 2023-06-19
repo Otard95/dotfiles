@@ -145,5 +145,12 @@
     # Tmux
     ~/.tmux.conf: .tmux.conf
 
+    # Starship (prompt)
     ~/.config/starship.toml: config/starship.toml
 
+    # Keynav
+    ~/.keynavrc: .keynavrc
+    # ~/.config/keynav:
+    #   force: true
+    #   create: true
+    #   path: config/keynav
