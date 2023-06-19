@@ -6,3 +6,5 @@ function BufOnly ()
   call winrestview(l:winview)
 endfunction
 
+" Create user command
+command! BufOnly call BufOnly()
