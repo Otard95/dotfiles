@@ -65,6 +65,9 @@ function coc_init(paqInit)
 
   -- Use <c-j> to trigger snippets
   -- keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
+  -- keyset("i", "<c-l>", "<Plug>(coc-snippets-expand)")
+  vim.g.coc_snippet_next = '<tab>'
+
   -- Use <c-space> to trigger completion
   keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 
