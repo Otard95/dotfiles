@@ -149,4 +149,5 @@ vim.cmd('hi DiffDelete guibg=bg guifg=Red gui=bold')
 vim.cmd('hi SignColumn guibg=bg')
 vim.cmd('hi CocWarningHighlight guibg=DarkYellow guifg=Black')
 vim.cmd('hi Visual guibg=#004466')
+vim.cmd('hi ColorColumn guibg=#223344')
 
