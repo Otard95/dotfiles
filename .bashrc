@@ -150,11 +150,12 @@ fzf --version &> /dev/null
 if [[ $? -eq 0 && -f ~/.fzf/.fzfrc ]]; then
   source ~/.fzf/.fzfrc
 fi
+export FZF_DEFAULT_OPTS="--layout=reverse --border --multi --color='border:#24a4b7,hl:#07f2af,bg+:#1f3b3d,separator:#12737a,scrollbar:#12737a,label:#cdeff4,pointer:#85add6,marker:#2a8aaf'"
 
 # Secrets
 if [ -d ~/.secret ]; then
   for file in $(ls -a ~/.secret); do
-    if [ -f ~/.secret/$file ]; then
+    if [[ -f ~/.secret/$file ]] && [[ -n "${file##*ignore*}" ]]; then
       source ~/.secret/$file
     fi
   done
