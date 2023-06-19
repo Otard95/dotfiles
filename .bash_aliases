@@ -49,3 +49,6 @@ alias kub='kubectl'
 
 # Tmux
 alias tn='tmux new -s$(pwd | sed "s/.*\///g")'
+tx(){
+    tmux new -s "$1" "$1"
+}
