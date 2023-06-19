@@ -225,7 +225,7 @@ bindsym $mod+c exec ~/.config/i3/kitty-calc.sh
 bindsym $mod+Shift+q kill
 
 # start flameshot
-bindsym Mod1+Shift+2 exec flameshot gui
+bindsym $mod+Shift+s exec flameshot gui
 
 ###############
 #   Windows   #
