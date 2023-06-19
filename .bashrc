@@ -122,6 +122,9 @@ eval "$(zoxide init bash)"
 
 # Set default shell editor to vim with custom rc
 export EDITOR="nvim -u NONE"
+set -o vi
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
 
 # Set key repeat delay and rate
 xset r rate 160 45
