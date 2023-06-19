@@ -4,6 +4,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias mine='sudo chown $USER:$GROUP -R $1'
+alias x='chmod u+x $1'
 alias m='pmount $@'
 alias um='pumount $@'
 
