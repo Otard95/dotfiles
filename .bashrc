@@ -215,6 +215,11 @@ fi
 if [[ -d /usr/local/android/platform-tools ]]; then
   export PATH="$PATH:/usr/local/android/platform-tools"
 fi
+
+if [[ -d ~/dev/kbd/qmk_firmware ]]; then
+  source ~/dev/kbd/qmk_firmware/util/qmk_tab_complete.sh
+fi
+
 # Prompt
 if starship -V &> /dev/null; then
   eval "$(starship init bash)"
