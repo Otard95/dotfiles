@@ -2,25 +2,39 @@ function NeorgSetup()
   require'neorg'.setup {
     load = {
       ["core.defaults"] = {}, -- Loads default behaviour
-      ["core.norg.journal"] = {
+      ["core.journal"] = {
         config = {
           journal_folder = 'dailes',
           strategy = 'nested',
-          template_name = 'daily_template',
+          template_name = 'daily_template.norg',
           use_template = true,
           workspace = 'work',
         }
       },
-      ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
-      ["core.norg.dirman"] = { -- Manages Neorg workspaces
+      ["core.concealer"] = {
+        config = {
+          icons = {
+            todo = {
+              done = {
+                icon = ''
+              },
+              pending = {
+                icon = ''
+              },
+            },
+          },
+        },
+      }, -- Adds pretty icons to your documents
+      ["core.dirman"] = { -- Manages Neorg workspaces
         config = {
           workspaces = {
-            notes = "~/notes",
-            work = "~/smb/neorg/work",
+            work = "~/dev/smb/neorg/work",
           },
           default_workspace = "work",
         },
       },
+      ["core.export"] = {},
+      ["core.export.markdown"] = {},
     },
   }
 end
