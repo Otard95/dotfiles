@@ -229,6 +229,7 @@ fi
 
 if [[ -z "$TMUX" ]]; then
   neofetch
+# fi
 else
   clear
 fi
