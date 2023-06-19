@@ -24,6 +24,7 @@ function coc_init(paqInit)
    'coc-explorer';
    'coc-rust-analyzer';
    'coc-lua';
+   'coc-prettier';
   }
 
   -- Some servers have issues with backup files, see #649
