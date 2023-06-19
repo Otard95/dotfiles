@@ -60,7 +60,10 @@ vim.opt.foldlevel = 2
 -- Misc
 vim.opt.smartcase = true
 vim.opt.wildmode = 'longest:full,full'
-vim.opt.wrap = false
+vim.opt.wrap = true
+vim.opt.showbreak = '↪ '
+vim.opt.linebreak = true
+vim.opt.colorcolumn = '80'
 vim.opt.list = true
 vim.opt.listchars = 'tab:-> ,trail:⋅'
 vim.opt.scrolloff = 20
