@@ -204,6 +204,17 @@ if [ -f "$HOME/.cargo/env" ]; then
   . "$HOME/.cargo/env"
 fi
 
+if [[ -d /usr/local/android/cmdline-tools ]]; then
+  export PATH="$PATH:/usr/local/android/cmdline-tools/latest/bin"
+  export ANDROID_SDK_ROOT="/usr/local/android"
+  export ANDROID_HOME="/usr/local/android"
+fi
+if [[ -d /usr/local/android/emulator ]]; then
+  export PATH="$PATH:/usr/local/android/emulator"
+fi
+if [[ -d /usr/local/android/platform-tools ]]; then
+  export PATH="$PATH:/usr/local/android/platform-tools"
+fi
 # Prompt
 if starship -V &> /dev/null; then
   eval "$(starship init bash)"
