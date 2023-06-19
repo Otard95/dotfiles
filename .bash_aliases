@@ -13,13 +13,6 @@ alias vi='nvim'
 
 alias bt='bluetoothctl'
 
-alias ov='openvpn3'
-complete -r ov
-complete -F _openvpn3_completion ov
-
-alias g='git'
-# __git_complete g __git_main
-
 alias rm='trash'
 
 # NPM
