@@ -1,4 +1,4 @@
-bind status C !git commit -S
+bind status C !git commit -S -v
 bind status I !git add -i %(file)
 bind status S !git stash
 
@@ -8,6 +8,9 @@ bind generic U !git pull
 
 bind refs B !git branch "%(prompt Enter branch name: )"
 bind refs F !git fetch --all
+bind refs M !git merge %(branch)
+bind refs S !git switch %(branch)
 
 bind log R !git revert %(commit)
 
+bind stash D !git stash drop %(stash)
