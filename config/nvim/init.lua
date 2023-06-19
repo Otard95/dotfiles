@@ -114,6 +114,11 @@ vim.api.nvim_create_autocmd('BufEnter', {
   pattern = {'*.hbs', '*.twig'},
   callback = function() vim.opt_local.filetype = 'html' end
 })
+-- When editing a tsconfig.json file, set the filetype to json5
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = 'tsconfig.json',
+  callback = function() vim.opt_local.filetype = 'json5' end
+})
 
 ---------------------------------
 -- Key maps
