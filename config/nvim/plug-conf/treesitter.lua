@@ -2,7 +2,7 @@
 function TSSetup()
   require'nvim-treesitter.configs'.setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = {{ 'typescript', 'javascript', 'graphql', 'php', 'phpdoc', 'html', 'json', 'json5', 'jsonc', 'jsdoc', 'lua', 'vim', 'rust' }},
+    ensure_installed = {{ 'typescript', 'javascript', 'graphql', 'php', 'phpdoc', 'html', 'json', 'json5', 'jsonc', 'jsdoc', 'lua', 'vim', 'rust', 'c' }},
 
     -- Install languages synchronously (only applied to `ensure_installed`)
     sync_install = false,
@@ -23,11 +23,11 @@ function TSSetup()
       -- -- Instead of true it can also be a list of languages
       additional_vim_regex_highlighting = true,
     },
-    -- rainbow = {
-    --   enable = true,
-    --   -- List of bright contrasting colors for syntax highlighting
-    --   colors = { '#FF4444', '#00FF00', '#8888FF', '#FFFF00', '#00FFFF', '#FF00FF' },
-    -- },
+    rainbow = {
+      enable = true,
+      -- List of bright contrasting colors for syntax highlighting
+      colors = { '#FF4444', '#00FF00', '#8888FF', '#FFFF00', '#00FFFF', '#FF00FF' },
+    },
   }
 
   vim.api.nvim_exec('doautocmd User TreesitterSetupDone', false)
