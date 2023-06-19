@@ -200,8 +200,9 @@ cdnvm() {
 }
 alias cd='cdnvm'
 
-# Rust Cargo
-. "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
 
 # Prompt
 if starship -V &> /dev/null; then
