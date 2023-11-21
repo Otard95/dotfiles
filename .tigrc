@@ -12,5 +12,6 @@ bind refs M !git merge %(branch)
 bind refs S !git switch %(branch)
 
 bind log R !git revert %(commit)
+bind log C !git checkout %(commit)
 
 bind stash D !git stash drop %(stash)
