@@ -56,4 +56,6 @@ vim.keymap.set('n', '<leader>c', ':!cp %:. %:h/', {})
 -- vim.keymap.set('n', '<leader>trn', ':keepalt file term:', {})
 
 -- Restart TypeScript server
-vim.keymap.set('n', '<leader>tsr', ':CocCommand tsserver.restart<CR>', {})
+vim.keymap.set('n', '<leader>cctsr', ':CocCommand tsserver.restart<CR>', {})
+-- Restart eslint
+vim.keymap.set('n', '<leader>ccesr', ':CocCommand eslint.restart<CR>', {})
