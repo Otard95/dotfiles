@@ -396,5 +396,5 @@ if output:
 
 left=_default("_left", "")+"<span background=\"{}\">".format(_default("_color", ""))
 right="</span>"+_default("_right", "")
-print(left+output+right)
+print(left+"  "+output+right)
 print(left+output+right)

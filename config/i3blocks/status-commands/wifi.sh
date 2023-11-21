@@ -3,7 +3,7 @@
 status=$(nmcli -c no device wifi | grep '*')
 
 if [[ -z "$status" ]]; then
-  echo "$_left<span background=\"$_color\"> Not Connected</span>$_right"
+  echo "$_left<span background=\"$_color\">  Disconnected</span>$_right"
   echo "$_left<span background=\"$_color\"></span>$_right"
   echo "#aaaaaa"
   exit 0
