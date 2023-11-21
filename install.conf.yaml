@@ -23,6 +23,7 @@
     # bash
     ~/.bash_prompt: bash_prompt
     ~/.bash_aliases: .bash_aliases
+    ~/.complete_alias: .complete_alias
     ~/.bashrc:
       path: .bashrc
       force: true
