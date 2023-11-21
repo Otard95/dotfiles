@@ -18,6 +18,7 @@ function TelescopeSetup()
     '--column',
     '--smart-case',
     '-u',
+    '-u',
   }
 
   local telescope = require('telescope')
