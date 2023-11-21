@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd('User', {
 })
 
 function neorg_init(paqInit)
-  table.insert(paqInit, { 'nvim-neorg/neorg', run = function () vim.cmd 'Neorg sync-parsers' end })
+  table.insert(paqInit, { 'nvim-neorg/neorg', build = function () vim.cmd 'Neorg sync-parsers' end })
   table.insert(paqInit, 'nvim-lua/plenary.nvim')
 end
 

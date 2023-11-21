@@ -39,7 +39,7 @@ vim.api.nvim_create_autocmd('User', {
 })
 
 function treesitter_init(paqInit)
-  table.insert(paqInit, {"nvim-treesitter/nvim-treesitter", run=function() vim.cmd "TSUpdate" end})
+  table.insert(paqInit, {"nvim-treesitter/nvim-treesitter", build=function() vim.cmd "TSUpdate" end})
   -- table.insert(paqInit, 'p00f/nvim-ts-rainbow')
 end
 

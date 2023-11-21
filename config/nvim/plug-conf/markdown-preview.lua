@@ -8,7 +8,7 @@ vim.cmd [[
 function nvim_markdown_preview_init(paqInit)
   table.insert(paqInit, {
     'iamcco/markdown-preview.nvim',
-    run = 'cd markdown-preview.nvim && yarn install'
+    build = 'cd markdown-preview.nvim && yarn install'
   })
 
   vim.g.mkdp_auto_close = 0
