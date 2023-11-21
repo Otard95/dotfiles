@@ -28,6 +28,8 @@
   "git.addGBlameToVirtualText": true,
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
   "eslint.workingDirectories": [ { "mode": "auto" } ],
+  "eslint.packageManager": "pnpm",
+  "eslint.autoFixOnSave": true,
   "php-cs-fixer.config": ".php-cs-fixer.dist.php",
   "php-cs-fixer.enableFormatProvider": true,
   "intelephense.environment.phpVersion": "7.4",
