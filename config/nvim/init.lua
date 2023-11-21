@@ -119,7 +119,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
 })
 -- When editing a tsconfig.json file, set the filetype to json5
 vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = 'tsconfig.json',
+  pattern = {'tsconfig.json', 'tsconfig.*.json'},
   callback = function() vim.opt_local.filetype = 'json5' end
 })
 
