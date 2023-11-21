@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Get directories in cwd
+dirs=$(ls -d */)
+
+# Loop through directories
+for dir in $dirs; do
+  echo "Checking $dir"
+
+  # Check if directory is a git repo
+  if [ -d "$dir.git" ]; then
+    # Check if its clean
+    echo "  $dir is a git repo."
+    if [ -z "$(git -C $dir status --porcelain)" ]; then
+      # Check if its up to date with remote
+      if [ -z "$(git -C $dir status -sb | grep -qE '\.\.\.origin')" ]; then
+        # Delete directory
+        echo "  Deleting $dir. It's clean and up to date with remote."
+        rm -rf $dir
+        continue
+      fi
+    fi
+  fi
+
+  # Check if directory is a node project
+  if [ -f "$dirpackage.json" ]; then
+    # Delete node_modules
+    echo "  Deleting $dirnode_modules"
+    rm -rf $dirnode_modules
+    continue
+  fi
+
+  echo "  Nothing to clean."
+done

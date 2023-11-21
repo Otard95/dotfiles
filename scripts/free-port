@@ -1,0 +1,62 @@
+#!/bin/bash
+
+source "$(dirname "$0")/utils.sh"
+
+usage() {
+  echo "Usage: $0 [options] <...ports>"
+  echo ""
+  echo "Options:"
+  echo "  -h, --help         Show this help message and exit"
+  echo "  -r, --root <path>  Display the path of the process relative to this path instead cwd"
+}
+
+PORTS=()
+ROOT="$PWD"
+
+argv=("${@:1}")
+
+while [ ! ${#argv[@]} -eq 0 ]; do
+  case "${argv[0]}" in
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    -r|--root)
+      ROOT="${argv[1]}"
+      argv=("${argv[@]:2}")
+      ;;
+    *)
+      if ! [[ "${argv[0]}" =~ ^[0-9]+$ ]]; then
+        echo "Invalid port: ${argv[0]}" >&2
+        exit 1
+      fi
+      PORTS+=("${argv[0]}")
+      argv=("${argv[@]:1}")
+      ;;
+  esac
+done
+
+# for each port
+for port in "${PORTS[@]}"; do
+  ss="$(ss -ltnup "sport = :$port" | tail -n 1)"
+
+  pid=''
+  if [[ "$ss" =~ pid=([0-9]+) ]]; then
+    pid="${BASH_REMATCH[1]}"
+  else
+    echo "WARN: Unable to find process using port $port" >&2
+    continue
+  fi
+
+  # get process info
+  proc="$(pstree $pid -a -l | head -n 1)"
+
+  # get the process cwd
+  cwd="$(readlink -f /proc/$pid/cwd)"
+  cwd_relative="$(realpath --relative-to="$ROOT" "$cwd")"
+
+  echo "$proc -> $cwd_relative [using port $port]"
+  confirm "Kill process?" "y" || continue
+
+  kill $pid
+done
