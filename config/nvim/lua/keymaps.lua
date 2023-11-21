@@ -53,7 +53,7 @@ vim.keymap.set('n', '<leader><', ':vertical resize -4<CR>', {})
 vim.keymap.set('n', '<leader>c', ':!cp %:. %:h/', {})
 
 -- Rename terminal
-vim.keymap.set('n', '<leader>trn', ':keepalt file term:', {})
+-- vim.keymap.set('n', '<leader>trn', ':keepalt file term:', {})
 
 -- Restart TypeScript server
 vim.keymap.set('n', '<leader>tsr', ':CocCommand tsserver.restart<CR>', {})
