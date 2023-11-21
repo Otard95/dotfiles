@@ -2,7 +2,25 @@
 function TSSetup()
   require'nvim-treesitter.configs'.setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
-    ensure_installed = {{ 'typescript', 'javascript', 'graphql', 'php', 'phpdoc', 'html', 'json', 'json5', 'jsonc', 'jsdoc', 'lua', 'vim', 'rust', 'c' }},
+    ensure_installed = {{
+      'typescript',
+      'javascript',
+      'tsx',
+      'graphql',
+      'php',
+      'phpdoc',
+      'html',
+      'json',
+      'json5',
+      'jsonc',
+      'jsdoc',
+      'lua',
+      'vim',
+      'rust',
+      'c',
+      'terraform',
+      'python',
+    }},
 
     -- Install languages synchronously (only applied to `ensure_installed`)
     sync_install = false,
