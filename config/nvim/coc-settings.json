@@ -32,7 +32,7 @@
   "eslint.autoFixOnSave": true,
   "php-cs-fixer.config": ".php-cs-fixer.dist.php",
   "php-cs-fixer.enableFormatProvider": true,
-  "intelephense.environment.phpVersion": "7.4",
+  "intelephense.environment.phpVersion": "8.2",
   "prettier.requireConfig": true,
   "coc.source.format.provider": "prettier",
   "cSpell.language": "en-US",
