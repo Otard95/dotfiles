@@ -1,16 +1,14 @@
 
 function coc_init(paqInit)
-  -- Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  -- Plug 'antoinemadec/coc-fzf'
   table.insert(paqInit, { 'neoclide/coc.nvim', branch = 'release' })
-  table.insert(paqInit, 'antoinemadec/coc-fzf')
+  -- table.insert(paqInit, 'antoinemadec/coc-fzf')
 
   vim.g.coc_global_extensions = {
    'coc-diagnostic';
    'coc-eslint';
    'coc-git';
    'coc-json';
-   'coc-pairs';
+   -- 'coc-pairs';
    'coc-phpls';
    'coc-php-cs-fixer';
    'coc-sh';
@@ -25,6 +23,7 @@ function coc_init(paqInit)
    'coc-rust-analyzer';
    'coc-lua';
    'coc-prettier';
+   'coc-pyright';
   }
 
   -- Some servers have issues with backup files, see #649
@@ -202,23 +201,23 @@ function coc_init(paqInit)
   -- Mappings for CoCList
   -- code actions and coc stuff
   ---@diagnostic disable-next-line: redefined-local
-  local opts = {silent = true, nowait = true}
+  local opts = {silent = true}
   -- Show all diagnostics
-  keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
+  keyset("n", "<leader>cla", ":<C-u>CocList diagnostics<cr>", opts)
   -- Manage extensions
-  keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
+  keyset("n", "<leader>cle", ":<C-u>CocList extensions<cr>", opts)
   -- Show commands
-  keyset("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
+  keyset("n", "<leader>clc", ":<C-u>CocList commands<cr>", opts)
   -- Find symbol of current document
-  keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
+  keyset("n", "<leader>clo", ":<C-u>CocList outline<cr>", opts)
   -- Search workspace symbols
-  keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
+  keyset("n", "<leader>cls", ":<C-u>CocList -I symbols<cr>", opts)
   -- Do default action for next item
-  keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
+  keyset("n", "<leader>cj", ":<C-u>CocNext<cr>", opts)
   -- Do default action for previous item
-  keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
+  keyset("n", "<leader>ck", ":<C-u>CocPrev<cr>", opts)
   -- Resume latest coc list
-  keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)table.insert(paqInit, 'antoinemadec/coc-fzf')
+  keyset("n", "<leader>clp", ":<C-u>CocListResume<cr>", opts)
 
   -- Git mappings
   vim.keymap.set('n', '<leader>gi', '<Plug>(coc-git-chunkinfo)')
