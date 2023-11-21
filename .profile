@@ -41,6 +41,11 @@ if [ -n "$HOME" ]; then
   if [ -d "$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin" ] ; then
     PATH="$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH"
   fi
+
+  if [ -d "$HOME/.deno" ] ; then
+    export DENO_INSTALL="$HOME/.deno"
+    PATH="$DENO_INSTALL/bin:$PATH"
+  fi
 fi
 
 # if running bash
