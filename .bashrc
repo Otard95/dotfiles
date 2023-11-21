@@ -227,6 +227,10 @@ elif [[ -f ~/.bash_prompt/.prompt ]]; then
   source ~/.bash_prompt/.prompt
 fi
 
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
+
 if [[ -z "$TMUX" ]]; then
   neofetch
 # fi

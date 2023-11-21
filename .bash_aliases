@@ -1,3 +1,6 @@
+# tab completion for aliases
+. ~/.complete_alias
+
 # Commands
 alias ll='ls -alhF'
 alias la='ls -A'
@@ -22,6 +25,13 @@ alias nid='pnpm install -D'
 alias nie='pnpm install -E'
 alias nide='pnpm install -DE'
 alias nr='pnpm run'
+
+complete -F _complete_alias n
+complete -F _complete_alias ni
+complete -F _complete_alias nid
+complete -F _complete_alias nie
+complete -F _complete_alias nide
+complete -F _complete_alias nr
 
 # Scripts
 alias mod='~/scripts/mod'
