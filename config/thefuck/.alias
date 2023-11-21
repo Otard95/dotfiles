@@ -1,6 +1,5 @@
-DAY=$(date +%u)
 FUCK_ALIAS='fuck'
-[[ $DAY = '1' ]] && FUCK_ALIAS='FUCK'
+
 alias fu=$FUCK_ALIAS
 alias fk=$FUCK_ALIAS
 alias fml=$FUCK_ALIAS
