@@ -45,8 +45,8 @@ vim.opt.termguicolors = true
 vim.api.nvim_create_autocmd('FileType', {
   pattern = '*',
   callback = function()
-   vim.opt_local.foldmethod = 'expr'
-    vim.cmd('set foldexpr=nvim_treesitter#foldexpr()')
+    vim.opt_local.foldmethod = 'expr'
+    vim.opt_local.foldexpr = 'nvim_treesitter#foldexpr()'
   end
 })
 vim.api.nvim_create_autocmd('FileType', {
