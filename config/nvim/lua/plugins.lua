@@ -29,6 +29,7 @@ require 'oil-nvim' (paqInit)
 require 'neorg-nvim' (paqInit)
 require 'markdown-preview' (paqInit)
 require 'markdown-tables' (paqInit)
+require 'nvim-linediff' (paqInit)
 
 require "paq" (paqInit)
 
