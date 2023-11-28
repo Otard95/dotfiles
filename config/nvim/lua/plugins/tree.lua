@@ -22,10 +22,8 @@ function SetupTree()
       update_root = true,
     },
     filters = {
-      dotfiles = true,
-    },
-    git = {
-      ignore = false,
+      git_ignored = false,
+      dotfiles = false,
     },
     on_attach = function(bufnr)
 
