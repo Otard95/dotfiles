@@ -10,6 +10,13 @@ function SetupTree()
     view = {
       width = 40,
     },
+    renderer = {
+      icons = {
+        glyphs = {
+          bookmark = '',
+        },
+      },
+    },
     update_focused_file = {
       enable = true,
       update_root = true,
@@ -58,7 +65,25 @@ return {
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
-      'nvim-tree/nvim-web-devicons',
+      {
+        'nvim-tree/nvim-web-devicons',
+        opts = {
+          override_by_filename = {
+            [".dockerignore"] = {
+              icon = "",
+              color = "#458ee6",
+              cterm_color = "68",
+              name = "Dockerfile",
+            },
+            ["dockerfile"] = {
+              icon = "",
+              color = "#458ee6",
+              cterm_color = "68",
+              name = "Dockerfile",
+            },
+          }
+        }
+      }
     },
     init = tree_init,
     config = SetupTree,
