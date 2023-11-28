@@ -6,7 +6,7 @@ function SetupTree()
     silent = true
   })
 
-  require 'nvim-tree'.setup({
+  require 'nvim-tree'.setup {
     view = {
       width = 40,
     },
@@ -45,7 +45,7 @@ function SetupTree()
         end
       end, { buffer = bufnr })
     end,
-  })
+  }
 end
 
 function tree_init()
