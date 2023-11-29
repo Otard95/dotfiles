@@ -5,7 +5,6 @@ function SetupLsp()
 
   lsp.preset('recommended')
 
-  require 'mason'.setup {}
   require 'mason-lspconfig'.setup {
     automatic_installation = true,
     ensure_installed = {
@@ -91,7 +90,7 @@ return {
   dependencies = {
     -- LSP Support
     { 'neovim/nvim-lspconfig' },
-    { 'williamboman/mason.nvim' },
+    { 'williamboman/mason.nvim', opts = {} },
     { 'williamboman/mason-lspconfig.nvim' },
 
     -- Autocompletion
