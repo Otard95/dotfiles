@@ -18,6 +18,7 @@ require 'lazy'.setup({
   { import = 'plugins.barbecue' },
   { import = 'plugins.commentary' },
   { import = 'plugins.copilot' },
+  { import = 'plugins.dap' },
   { import = 'plugins.fugitive' },
   { import = 'plugins.gitsigns' },
   { import = 'plugins.linediff' },
