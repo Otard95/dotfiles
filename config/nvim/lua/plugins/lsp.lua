@@ -10,6 +10,8 @@ function SetupLsp()
     ensure_installed = {
       'tsserver',
       'eslint',
+      'jsonls',
+      'clangd',
       'intelephense',
       'rust_analyzer',
       'lua_ls',
