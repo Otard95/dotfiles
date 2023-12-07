@@ -1,3 +1,4 @@
+require 'filetypes-settings'
 require 'set'
 require 'lang-specific-set'
 require 'remap'
