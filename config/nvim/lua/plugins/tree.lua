@@ -65,6 +65,14 @@ return {
       {
         'nvim-tree/nvim-web-devicons',
         opts = {
+          override_by_extension = {
+            ['txt'] = {
+              icon = "",
+              color = "#89e051",
+              cterm_color = "113",
+              name = "Txt",
+            }
+          },
           override_by_filename = {
             [".dockerignore"] = {
               icon = "",
@@ -73,6 +81,18 @@ return {
               name = "Dockerfile",
             },
             ["dockerfile"] = {
+              icon = "",
+              color = "#458ee6",
+              cterm_color = "68",
+              name = "Dockerfile",
+            },
+            ["docker-compose.yaml"] = {
+              icon = "",
+              color = "#458ee6",
+              cterm_color = "68",
+              name = "Dockerfile",
+            },
+            ["docker-compose.yml"] = {
               icon = "",
               color = "#458ee6",
               cterm_color = "68",
