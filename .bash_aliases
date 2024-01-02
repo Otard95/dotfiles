@@ -2,9 +2,9 @@
 . ~/.complete_alias
 
 # Commands
-alias ll='ls -alhF'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll='exa -alhF'
+alias la='exa -A'
+alias l='exa -CF'
 
 alias mine='sudo chown $USER:$GROUP -R $1'
 alias x='chmod u+x $1'
