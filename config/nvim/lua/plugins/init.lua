@@ -16,6 +16,7 @@ require 'lazy'.setup({
   { import = 'plugins.align' },
   { import = 'plugins.autopairs' },
   { import = 'plugins.barbecue' },
+  { import = 'plugins.colorize' },
   { import = 'plugins.commentary' },
   { import = 'plugins.copilot' },
   { import = 'plugins.dap' },
