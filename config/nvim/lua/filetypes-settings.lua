@@ -1,1 +1,6 @@
-vim.filetype.add({ extension = { h = 'c' } })
+vim.filetype.add({
+  extension = {
+    h = 'c',
+    nu = 'nu',
+  }
+})

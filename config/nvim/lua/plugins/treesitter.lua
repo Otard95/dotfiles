@@ -1,4 +1,13 @@
 function TSSetup()
+  require 'nvim-treesitter.parsers'.get_parser_configs().nu = {
+    install_info = {
+      url = "https://github.com/nushell/tree-sitter-nu",
+      files = { "src/parser.c" },
+      branch = "main",
+    },
+    filetype = "nu",
+  }
+
   require'nvim-treesitter.configs'.setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
     ensure_installed = {{
@@ -8,6 +17,7 @@ function TSSetup()
       'graphql',
       'php',
       'phpdoc',
+      'sql',
       'html',
       'json',
       'json5',
@@ -19,6 +29,7 @@ function TSSetup()
       'c',
       'terraform',
       'python',
+      'nu',
     }},
 
     -- Install languages synchronously (only applied to `ensure_installed`)
