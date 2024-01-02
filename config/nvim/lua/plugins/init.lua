@@ -37,11 +37,7 @@ require 'lazy'.setup({
   { import = 'plugins.tree' },
   { import = 'plugins.tree' },
   { import = 'plugins.treesitter' },
+  { import = 'plugins.trouble' },
+  { import = 'plugins.undotree' },
   { import = 'plugins.visual-multi' },
-  -- { import = 'plugins.qalc-nvim' },
-  -- { import = 'plugins.fzf' },
-  -- { import = 'plugins.guess-indent-init' },
-  -- { import = 'plugins.vimspector' },
-  -- { import = 'plugins.coc' },
-  -- { import = 'plugins.remote-containers' },
 })
