@@ -5,6 +5,9 @@ local options = {
   cpp = {
     commentstring = '//%s',
   },
+  php = {
+    shiftwidth = 4,
+  }
 }
 
 vim.api.nvim_create_autocmd({"FileType"}, {

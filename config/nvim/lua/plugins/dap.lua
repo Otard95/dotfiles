@@ -10,6 +10,13 @@ function SetupDap()
 
   -- Mappings
   vim.keymap.set('n', '<leader>db', function () dap.toggle_breakpoint() end)
+  vim.keymap.set('n', '<leader>dcb', function ()
+    -- Get user input
+    local input = vim.fn.input('Condition: ')
+    if not input or input == '' then return end
+
+    dap.set_breakpoint(input)
+  end)
   vim.keymap.set('n', '<leader>dr', function () dap.continue() end)
   vim.keymap.set('n', '<leader>dq', function () dap.terminate() end)
   vim.keymap.set('n', '<leader>dn', function () dap.step_over() end)
@@ -37,7 +44,10 @@ function SetupDap()
   require 'dap.ext.vscode'.load_launchjs('.vscode/launch.json', {
     node = { 'typescript', 'javascript' },
     ['pwa-node'] = { 'typescript', 'javascript' },
+    php = { 'php' },
   })
+
+  -- NodeJS adapter
   local node_dap_adapter = {
     type = 'server',
     port = 8123,
@@ -62,6 +72,23 @@ function SetupDap()
   dap.adapters["node"] = node_dap_adapter
   dap.adapters["pwa-node"] = node_dap_adapter
 
+  -- PHP adapter
+  dap.adapters.php = {
+    type = 'executable',
+    command = 'php-debug-adapter',
+    enrich_config = function(conf, on_config)
+      if not conf.localSourceRoot then
+        local config = vim.deepcopy(conf)
+        config.pathMappings = {
+          ['/var/www/html/'] = vim.fn.getcwd().."/",
+        }
+        on_config(config)
+      else
+        on_config(conf)
+      end
+    end,
+  }
+
   -- vim.g.nvim_dap_vscode_launch_debug = 0
   -- require 'utils.dap.vscode-launch' (dap)
 end
@@ -75,6 +102,9 @@ function SetupDapUI()
     dapui.open()
   end
   dap.listeners.before.event_terminated['dapui_config'] = function()
+    dapui.close()
+  end
+  dap.listeners.after.disconnect['dapui_config'] = function()
     dapui.close()
   end
   dap.listeners.before.event_exited['dapui_config'] = function()

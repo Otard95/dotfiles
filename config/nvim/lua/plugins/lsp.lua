@@ -1,6 +1,7 @@
 function SetupLsp()
   local lsp = require 'lsp-zero'
   local cmp = require 'cmp'
+  local cmp_types = require 'cmp.types'
   -- local lspconfig = require 'lspconfig'
 
   lsp.preset('recommended')
@@ -31,6 +32,15 @@ function SetupLsp()
           end,
         }
       end,
+      intelephense = function()
+        require 'lspconfig'.intelephense.setup {
+          settings = {
+            intelephense = {
+              phpVersion = '8.2',
+            },
+          },
+        }
+      end,
       lua_ls = function ()
         require 'lspconfig'.lua_ls.setup {
           settings = {
@@ -49,9 +59,23 @@ function SetupLsp()
 
   local cmp_action = lsp.cmp_action()
   cmp.setup {
+    completion = {
+      completeopt = 'menu,menuone,noinsert',
+    },
+    formatting = lsp.cmp_format(),
+    sources = cmp.config.sources({
+      { name = 'path'},
+      { name = 'nvim_lsp' },
+      { name = 'nvim_lua' },
+      { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    }),
     mapping = cmp.mapping.preset.insert({
-      -- `Enter` key to confirm completion
-      -- ['<CR>'] = cmp.mapping.confirm({select = false}),
+      -- `Tab` key to confirm completion
+      ['<Tab>'] = cmp.mapping.confirm({select = true}),
 
       -- `Ctrl+j/k` to move select next/prev item in the completion menu
       -- ['<C-j>'] = cmp.mapping.select_next_item(),
@@ -83,6 +107,7 @@ function SetupLsp()
     vim.keymap.set('n', '<leader>lca', function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set('n', '<leader>lrr', function() vim.lsp.buf.references() end, opts)
     vim.keymap.set('n', '<leader>lrn', function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format() end, opts)
   end)
 
   lsp.setup()
