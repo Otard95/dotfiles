@@ -15,3 +15,5 @@ bind log R !git revert %(commit)
 bind log C !git checkout %(commit)
 
 bind stash D !git stash drop %(stash)
+
+color cursor black green
