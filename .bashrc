@@ -150,7 +150,13 @@ fzf --version &> /dev/null
 if [[ $? -eq 0 && -f ~/.fzf/.fzfrc ]]; then
   source ~/.fzf/.fzfrc
 fi
-export FZF_DEFAULT_OPTS="--layout=reverse --border --multi --color='border:#24a4b7,hl:#07f2af,bg+:#1f3b3d,separator:#12737a,scrollbar:#12737a,label:#cdeff4,pointer:#85add6,marker:#2a8aaf'"
+# export FZF_DEFAULT_OPTS="--layout=reverse --border --multi --color='border:#24a4b7,hl:#07f2af,bg+:#1f3b3d,separator:#12737a,scrollbar:#12737a,label:#cdeff4,pointer:#85add6,marker:#2a8aaf'"
+# Catppuccin fzf theme
+export FZF_DEFAULT_OPTS=" \
+--layout=reverse --border --multi \
+--color=bg+:#414559,spinner:#f2d5cf,hl:#e78284 \
+--color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+--color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
 
 # Secrets
 if [ -d ~/.secret ]; then

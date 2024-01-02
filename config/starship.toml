@@ -1,25 +1,26 @@
 format = """
-[](#a3aed2)\
-[    ](bg:#a3aed2 fg:#090c0c)\
-[](bg:#769ff0 fg:#a3aed2)\
+[](surface0)\
+[    ](bg:surface0 fg:text)\
+[](bg:blue fg:surface0)\
 $directory\
-[](fg:#769ff0 bg:#394260)\
+[](fg:blue bg:surface1)\
 $git_branch\
 $git_status\
-[](fg:#394260)\
+[](fg:surface1)\
 $fill\
 $status\
 $cmd_duration\
-[](fg:#212736)\
+[](fg:surface1)\
 $nodejs\
 $rust\
 $php\
-[](fg:#1d2230 bg:#212736)\
+[](fg:surface0 bg:surface1)\
 $time
  $character"""
+palette = "catppuccin_frappe"
 
 [directory]
-style = "fg:#e3e5e5 bg:#769ff0"
+style = "fg:crust bg:blue"
 format = "[ $path ]($style)"
 truncation_length = 6
 truncation_symbol = "/"
@@ -32,41 +33,69 @@ truncation_symbol = "/"
 
 [git_branch]
 symbol = ""
-style = "bg:#394260"
-format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+style = "bg:surface1"
+format = '[[ $symbol $branch ](fg:blue bg:surface1)]($style)'
 
 [git_status]
-style = "bg:#394260"
-format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+style = "bg:surface1"
+format = '[[($all_status$ahead_behind )](fg:blue bg:surface1)]($style)'
 
 [nodejs]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+style = "bg:surface1"
+format = '[[ $symbol ($version) ](fg:blue bg:surface1)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+style = "bg:surface1"
+format = '[[ $symbol ($version) ](fg:blue bg:surface1)]($style)'
 
 [php]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+style = "bg:surface1"
+format = '[[ $symbol ($version) ](fg:blue bg:surface1)]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+style = "bg:surface0"
+format = '[[  $time ](fg:text bg:surface0)]($style)'
 
 [cmd_duration]
 min_time = 500
-format = "[ $duration ](fg:#a0a9cb)"
+format = "[ $duration ](fg:text)"
 show_milliseconds = true
 
 [status]
-format = "[$symbol $status](fg:#a0a9cb) "
+format = "[$symbol $status](fg:text) "
 symbol = '🔴'
 map_symbol = true
 disabled = false
+
+[palettes.catppuccin_frappe]
+rosewater = "#f3d5cf"
+flamingo = "#eebebe"
+pink = "#f4b8e4"
+mauve = "#ca9ee6"
+red = "#e78284"
+maroon = "#ea999c"
+peach = "#ef9f76"
+yellow = "#e6c890"
+green = "#a6d189"
+teal = "#81c8be"
+sky = "#99d1db"
+sapphire = "#85c1dc"
+blue = "#8caaee"
+lavender = "#babbf1"
+text = "#c6d0f5"
+subtext1 = "#b5bfe2"
+subtext0 = "#a5adce"
+overlay2 = "#949cbb"
+overlay1 = "#838ba7"
+overlay0 = "#737994"
+surface2 = "#626880"
+surface1 = "#51576d"
+surface0 = "#414559"
+base = "#303446"
+mantle = "#292c3c"
+crust = "#232634"
