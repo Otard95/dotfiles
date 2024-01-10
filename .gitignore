@@ -1,5 +1,6 @@
 .secret/
 config/thefuck/__pycache__
 config/thefuck/rules
+config/nitrogen/bg-saved.cfg
 *.tmp
 
