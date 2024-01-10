@@ -16,12 +16,14 @@ require 'lazy'.setup({
   { import = 'plugins.align' },
   { import = 'plugins.autopairs' },
   { import = 'plugins.barbecue' },
+  { import = 'plugins.cloak' },
   { import = 'plugins.colorize' },
   { import = 'plugins.commentary' },
   { import = 'plugins.copilot' },
   { import = 'plugins.dap' },
   { import = 'plugins.fugitive' },
   { import = 'plugins.gitsigns' },
+  { import = 'plugins.harpoon' },
   { import = 'plugins.linediff' },
   { import = 'plugins.lsp' },
   { import = 'plugins.lualine' },
@@ -29,6 +31,7 @@ require 'lazy'.setup({
   { import = 'plugins.neorg' },
   { import = 'plugins.oil' },
   { import = 'plugins.quickmaths' },
+  { import = 'plugins.snippets' },
   { import = 'plugins.surround' },
   { import = 'plugins.telescope' },
   { import = 'plugins.theme' },
@@ -40,4 +43,8 @@ require 'lazy'.setup({
   { import = 'plugins.trouble' },
   { import = 'plugins.undotree' },
   { import = 'plugins.visual-multi' },
+}, {
+  ui = {
+    border = 'rounded',
+  }
 })

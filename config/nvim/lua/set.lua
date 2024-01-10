@@ -38,3 +38,4 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.cmdheight = 2
 vim.opt.mouse = 'a'
 vim.opt.updatetime = 50
+vim.opt.formatoptions:remove { 'o' }

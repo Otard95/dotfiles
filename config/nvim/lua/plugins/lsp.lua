@@ -1,10 +1,20 @@
 function SetupLsp()
-  local lsp = require 'lsp-zero'
   local cmp = require 'cmp'
-  local cmp_types = require 'cmp.types'
-  -- local lspconfig = require 'lspconfig'
+  local lspconfig = require 'lspconfig'
 
-  lsp.preset('recommended')
+  require 'fidget'.setup {}
+
+  local default_capabilities = vim.tbl_deep_extend(
+    'force',
+    {},
+    vim.lsp.protocol.make_client_capabilities(),
+    require('cmp_nvim_lsp').default_capabilities()
+  )
+  local function default_setup(server_name)
+    lspconfig[server_name].setup {
+      capabilities = default_capabilities,
+    }
+  end
 
   require 'mason-lspconfig'.setup {
     automatic_installation = true,
@@ -12,15 +22,15 @@ function SetupLsp()
       'tsserver',
       'eslint',
       'jsonls',
-      'clangd',
       'intelephense',
       'rust_analyzer',
       'lua_ls',
     },
     handlers = {
-      lsp.default_setup,
+      default_setup,
       eslint = function()
         require 'lspconfig'.eslint.setup {
+          capabilities = default_capabilities,
           setting = {
             packageManager = 'pnpm',
           },
@@ -34,6 +44,7 @@ function SetupLsp()
       end,
       intelephense = function()
         require 'lspconfig'.intelephense.setup {
+          capabilities = default_capabilities,
           settings = {
             intelephense = {
               phpVersion = '8.2',
@@ -43,10 +54,19 @@ function SetupLsp()
       end,
       lua_ls = function ()
         require 'lspconfig'.lua_ls.setup {
+          capabilities = default_capabilities,
           settings = {
             Lua = {
+              runtime = {
+                version = 'LuaJIT',
+              },
               diagnostics = {
                 globals = { 'vim' },
+              },
+              workspace = {
+                library = {
+                  vim.env.VIMRUNTIME,
+                }
               },
             },
           },
@@ -57,19 +77,20 @@ function SetupLsp()
 
   require 'lspconfig'.typos_lsp.setup {}
 
-  local cmp_action = lsp.cmp_action()
   cmp.setup {
     completion = {
       completeopt = 'menu,menuone,noinsert',
     },
-    formatting = lsp.cmp_format(),
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end,
+    },
     sources = cmp.config.sources({
       { name = 'path'},
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
-      { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
+      { name = 'luasnip' },
     }, {
       { name = 'buffer' },
     }),
@@ -84,33 +105,39 @@ function SetupLsp()
       -- Ctrl+Space to trigger completion menu
       ['<C-Space>'] = cmp.mapping.complete(),
 
-      -- Navigate between snippet placeholder
-      ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-      ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-
       -- Scroll up and down in the completion documentation
       ['<C-u>'] = cmp.mapping.scroll_docs(-4),
       ['<C-d>'] = cmp.mapping.scroll_docs(4),
     })
   }
 
-  lsp.on_attach(function(client, bufnr)
-    local opts = { buffer = bufnr, remap = false }
+  vim.api.nvim_create_autocmd('LspAttach', {
+    desc = 'LSP actions',
+    callback = function(event)
+      local opts = {buffer = event.buf}
 
-    vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-    vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
-    vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
-    vim.keymap.set('n', '<leader>lws', function() vim.lsp.buf.workspace_symbol() end, opts)
-    vim.keymap.set('n', '<leader>ld', function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set('n', '<leader>lca', function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set('n', '<leader>lrr', function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set('n', '<leader>lrn', function() vim.lsp.buf.rename() end, opts)
-    vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format() end, opts)
-  end)
+      vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
+      vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
+      vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
+      vim.keymap.set('n', '<leader>lws', function() vim.lsp.buf.workspace_symbol() end, opts)
+      vim.keymap.set('n', '<leader>ld', function() vim.diagnostic.open_float() end, opts)
+      vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
+      vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
+      vim.keymap.set('n', '<leader>lca', function() vim.lsp.buf.code_action() end, opts)
+      vim.keymap.set('n', '<leader>lrr', function() vim.lsp.buf.references() end, opts)
+      vim.keymap.set('n', '<leader>lrn', function() vim.lsp.buf.rename() end, opts)
+      vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format() end, opts)
+      vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    end
+  })
 
-  lsp.setup()
+  -- Set borders for lspconfig windows
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = "lspinfo",
+    callback = function()
+      vim.api.nvim_win_set_config(0, { border = "rounded" })
+    end,
+  })
 
   vim.diagnostic.config({
     virtual_text = true
@@ -118,25 +145,40 @@ function SetupLsp()
 end
 
 return {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v3.x',
-  dependencies = {
-    -- LSP Support
-    { 'neovim/nvim-lspconfig' },
-    { 'williamboman/mason.nvim', opts = {} },
-    { 'williamboman/mason-lspconfig.nvim' },
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      -- LSP Support
+      { 'williamboman/mason.nvim', opts = { ui = { border = 'rounded' } } },
+      { 'williamboman/mason-lspconfig.nvim' },
 
-    -- Autocompletion
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'saadparwaiz1/cmp_luasnip' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-nvim-lua' },
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lua' },
 
-    -- Snippets
-    { 'L3MON4D3/LuaSnip' },
-    { 'rafamadriz/friendly-snippets' },
+      -- Snippets
+      { 'L3MON4D3/LuaSnip' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'rafamadriz/friendly-snippets' },
+
+      -- Other
+      { 'j-hui/fidget.nvim' },
+    },
+    config = SetupLsp,
   },
-  config = SetupLsp,
+  {
+    'OlegGulevskyy/better-ts-errors.nvim',
+    config = {
+      keymaps = {
+        toggle = '<leader>dd', -- Toggling keymap
+        go_to_definition = '<leader>dx', -- Go to problematic type from popup window
+      }
+    },
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+    },
+  },
 }

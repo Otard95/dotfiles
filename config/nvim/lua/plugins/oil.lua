@@ -10,6 +10,8 @@ function OilSetup()
       show_hidden = true,
     }
   }
+
+  vim.api.nvim_set_keymap('n', '-', '<cmd>Oil<cr>', { noremap = true })
 end
 
 return {
