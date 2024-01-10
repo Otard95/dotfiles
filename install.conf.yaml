@@ -87,6 +87,12 @@
       create: true
       path: config/picom.conf
 
+    # nitrogen
+    ~/.config/nitrogen:
+      force: true
+      create: true
+      path: config/nitrogen
+
     # Kitty
     ~/.config/kitty:
       force: true
