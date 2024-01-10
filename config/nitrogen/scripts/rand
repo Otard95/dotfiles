@@ -1,0 +1,92 @@
+#!/bin/bash
+
+function usage() {
+    echo"Usage: $0 <path/to/bgs> <template> <out-file>"
+    echo""
+    echo"  Description:"
+    echo"    This script generates a nitrogen bg-saved.cfg file from the given"
+    echo"    template and writes it to the out-file."
+    echo""
+    echo"    The backgrounds directory should be structured as follows:"
+    echo"      ./<group>/<ident>/*.*"
+    echo""
+    echo"      <group>  - The group name"
+    echo"                 Useful to group images you want together so the don't"
+    echo"                 mismatch too much across monitors"
+    echo"      <ident>  - The identifier for the image."
+    echo"                 can be used in the template. Useful to manage which"
+    echo"                 images are used on which monitor for example."
+    echo""
+    echo"  Example:"
+    echo"      $0 ~/Pictures/backgrounds/ ~/.config/nitrogen/template.cfg ~/.config/nitrogen/bg-saved.cfg"
+    echo""
+    echo"    with template.cfg:"
+    echo"      [xin_0]"
+    echo"      file=wide"
+    echo"      mode=5"
+    echo"      bgcolor=#000000"
+    echo""
+    echo"      [xin_0]"
+    echo"      file=tall"
+    echo"      mode=5"
+    echo"      bgcolor=#000000"
+    echo""
+    echo"    provided the backgrounds directory is structured like:"
+    echo"      ./*/wide/*.*"
+    echo"      ./*/tall/*.*"
+    echo""
+    echo"    this will generate a bg-saved.cfg file that will set the wide"
+    echo"    images to the first monitor and the tall images to the second"
+    echo"    monitor."
+}
+
+# Check if we have the right number of arguments
+if [ $# -ne 3 ]; then
+    usage | head -n 1
+    echo""
+    echo"  Error: Wrong number of arguments"
+    echo"    use -h or --help for more details"
+    exit 1
+fi
+
+backgrounds=$1
+template=$2
+outfile=$3
+
+# Check if the backgrounds directory exists
+if [ ! -d "$backgrounds" ]; then
+    usage | head -n 1
+    echo""
+    echo"  Error: Backgrounds directory does not exist"
+    echo"    use -h or --help for more details"
+    exit 1
+fi
+
+# Check if the template exists
+if [ ! -f "$template" ]; then
+    usage | head -n 1
+    echo""
+    echo"  Error: Template file does not exist"
+    echo"    use -h or --help for more details"
+    exit 1
+fi
+
+# Select one of the groups in the backgrounds directory
+group=$(ls "$backgrounds" | sort -R | head -n 1)
+
+# For each line in the template
+while read line; do
+  # If the line does not start with `file=`
+  if [[ ! "$line" =~ ^file= ]]; then
+    # Print the line
+    echo "$line"
+  else
+    # Get the ident after the `file=` part
+    ident=$(echo "$line" | sed -e 's/^file=//')
+
+    # Select a random image from the group and ident
+    image=$(ls "$backgrounds/$group/$ident" | sort -R | head -n 1)
+    # Print the line with the image
+    echo "file=$(realpath "$backgrounds/$group/$ident/$image")"
+  fi
+done < "$template" > "$outfile"
