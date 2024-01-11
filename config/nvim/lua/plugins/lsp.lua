@@ -10,9 +10,14 @@ function SetupLsp()
     vim.lsp.protocol.make_client_capabilities(),
     require('cmp_nvim_lsp').default_capabilities()
   )
+  local default_handlers = {
+    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
+    ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
+  }
   local function default_setup(server_name)
     lspconfig[server_name].setup {
       capabilities = default_capabilities,
+      handlers = default_handlers,
     }
   end
 
@@ -31,6 +36,7 @@ function SetupLsp()
       eslint = function()
         require 'lspconfig'.eslint.setup {
           capabilities = default_capabilities,
+          handlers = default_handlers,
           setting = {
             packageManager = 'pnpm',
           },
@@ -45,6 +51,7 @@ function SetupLsp()
       intelephense = function()
         require 'lspconfig'.intelephense.setup {
           capabilities = default_capabilities,
+          handlers = default_handlers,
           settings = {
             intelephense = {
               phpVersion = '8.2',
@@ -52,9 +59,10 @@ function SetupLsp()
           },
         }
       end,
-      lua_ls = function ()
+      lua_ls = function()
         require 'lspconfig'.lua_ls.setup {
           capabilities = default_capabilities,
+          handlers = default_handlers,
           settings = {
             Lua = {
               runtime = {
@@ -87,7 +95,7 @@ function SetupLsp()
       end,
     },
     sources = cmp.config.sources({
-      { name = 'path'},
+      { name = 'path' },
       { name = 'nvim_lsp' },
       { name = 'nvim_lua' },
       { name = 'luasnip' },
@@ -96,7 +104,7 @@ function SetupLsp()
     }),
     mapping = cmp.mapping.preset.insert({
       -- `Tab` key to confirm completion
-      ['<Tab>'] = cmp.mapping.confirm({select = true}),
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
 
       -- `Ctrl+j/k` to move select next/prev item in the completion menu
       -- ['<C-j>'] = cmp.mapping.select_next_item(),
@@ -114,7 +122,7 @@ function SetupLsp()
   vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function(event)
-      local opts = {buffer = event.buf}
+      local opts = { buffer = event.buf }
 
       vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
       vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
@@ -139,7 +147,14 @@ function SetupLsp()
     end,
   })
 
+  local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+  for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  end
+
   vim.diagnostic.config({
+    float = { border = 'rounded' },
     virtual_text = true
   })
 end
@@ -149,7 +164,7 @@ return {
     'neovim/nvim-lspconfig',
     dependencies = {
       -- LSP Support
-      { 'williamboman/mason.nvim', opts = { ui = { border = 'rounded' } } },
+      { 'williamboman/mason.nvim',          opts = { ui = { border = 'rounded' } } },
       { 'williamboman/mason-lspconfig.nvim' },
 
       -- Autocompletion
@@ -173,7 +188,7 @@ return {
     'OlegGulevskyy/better-ts-errors.nvim',
     config = {
       keymaps = {
-        toggle = '<leader>dd', -- Toggling keymap
+        toggle = '<leader>dd',           -- Toggling keymap
         go_to_definition = '<leader>dx', -- Go to problematic type from popup window
       }
     },
