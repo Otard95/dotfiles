@@ -1,25 +1,4 @@
 function TelescopeSetup()
-  local ripgrep_argsuments = {
-    'rg',
-    '--color=never',
-    '--no-heading',
-    '--with-filename',
-    '--line-number',
-    '--column',
-    '--smart-case',
-  }
-  local ripgrep_all_arguments = {
-    'rg',
-    '--color=never',
-    '--no-heading',
-    '--with-filename',
-    '--line-number',
-    '--column',
-    '--smart-case',
-    '-u',
-    '-u',
-  }
-
   local telescope = require('telescope')
   local builtin = require('telescope.builtin')
   local actions = require('telescope.actions')
@@ -36,20 +15,24 @@ function TelescopeSetup()
           ['<C-o>'] = actions.send_to_qflist + actions.open_qflist,
         },
       },
-      vimgrep_arguments = ripgrep_argsuments,
+      -- vimgrep_arguments = ripgrep_argsuments,
       preview = {
         filesize_limit = 5,
         filetype_hook = function (filepath)
-          if filepath:find('services%.json') then return false end
-          if filepath:find('%.env') then return false end
-          return true
+          return not (
+            filepath:find('services%.json')
+            or filepath:find('%.env')
+          )
+          -- if filepath:find('services%.json') then return false end
+          -- if filepath:find('%.env') then return false end
+          -- return true
         end,
       },
     }
   }
 
   -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-  vim.keymap.set('n', '<leader>ff', function() builtin.find_files {} end, {})
+  vim.keymap.set('n', '<leader>ff', function() builtin.git_files {} end, {})
   vim.keymap.set('n', '<leader>fr', function() builtin.live_grep  {} end, {})
   vim.keymap.set('n', '<leader>fb',  function() builtin.buffers   {} end, {})
   vim.keymap.set('n', '<leader>FF', function() builtin.find_files {
@@ -58,7 +41,8 @@ function TelescopeSetup()
     no_ignore_parent = true
   } end, {})
   vim.keymap.set('n', '<leader>FR', function() builtin.live_grep  {
-    vimgrep_arguments = ripgrep_all_arguments
+    -- vimgrep_arguments = ripgrep_all_arguments
+    additional_args = { '--hidden' }
   } end, {})
   vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 end
