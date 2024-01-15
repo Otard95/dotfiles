@@ -13,6 +13,11 @@ function SetupTheme()
 
   vim.cmd.colorscheme "catppuccin"
   -- vim.cmd.colorscheme "tokyonight-moon"
+
+  local palette = require('catppuccin.palettes.frappe')
+  -- Overrides
+  vim.api.nvim_set_hl(0, 'LineNr', { fg = palette.blue })
+  -- vim.api.nvim_set_hl(0, 'LineNr', { fg = require('catppuccin.palettes.frappe').blue })
 end
 
 return {
