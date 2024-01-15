@@ -20,6 +20,7 @@ require 'lazy'.setup({
   { import = 'plugins.colorize' },
   { import = 'plugins.commentary' },
   { import = 'plugins.copilot' },
+  -- { import = 'plugins.noice' },
   { import = 'plugins.dadbod' },
   { import = 'plugins.dap' },
   { import = 'plugins.fugitive' },
