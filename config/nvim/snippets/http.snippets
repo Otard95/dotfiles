@@ -35,6 +35,11 @@ snippet field "Add field to form body"
 	${1:field}=${2:value}
 
 snippet graphql "Create graphql query"
-	query {
-		${1:field}
-	}$0
+	POST {{host}}
+	Content-Type: graphql
+
+	${1:query} ${2:OPERATION_NAME}${3:(${4:variable}: ${5:Type})} {
+		$0
+	}
+	---
+	{}
