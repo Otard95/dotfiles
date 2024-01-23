@@ -29,7 +29,7 @@ function TSSetup()
       'c',
       'terraform',
       'python',
-      'nu',
+      'http',
     }},
 
     -- Install languages synchronously (only applied to `ensure_installed`)

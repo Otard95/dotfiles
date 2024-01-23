@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require 'lazy'.setup({
   { "folke/lazy.nvim", version = "*" },
+  -- { import = 'plugins.noice' },
   { import = 'plugins.align' },
   { import = 'plugins.autopairs' },
   { import = 'plugins.barbecue' },
@@ -20,7 +21,6 @@ require 'lazy'.setup({
   { import = 'plugins.colorize' },
   { import = 'plugins.commentary' },
   { import = 'plugins.copilot' },
-  -- { import = 'plugins.noice' },
   { import = 'plugins.dadbod' },
   { import = 'plugins.dap' },
   { import = 'plugins.fugitive' },
@@ -30,9 +30,10 @@ require 'lazy'.setup({
   { import = 'plugins.lsp' },
   { import = 'plugins.lualine' },
   { import = 'plugins.markdown' },
-  { import = 'plugins.neorg' },
+  -- { import = 'plugins.neorg' },
   { import = 'plugins.oil' },
   { import = 'plugins.quickmaths' },
+  { import = 'plugins.rest' },
   { import = 'plugins.snippets' },
   { import = 'plugins.surround' },
   { import = 'plugins.telescope' },
@@ -40,10 +41,10 @@ require 'lazy'.setup({
   { import = 'plugins.tig' },
   { import = 'plugins.tmux-navigator' },
   { import = 'plugins.tree' },
-  { import = 'plugins.tree' },
   { import = 'plugins.treesitter' },
   { import = 'plugins.trouble' },
   { import = 'plugins.undotree' },
+  { import = 'plugins.vim-be-good' },
   { import = 'plugins.visual-multi' },
 }, {
   ui = {

@@ -1,5 +1,13 @@
 local function db_completion()
-  require("cmp").setup.buffer { sources = { { name = "vim-dadbod-completion" } } }
+  local cmp = require "cmp"
+  cmp.setup.buffer {
+    sources = cmp.config.sources({
+      { name = "vim-dadbod-completion" },
+      { name = 'luasnip' },
+    }, {
+      { name = 'buffer' },
+    })
+  }
 end
 
 function SetupDadbod()

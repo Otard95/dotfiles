@@ -31,8 +31,25 @@ function TelescopeSetup()
     }
   }
 
+  local is_inside_work_tree = {}
+  local function project_files()
+    local opts = {} -- define here if you want to define something
+
+    local cwd = vim.fn.getcwd()
+    if is_inside_work_tree[cwd] == nil then
+      vim.fn.system("git rev-parse --is-inside-work-tree")
+      is_inside_work_tree[cwd] = vim.v.shell_error == 0
+    end
+
+    if is_inside_work_tree[cwd] then
+      builtin.git_files(opts)
+    else
+      builtin.find_files(opts)
+    end
+  end
+
   -- vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-  vim.keymap.set('n', '<leader>ff', function() builtin.git_files {} end, {})
+  vim.keymap.set('n', '<leader>ff', project_files, {})
   vim.keymap.set('n', '<leader>fr', function() builtin.live_grep  {} end, {})
   vim.keymap.set('n', '<leader>fb',  function() builtin.buffers   {} end, {})
   vim.keymap.set('n', '<leader>FF', function() builtin.find_files {
@@ -42,7 +59,7 @@ function TelescopeSetup()
   } end, {})
   vim.keymap.set('n', '<leader>FR', function() builtin.live_grep  {
     -- vimgrep_arguments = ripgrep_all_arguments
-    additional_args = { '--hidden' }
+    additional_args = { '--hidden', '-u' }
   } end, {})
   vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 end
