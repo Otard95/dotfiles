@@ -4,7 +4,7 @@
 # Commands
 alias ll='exa -alhF'
 alias la='exa -A'
-alias l='exa -CF'
+alias l='exa -F'
 
 alias mine='sudo chown $USER:$GROUP -R $1'
 alias x='chmod u+x $1'
