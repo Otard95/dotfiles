@@ -34,12 +34,25 @@ snippet form "Set form header and start body"
 snippet field "Add field to form body"
 	${1:field}=${2:value}
 
+snippet auth "Add Authorization header"
+	Authorization: {{${1:token}}}
+
+snippet dartauth "Add dart authorization header"
+	Dart-Authorization-Bearer: {{${1:api_token}}}
+
+snippet dartuser "Add user behalf header"
+	Dart-Behalf-User-Id: ${1:user_id}
+	Dart-Behalf-Company: ${2:company_id}
+
 snippet graphql "Create graphql query"
 	POST {{host}}
 	Content-Type: graphql
 
-	${1:query} ${2:OPERATION_NAME}${3:(${4:variable}: ${5:Type})} {
+	${1:query} ${2:OPERATION_NAME} {
 		$0
 	}
 	---
 	{}
+
+snippet gateway "Gateway header"
+	gateway-name: ${1:mittanbud-dev}
