@@ -24,6 +24,7 @@ require 'lazy'.setup({
   { import = 'plugins.dadbod' },
   { import = 'plugins.dap' },
   { import = 'plugins.fugitive' },
+  { import = 'plugins.gh' },
   { import = 'plugins.gitsigns' },
   { import = 'plugins.harpoon' },
   { import = 'plugins.linediff' },
