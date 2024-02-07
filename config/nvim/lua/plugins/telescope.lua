@@ -28,8 +28,19 @@ function TelescopeSetup()
           -- return true
         end,
       },
-    }
+    },
+    extensions = {
+      ['ui-select'] = {
+        require("telescope.themes").get_dropdown {
+          layout_config = {
+            width = 0.8,
+          },
+        },
+      },
+    },
   }
+
+  telescope.load_extension("ui-select")
 
   local is_inside_work_tree = {}
   local function project_files()
@@ -70,5 +81,9 @@ return {
     branch = '0.1.x',
     config = TelescopeSetup,
     dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {
+    'nvim-telescope/telescope-ui-select.nvim',
+    dependencies = { 'nvim-telescope/telescope.nvim' },
   }
 }
