@@ -13,11 +13,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require 'lazy'.setup({
   { "folke/lazy.nvim", version = "*" },
-  -- { import = 'plugins.noice' },
+  -- { import = 'plugins.cloak' },
+  -- { import = 'plugins.neorg' },
   { import = 'plugins.align' },
   { import = 'plugins.autopairs' },
   { import = 'plugins.barbecue' },
-  { import = 'plugins.cloak' },
   { import = 'plugins.colorize' },
   { import = 'plugins.commentary' },
   { import = 'plugins.copilot' },
@@ -31,7 +31,6 @@ require 'lazy'.setup({
   { import = 'plugins.lsp' },
   { import = 'plugins.lualine' },
   { import = 'plugins.markdown' },
-  -- { import = 'plugins.neorg' },
   { import = 'plugins.oil' },
   { import = 'plugins.quickmaths' },
   { import = 'plugins.rest' },
