@@ -1,5 +1,5 @@
 function SetupTheme()
-  require "tokyonight".setup {
+  require 'tokyonight'.setup {
     transparent = true,
     styles = {
       sidebars = 'transparent',
@@ -11,25 +11,24 @@ function SetupTheme()
     transparent_background = true,
   }
 
-  vim.cmd.colorscheme "catppuccin"
-  -- vim.cmd.colorscheme "tokyonight-moon"
+  vim.cmd.colorscheme 'catppuccin'
+  -- vim.cmd.colorscheme 'tokyonight-moon'
 
-  local palette = require('catppuccin.palettes.frappe')
+  local palette = require 'catppuccin.palettes.frappe'
   -- Overrides
   vim.api.nvim_set_hl(0, 'LineNr', { fg = palette.blue })
-  -- vim.api.nvim_set_hl(0, 'LineNr', { fg = require('catppuccin.palettes.frappe').blue })
 end
 
 return {
   {
-    "folke/tokyonight.nvim",
+    'folke/tokyonight.nvim',
     lazy = false,
     priority = 1000,
     -- config = SetupTheme,
   },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    'catppuccin/nvim',
+    name = 'catppuccin',
     priority = 1000,
     config = SetupTheme,
   }
