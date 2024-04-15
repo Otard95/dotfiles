@@ -1,9 +1,12 @@
 local M = {}
 
 function M.flow(...)
-  for _, v in ipairs({...}) do
-    if type(v) == "function" then
-      v()
+  local args = {...}
+  return function()
+    for _, v in ipairs(args) do
+      if type(v) == "function" then
+        v()
+      end
     end
   end
 end

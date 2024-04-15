@@ -7,7 +7,10 @@ local options = {
   },
   php = {
     shiftwidth = 4,
-  }
+  },
+  markdown = {
+    conceallevel = 2,
+  },
 }
 
 vim.api.nvim_create_autocmd({"FileType"}, {

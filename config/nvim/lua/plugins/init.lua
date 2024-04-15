@@ -30,6 +30,7 @@ require 'lazy'.setup({
   { import = 'plugins.lsp' },
   { import = 'plugins.lualine' },
   { import = 'plugins.markdown' },
+  { import = 'plugins.obsidian' },
   { import = 'plugins.oil' },
   { import = 'plugins.quickmaths' },
   { import = 'plugins.rest' },
