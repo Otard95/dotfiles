@@ -1,6 +1,11 @@
 .secret/
 config/thefuck/__pycache__
 config/thefuck/rules
+
+# Nitrogen
+config/nitrogen/backgrounds/
 config/nitrogen/bg-saved.cfg
+
+# General
 *.tmp
 

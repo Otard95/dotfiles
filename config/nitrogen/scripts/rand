@@ -72,7 +72,9 @@ if [ ! -f "$template" ]; then
 fi
 
 # Select one of the groups in the backgrounds directory
-group=$(ls "$backgrounds" | sort -R | head -n 1)
+backgrounds=$(echo "$backgrounds" | sed -e 's|/$||')
+rand_file=$(find "$backgrounds" -type f | shuf | head -n 1)
+group=$(dirname "$rand_file" | sed -e "s|^$backgrounds/||" -e 's|/.*$||')
 
 # For each line in the template
 while read line; do
