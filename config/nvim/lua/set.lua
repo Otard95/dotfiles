@@ -13,8 +13,8 @@ vim.opt.number = true
 vim.opt.termguicolors = true
 
 -- Folding
-vim.opt_local.foldmethod = 'expr'
-vim.opt_local.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 
 vim.opt.foldlevel = 2
 
@@ -39,3 +39,4 @@ vim.opt.cmdheight = 2
 vim.opt.mouse = 'a'
 vim.opt.updatetime = 50
 vim.opt.formatoptions:remove { 'o' }
+vim.opt.signcolumn = 'yes'

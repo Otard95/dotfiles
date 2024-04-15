@@ -21,7 +21,7 @@ require 'lazy'.setup({
   { import = 'plugins.barbecue' },
   { import = 'plugins.colorize' },
   { import = 'plugins.commentary' },
-  { import = 'plugins.copilot' },
+  -- { import = 'plugins.copilot' },
   { import = 'plugins.dadbod' },
   { import = 'plugins.dap' },
   { import = 'plugins.git' },

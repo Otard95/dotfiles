@@ -83,3 +83,64 @@ snippet set "setter"
 	set ${1:property}(${2:value}): ${3:void} {
 		${0:// body...}
 	}
+
+snippet gqltest "Boiler plate for a GraphQL integration test"
+	import faker from 'faker';
+	import gql from 'graphql-tag';
+	import { print } from 'graphql/index';
+	import { rest } from 'msw';
+	import request from 'supertest';
+
+	import { mockUserInContext } from '@internal/common-utils/lib/testing/mockUserInContext';
+	import { getTestSuccessDartResponse } from '@internal/testing-utils/lib/getTestDartResponse';
+	// import { initializeUnleashMock } from '@internal/testing-utils/lib/mockUnleash';
+	import { initializeMsw } from '@internal/testing-utils/lib/testHttpInterceptor';
+
+	import { initializeTestServer } from '@/utils/test/initializeTestServer';
+
+	const query = gql\`
+		query FOO_BAR(\$input: FooBarInput!) {
+			fooBar(input: \$input) {
+				# fields...
+			}
+		}
+	\`;
+
+	describe('fooBar', () => {
+		// const { setMockUnleashFlag } = initializeUnleashMock();
+		const server = initializeMsw();
+		const apolloServer = initializeTestServer();
+
+		it('should ...', async () => {
+			// given
+			// setMockUnleashFlag('some-feature-flag', true);
+			mockUserInContext({
+				user: {
+					id: \`\${faker.random.number()}\`,
+					operatingAsId: faker.random.number(),
+				},
+			});
+
+			server.use(mockUserResponse());
+			// when
+			const res = await request(\`localhost:\${apolloServer.Port}\`)
+				.post(apolloServer.Path)
+				.send({
+					variables: {},
+					query: print(query),
+				});
+
+			// then
+			expect(res.body).toEqual({
+				data: {},
+			});
+		});
+	});
+
+	function mockUserResponse() {
+		const payload = {};
+		return rest.get(\`https://example.com/api/foo/bar\`, (req, res, ctx) => {
+			return res.once(ctx.json(getTestSuccessDartResponse(payload)));
+		});
+	}
+

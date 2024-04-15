@@ -17,15 +17,12 @@ function TelescopeSetup()
       },
       -- vimgrep_arguments = ripgrep_argsuments,
       preview = {
-        filesize_limit = 5,
+        filesize_limit = 0.5,
         filetype_hook = function (filepath)
           return not (
             filepath:find('services%.json')
             or filepath:find('%.env')
           )
-          -- if filepath:find('services%.json') then return false end
-          -- if filepath:find('%.env') then return false end
-          -- return true
         end,
       },
     },

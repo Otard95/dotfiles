@@ -39,9 +39,7 @@ function SetupLsp()
         require 'lspconfig'.eslint.setup {
           capabilities = default_capabilities,
           handlers = default_handlers,
-          setting = {
-            packageManager = 'pnpm',
-          },
+          setting = { packageManager = 'pnpm' },
           on_attach = function(client, bufnr)
             vim.api.nvim_create_autocmd("BufWritePre", {
               buffer = bufnr,
@@ -54,32 +52,39 @@ function SetupLsp()
         require 'lspconfig'.intelephense.setup {
           capabilities = default_capabilities,
           handlers = default_handlers,
-          settings = {
-            intelephense = {
-              phpVersion = '8.2',
-            },
-          },
+          settings = { intelephense = { phpVersion = '8.2' } },
         }
       end,
       lua_ls = function()
+        -- If in /home/otard/Documents/quickmath
+        local diagnostics = { globals = { 'vim' } }
+        if vim.fn.getcwd():match('quickmath') then
+          diagnostics = {
+            disable = { 'lowercase-global' },
+            globals = { 'vec' },
+          }
+        end
         require 'lspconfig'.lua_ls.setup {
           capabilities = default_capabilities,
           handlers = default_handlers,
           settings = {
             Lua = {
-              runtime = {
-                version = 'LuaJIT',
-              },
-              diagnostics = {
-                globals = { 'vim' },
-              },
-              workspace = {
-                library = {
-                  vim.env.VIMRUNTIME,
-                }
-              },
+              runtime = { version = 'LuaJIT' },
+              diagnostics = diagnostics,
+              workspace = { library = { vim.env.VIMRUNTIME } },
             },
           },
+        }
+      end,
+      clangd = function()
+        require 'lspconfig'.clangd.setup {
+          capabilities = default_capabilities,
+          handlers = default_handlers,
+          on_attach = function(client, bufnr)
+            vim.defer_fn(function()
+              vim.lsp.semantic_tokens.stop(bufnr, client.id)
+            end, 100)
+          end,
         }
       end,
     },
@@ -88,9 +93,7 @@ function SetupLsp()
   require 'lspconfig'.typos_lsp.setup {}
 
   cmp.setup {
-    completion = {
-      completeopt = 'menu,menuone,noinsert',
-    },
+    completion = { completeopt = 'menu,menuone,noinsert' },
     snippet = {
       expand = function(args)
         require('luasnip').lsp_expand(args.body)
@@ -105,17 +108,8 @@ function SetupLsp()
       { name = 'buffer' },
     }),
     mapping = cmp.mapping.preset.insert({
-      -- `Tab` key to confirm completion
       ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-
-      -- `Ctrl+j/k` to move select next/prev item in the completion menu
-      -- ['<C-j>'] = cmp.mapping.select_next_item(),
-      -- ['<C-k>'] = cmp.mapping.select_prev_item(),
-
-      -- Ctrl+Space to trigger completion menu
       ['<C-Space>'] = cmp.mapping.complete(),
-
-      -- Scroll up and down in the completion documentation
       ['<C-u>'] = cmp.mapping.scroll_docs(-4),
       ['<C-d>'] = cmp.mapping.scroll_docs(4),
     })
@@ -185,17 +179,5 @@ return {
       { 'j-hui/fidget.nvim' },
     },
     config = SetupLsp,
-  },
-  {
-    'OlegGulevskyy/better-ts-errors.nvim',
-    config = {
-      keymaps = {
-        toggle = '<leader>dd',           -- Toggling keymap
-        go_to_definition = '<leader>dx', -- Go to problematic type from popup window
-      }
-    },
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-    },
   },
 }

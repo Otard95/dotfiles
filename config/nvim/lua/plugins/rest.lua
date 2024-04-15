@@ -47,7 +47,7 @@ function SetupRest()
       vim.keymap.set({ 'n' }, '<leader>rp', function() rest.run(true) end, opts)
       vim.keymap.set({ 'n' }, '<leader>rl', function() rest.last() end, opts)
       vim.keymap.set({ 'n' }, '<leader>rs', function()
-        find_env(function (file)
+        find_env(function(file)
           rest.select_env(file)
           print('Using env file: ' .. file)
         end)
@@ -63,6 +63,7 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope.nvim',
     },
+    tag = 'v1.2.1',
     ft = { 'http', 'rest' },
     config = SetupRest,
   }

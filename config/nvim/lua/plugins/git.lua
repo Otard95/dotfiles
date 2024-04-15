@@ -7,12 +7,20 @@ local function create_branch()
   vim.cmd('Git checkout -b ' .. branch)
 end
 local function reload_branch_list()
-  vim.cmd('bd! | Git branch')
+  local pos = vim.api.nvim_win_get_cursor(0)
+  vim.api.nvim_buf_delete(0, { force = true })
+  vim.cmd('Git branch')
+  vim.api.nvim_win_set_cursor(0, pos)
 end
 local function delete_branch_under_cursor()
   local line = vim.api.nvim_get_current_line()
-  local branch = string.gsub(line, "^%s*%*?%s*(.-)%s*$", "%1")
+  local branch = string.gsub(line, '^%s*%*?%s*(.-)%s*$', '%1')
   vim.cmd('Git branch -d ' .. branch)
+end
+local function merge_branch_under_cursor()
+  local line = vim.api.nvim_get_current_line()
+  local branch = string.gsub(line, '^%s*%*?%s*(.-)%s*$', '%1')
+  vim.cmd('Git merge ' .. branch)
 end
 
 function SetupFugitive()
@@ -26,8 +34,8 @@ function SetupFugitive()
   vim.keymap.set('n', '<leader>gp', '[c', { noremap = true, silent = true })
 
   -- Keybinds in status window
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = "fugitive",
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'fugitive',
     callback = function(e)
       local opts = { buffer = e.buf, silent = true }
 
@@ -39,14 +47,15 @@ function SetupFugitive()
       vim.keymap.set('n', '<leader>ba', create_branch, opts)
     end,
   })
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = "git",
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'git',
     callback = function(e)
       local opts = { buffer = e.buf, silent = true }
 
       vim.keymap.set('n', '<C-r>', reload_branch_list, opts)
-      vim.keymap.set('n', '<leader>a', fn.flow(create_branch,reload_branch_list), opts)
+      vim.keymap.set('n', '<leader>a', fn.flow(create_branch, reload_branch_list), opts)
       vim.keymap.set('n', '<leader>dd', fn.flow(delete_branch_under_cursor, reload_branch_list), opts)
+      vim.keymap.set('n', '<leader>mm', merge_branch_under_cursor, opts)
     end,
   })
 end
@@ -75,16 +84,23 @@ local function SetupOcto()
 
   local octo = require 'octo.commands'.octo
 
-  vim.keymap.set('n', '<leader>gha', function () octo('actions') end, { silent = true })
+  vim.keymap.set('n', '<leader>gha', function() octo('actions') end, { silent = true })
 
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = "octo",
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = { 'octo', 'octo_panel' },
     callback = function(e)
       local opts = { buffer = e.buf, silent = true }
 
-      vim.keymap.set('n', '<leader>ch', function () octo('pr', 'checks') end, opts)
-      vim.keymap.set('n', '<leader>cs', function () octo('pr', 'changes') end, opts)
-      vim.keymap.set('n', '<leader>cc', function () octo('pr', 'checkout') end, opts)
+      vim.keymap.set('n', '<leader>ch', function() octo('pr', 'checks') end, opts)
+      vim.keymap.set('n', '<leader>cs', function() octo('pr', 'changes') end, opts)
+      vim.keymap.set('n', '<leader>cc', function() octo('pr', 'checkout') end, opts)
+      vim.keymap.set('n', '<leader>rs', function()
+        if vim.bo.filetype == 'octo' then
+          octo('review', 'start')
+        else
+          octo('review', 'submit')
+        end
+      end, opts)
     end,
   })
 
