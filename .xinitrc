@@ -18,6 +18,9 @@ picom -b --experimental-backends --backend glx &
 setup_bg &
 emote &
 
+# Start ssh tunnel
+ssh -fNTD 1337 otard@raspberrypi &
+
 # Turn off system bell
 set bell-style none &
 xset b off &
