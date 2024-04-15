@@ -1,16 +1,12 @@
 function TSSetup()
-  require 'nvim-treesitter.parsers'.get_parser_configs().nu = {
-    install_info = {
-      url = "https://github.com/nushell/tree-sitter-nu",
-      files = { "src/parser.c" },
-      branch = "main",
-    },
-    filetype = "nu",
-  }
+  local max_filesize = 100 * 1024 -- 100 KB
 
-  require'nvim-treesitter.configs'.setup {
-    -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  require 'nvim-treesitter.configs'.setup {
+    -- One of 'all', 'maintained' (parsers with maintainers), or a list of languages
     ensure_installed = {{
+      'vim',
+      'vimdoc',
+      'lua',
       'typescript',
       'javascript',
       'tsx',
@@ -23,47 +19,52 @@ function TSSetup()
       'json5',
       'jsonc',
       'jsdoc',
-      'lua',
-      'vim',
       'rust',
       'c',
+      'go',
+      'gomod',
       'terraform',
       'python',
       'http',
     }},
-
     -- Install languages synchronously (only applied to `ensure_installed`)
     sync_install = false,
-
-    -- -- List of parsers to ignore installing
-    -- ignore_install = { "javascript" },
-
+    indent = {
+      enable = true
+    },
     highlight = {
       -- `false` will disable the whole extension
       enable = true,
 
       -- -- list of language that will be disabled
-      -- disable = { "c", "rust" },
+      -- disable = { 'c', 'rust' },
+      -- -- Disable for large files
+      disable = function (_lang, buf)
+        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+        if ok and stats and stats.size > max_filesize then
+            return true
+        end
+      end,
 
       -- -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
       -- -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
       -- -- Using this option may slow down your editor, and you may see some duplicate highlights.
       -- -- Instead of true it can also be a list of languages
-      additional_vim_regex_highlighting = true,
+      additional_vim_regex_highlighting = false,
     },
-    rainbow = {
-      enable = true,
-      -- List of bright contrasting colors for syntax highlighting
-      colors = { '#FF4444', '#00FF00', '#8888FF', '#FFFF00', '#00FFFF', '#FF00FF' },
-    },
+    -- rainbow = {
+    --   enable = true,
+    --   -- List of bright contrasting colors for syntax highlighting
+    --   colors = { '#FF4444', '#00FF00', '#8888FF', '#FFFF00', '#00FFFF', '#FF00FF' },
+    -- },
   }
 end
 
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    tag = 'v0.9.1',
-    build=":TSUpdate",
+    'nvim-treesitter/nvim-treesitter',
+    tag = 'v0.9.2',
+    build=':TSUpdate',
     config=TSSetup,
   }
 }
