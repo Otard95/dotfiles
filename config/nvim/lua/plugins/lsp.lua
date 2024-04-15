@@ -30,6 +30,8 @@ function SetupLsp()
       'intelephense',
       'rust_analyzer',
       'lua_ls',
+      'clangd',
+      'gopls',
     },
     handlers = {
       default_setup,
