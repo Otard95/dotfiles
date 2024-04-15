@@ -16,7 +16,7 @@
 - link:
     # general
     ~/scripts: scripts
-    ~/.gitconfig: .gitconfig
+    ~/.gitconfig: .gitconfig.global
     ~/.gitignore.global: .gitignore.global
     ~/.fzf: fzf
 
