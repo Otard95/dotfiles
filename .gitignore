@@ -11,5 +11,8 @@ config/nitrogen/template.cfg
 # Neovim
 config/nvim/lazy-lock.json
 
+# Git
+.gitconfig.global
+
 # General
 *.tmp
