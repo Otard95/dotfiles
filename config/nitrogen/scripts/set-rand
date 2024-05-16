@@ -8,5 +8,14 @@ while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 DIR=$(cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
 
-$DIR/rand $DIR/../backgrounds $DIR/../template.cfg $DIR/../bg-saved.cfg
+screen_hash="$(xrandr --listactivemonitors | sha256sum | awk '{print $1}')"
+screen_template="$screen_hash.template.cfg"
+
+echo $screen_template > $DIR/../current.log
+
+if [ ! -f $DIR/../$screen_template ]; then
+  cp $DIR/../template.example.cfg $DIR/../$screen_template
+fi
+
+$DIR/rand $DIR/../backgrounds $DIR/../$screen_template $DIR/../bg-saved.cfg
 nitrogen --restore
