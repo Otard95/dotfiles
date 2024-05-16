@@ -5,22 +5,19 @@
 #
 # A battery indicator blocklet script for i3blocks
 
-from subprocess import check_output
-import os
 import re
+from subprocess import check_output
 
-config = dict(os.environ)
 status = check_output(['acpi'], universal_newlines=True)
 
 if not status:
     # stands for no battery found
-    color = config.get("color_10", "red")
-    fulltext = "<span color='{}'><span font='FontAwesome'>\uf00d \uf240</span></span>".format(color)
+    fulltext = "<span color='red'><span font='FontAwesome'>\uf00d \uf240</span></span>"
     percentleft = 100
 else:
-    # if there is more than one battery in one laptop, the percentage left is
-    # available for each battery separately, although state and remaining
-    # time for overall block is shown in the status of the first battery
+    # if there is more than one battery in one laptop, the percentage left is 
+    # available for each battery separately, although state and remaining 
+    # time for overall block is shown in the status of the first battery 
     batteries = status.split("\n")
     state_batteries=[]
     commasplitstatus_batteries=[]
@@ -52,8 +49,7 @@ else:
         percentleft = 0
 
     # stands for charging
-    color = config.get("color_charging", "yellow")
-    FA_LIGHTNING = "<span color='{}'><span font='FontAwesome'>\uf0e7</span></span>".format(color)
+    FA_LIGHTNING = "<span color='yellow'><span font='FontAwesome'>\uf0e7</span></span>"
 
     # stands for plugged in
     FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
@@ -79,30 +75,28 @@ else:
     def color(percent):
         if percent < 10:
             # exit code 33 will turn background red
-            return config.get("color_10", "#eeeeee")
+            return "#FFFFFF"
         if percent < 20:
-            return config.get("color_20", "#FF3300")
+            return "#FF3300"
         if percent < 30:
-            return config.get("color_30", "#FF6600")
+            return "#FF6600"
         if percent < 40:
-            return config.get("color_40", "#FF9900")
+            return "#FF9900"
         if percent < 50:
-            return config.get("color_50", "#FFCC00")
+            return "#FFCC00"
         if percent < 60:
-            return config.get("color_60", "#FFFF00")
+            return "#FFFF00"
         if percent < 70:
-            return config.get("color_70", "#FFFF33")
+            return "#FFFF33"
         if percent < 80:
-            return config.get("color_80", "#FFFF66")
-        return config.get("color_full", "#eeeeee")
+            return "#FFFF66"
+        return "#FFFFFF"
 
     form =  '<span color="{}">{}%</span>'
     fulltext += form.format(color(percentleft), percentleft)
     fulltext += timeleft
 
-left=config.get("_left", "")+"<span background=\"{}\">".format(config.get("_color", ""))
-right="</span>"+config.get("_right", "")
-print(left+fulltext+right)
-print(left+fulltext+right)
+print(fulltext)
+print(fulltext)
 if percentleft < 10:
     exit(33)
