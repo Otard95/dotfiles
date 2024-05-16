@@ -88,7 +88,7 @@ snippet gqltest "Boiler plate for a GraphQL integration test"
 	import faker from 'faker';
 	import gql from 'graphql-tag';
 	import { print } from 'graphql/index';
-	import { rest } from 'msw';
+	import { http, HttpResponse } from 'msw';
 	import request from 'supertest';
 
 	import { mockUserInContext } from '@internal/common-utils/lib/testing/mockUserInContext';
@@ -121,7 +121,8 @@ snippet gqltest "Boiler plate for a GraphQL integration test"
 				},
 			});
 
-			server.use(mockUserResponse());
+			server.use(mockResponse());
+
 			// when
 			const res = await request(\`localhost:\${apolloServer.Port}\`)
 				.post(apolloServer.Path)
@@ -137,10 +138,30 @@ snippet gqltest "Boiler plate for a GraphQL integration test"
 		});
 	});
 
-	function mockUserResponse() {
+	function mockResponse() {
 		const payload = {};
-		return rest.get(\`https://example.com/api/foo/bar\`, (req, res, ctx) => {
-			return res.once(ctx.json(getTestSuccessDartResponse(payload)));
+		return http.get(\`https://example.com/api/foo/bar\`, () => {
+			return HttpResponse.json(getTestSuccessDartResponse(payload));
 		});
 	}
 
+snippet gqlschema "Boiler plate for a GraphQL schema module"
+	import gql from 'graphql-tag';
+
+	import { resolveDataSource } from '@internal/common-utils';
+	import type { Resolvable } from '@internal/types-utility';
+
+	import { Resolvers } from '@/generated/graphql';
+	import { Context } from '@/index';
+
+	export const typeDef = gql\`
+		extend type Query {
+		}
+		extend type Mutation {
+		}
+	\`;
+
+	export const resolver: Resolvers<Context> = {
+		Query: {},
+		Mutation: {},
+	};

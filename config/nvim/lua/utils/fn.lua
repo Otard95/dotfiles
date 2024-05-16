@@ -11,4 +11,12 @@ function M.flow(...)
   end
 end
 
+function M.partial(fn, ...)
+  local left_args = {...}
+  return function(...)
+    local right_args = {...}
+    fn(unpack(left_args), unpack(right_args))
+  end
+end
+
 return M

@@ -58,6 +58,11 @@
       force: true
       create: true
       path: config/i3blocks
+    # arandr
+    ~/.config/arandr:
+      force: true
+      create: true
+      path: config/arandr
 
     # dunst (notifications)
     ~/.config/dunst:
@@ -139,12 +144,6 @@
 
     # thefuck
     ~/.config/thefuck: config/thefuck
-
-    # Zellij
-    ~/.config/zellij:
-      force: true
-      create: true
-      path: config/zellij
 
     # btop
     ~/.config/btop: config/btop

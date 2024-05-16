@@ -9,7 +9,7 @@ setup_bg() {
   # betterlockscreen -u /usr/share/ukui-greeter/images/wp_blurred.jpg &
 }
 
-/home/otard/.screenlayout/work.sh &
+/home/otard/.config/arandr/init.sh &
 # /home/otard/.screenlayout/home.sh &
 picom -b --experimental-backends --backend glx &
 # /home/otard/.config/nitrogen/scripts/set-rand

@@ -1,2 +1,2 @@
 ## lua/set.lua
- - [ ] Rework folding based on treesitter
+ - [x] Rework folding based on treesitter
