@@ -62,22 +62,23 @@ _left=<span background="#005544"> </span>
 _right=<span color="#004433" background="#005544"> </span>
 _color=#005544
 
-# [battery]
-# command=~/.config/i3blocks/status-commands/bat
-# interval=5
-# _left=<span background="#004433"> </span>
-# _right=<span color="#003322" background="#004433"> </span>
-# _color=#004433
+[battery]
+command=~/.config/i3blocks/status-commands/bat
+interval=30
+markup=pango
+_left=<span background="#004434"> </span>
+_right=<span color="#003322" background="#004433"> </span>
+_color=#004433
 
 [time]
 command=~/.config/i3blocks/status-commands/time.sh
 interval=5
-_left=<span background="#004433"> </span>
-_right=<span color="#002211" background="#004433"> </span>
-_color=#004433
-# _left=<span background="#003322">  </span>
-# _right=<span color="#002211" background="#003322"> </span>
-# _color=#003322
+# _left=<span background="#004433"> </span>
+# _right=<span color="#002211" background="#004433"> </span>
+# _color=#004433
+_left=<span background="#003322">  </span>
+_right=<span color="#002211" background="#003322"> </span>
+_color=#003322
 
 [power]
 full_text=<span background="#002211">     </span>

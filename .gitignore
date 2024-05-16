@@ -2,6 +2,9 @@
 config/thefuck/__pycache__
 config/thefuck/rules
 
+# i3blocks
+config/i3blocks/config
+
 # Nitrogen
 config/nitrogen/backgrounds/
 config/nitrogen/bg-saved.cfg
