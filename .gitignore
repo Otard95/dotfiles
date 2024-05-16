@@ -5,7 +5,11 @@ config/thefuck/rules
 # Nitrogen
 config/nitrogen/backgrounds/
 config/nitrogen/bg-saved.cfg
+config/nitrogen/nitrogen.cfg
+config/nitrogen/template.cfg
+
+# Neovim
+config/nvim/lazy-lock.json
 
 # General
 *.tmp
-
