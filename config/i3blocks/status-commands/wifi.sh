@@ -15,7 +15,9 @@ ssid=$(awk '{print $3}' <<< "$status")
 echo "$_left<span background=\"$_color\">  $signal% $ssid</span>$_right"
 echo "$_left<span background=\"$_color\">  $signal%</span>$_right"
 
-[ $signal -le 10 ] exit 33
+if [ $signal -le 10 ]; then
+  exit 33
+fi
 
 if [ $signal -le 30 ]; then
   echo "#ff9321"

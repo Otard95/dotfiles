@@ -5,6 +5,7 @@
 #
 # A battery indicator blocklet script for i3blocks
 
+import os
 import re
 from subprocess import check_output
 
@@ -49,28 +50,29 @@ else:
         percentleft = 0
 
     # stands for charging
-    FA_LIGHTNING = "<span color='yellow'><span font='FontAwesome'>\uf0e7</span></span>"
+    FA_LIGHTNING = "<span color='yellow'><span font='FontAwesome'>\uf0e7 </span></span>"
 
     # stands for plugged in
-    FA_PLUG = "<span font='FontAwesome'>\uf1e6</span>"
+    FA_PLUG = "<span font='FontAwesome'>\uf1e6 </span>"
 
     # stands for using battery
-    FA_BATTERY = "<span font='FontAwesome'>\uf240</span>"
+    FA_BATTERY = "<span font='FontAwesome'>\uf240 </span>"
 
     # stands for unknown status of battery
-    FA_QUESTION = "<span font='FontAwesome'>\uf128</span>"
+    FA_QUESTION = "<span font='FontAwesome'>\uf128 </span>"
 
+    fulltext = os.environ.get('_left', '') + '<span background="{}">'.format(os.environ.get('_color', ''))
 
     if state == "Discharging":
-        fulltext = FA_BATTERY + " "
+        fulltext += FA_BATTERY + " "
     elif state == "Full":
-        fulltext = FA_PLUG + " "
+        fulltext += FA_PLUG + " "
         timeleft = ""
     elif state == "Unknown":
-        fulltext = FA_QUESTION + " " + FA_BATTERY + " "
+        fulltext += FA_QUESTION + " " + FA_BATTERY + " "
         timeleft = ""
     else:
-        fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
+        fulltext += FA_LIGHTNING + " " + FA_PLUG + " "
 
     def color(percent):
         if percent < 10:
@@ -95,6 +97,8 @@ else:
     form =  '<span color="{}">{}%</span>'
     fulltext += form.format(color(percentleft), percentleft)
     fulltext += timeleft
+    fulltext += '</span>'
+    fulltext += os.environ.get('_right', '')
 
 print(fulltext)
 print(fulltext)
