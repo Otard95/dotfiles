@@ -15,7 +15,7 @@ if [[ $ACTION == "system-power-select::shutdown" ]]; then
 elif [[ $ACTION == "system-power-select::reboot" ]]; then
     /sbin/shutdown -r now
 elif [[ $ACTION == "system-power-select::lock" ]]; then
-    i3-msg -q exec betterlockscreen -- -l
+    xautolock -locknow
 elif [[ $ACTION == "system-power-select::logout" ]]; then
     i3-msg exit
 elif [[ $ACTION == "system-power-select::hibernate" ]]; then

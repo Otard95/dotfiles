@@ -3,7 +3,7 @@
 setup_bg() {
   /home/otard/.config/nitrogen/scripts/set-rand > /dev/null
   xbgdump /tmp/lock-img.png > /dev/null
-  betterlockscreen -u /tmp/lock-img.png --fx blur --blur 1 --span > /dev/null
+  betterlockscreen -u /tmp/lock-img.png --fx blur --blur 2 --span > /dev/null
 
   # nitrogen --restore &
   # betterlockscreen -u /usr/share/ukui-greeter/images/wp_blurred.jpg &
