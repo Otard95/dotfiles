@@ -247,6 +247,8 @@ for_window [class="^calculator$"] sticky enable
 # window position system power dialog
 for_window [class="^system-power-dialog$"] floating enable
 for_window [class="^system-power-dialog$"] sticky enable
+for_window [class="^System-power-dialog$"] floating enable
+for_window [class="^System-power-dialog$"] sticky enable
 
 # window floating protonvpn
 for_window [class="^protonvpn$"] floating enable
