@@ -27,11 +27,13 @@ function SetupFugitive()
   local fn = require 'utils.fn'
 
   -- Merge conflict resolution
-  vim.keymap.set('n', '<leader>gm', ':Gdiffsplit!<CR>', { noremap = true, silent = true })
-  vim.keymap.set('n', '<leader>gj', ':diffget //3<CR>', { noremap = true, silent = true })
-  vim.keymap.set('n', '<leader>gf', ':diffget //2<CR>', { noremap = true, silent = true })
-  vim.keymap.set('n', '<leader>gn', ']c', { noremap = true, silent = true })
-  vim.keymap.set('n', '<leader>gp', '[c', { noremap = true, silent = true })
+  local opts = { noremap = true, silent = true }
+  vim.keymap.set('n', '<leader>gm', ':Gdiffsplit!<CR>', opts)
+  vim.keymap.set('n', '<leader>gj', ':diffget //3<CR>', opts)
+  vim.keymap.set('n', '<leader>gf', ':diffget //2<CR>', opts)
+  vim.keymap.set('n', '<leader>gn', ']c', opts)
+  vim.keymap.set('n', '<leader>gp', '[c', opts)
+  vim.keymap.set('n', '<leader>gs', ':Git<CR>', opts)
 
   -- Keybinds in status window
   vim.api.nvim_create_autocmd('FileType', {

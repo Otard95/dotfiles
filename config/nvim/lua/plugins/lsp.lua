@@ -126,7 +126,6 @@ function SetupLsp()
         vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
           callback = function(ev)
             vim.defer_fn(function() vim.cmd'normal zz' end, 10)
-            -- vim.print('[center_after_buf_enter]', vim.inspect(ev))
           end,
           once = true,
         })
