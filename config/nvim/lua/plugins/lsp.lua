@@ -27,6 +27,7 @@ function SetupLsp()
     ensure_installed = {
       'tsserver',
       'eslint',
+      'emmet_language_server',
       'jsonls',
       'intelephense',
       'rust_analyzer',
