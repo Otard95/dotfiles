@@ -1,4 +1,5 @@
 function SetupLsp()
+  local fn = require 'utils.fn'
   local cmp = require 'cmp'
   local lspconfig = require 'lspconfig'
 
@@ -41,9 +42,9 @@ function SetupLsp()
           handlers = default_handlers,
           setting = { packageManager = 'pnpm' },
           on_attach = function(client, bufnr)
-            vim.api.nvim_create_autocmd("BufWritePre", {
+            vim.api.nvim_create_autocmd('BufWritePre', {
               buffer = bufnr,
-              command = "EslintFixAll",
+              command = 'EslintFixAll',
             })
           end,
         }
@@ -120,8 +121,18 @@ function SetupLsp()
     callback = function(event)
       local opts = { buffer = event.buf }
 
-      vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-      vim.keymap.set('n', 'gi', function() vim.lsp.buf.implementation() end, opts)
+      local function center_after_buf_enter()
+        vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+          callback = function(ev)
+            vim.defer_fn(function() vim.cmd'normal zz' end, 10)
+            -- vim.print('[center_after_buf_enter]', vim.inspect(ev))
+          end,
+          once = true,
+        })
+      end
+
+      vim.keymap.set('n', 'gd', fn.flow(center_after_buf_enter, vim.lsp.buf.definition), opts)
+      vim.keymap.set('n', 'gi', fn.flow(center_after_buf_enter, vim.lsp.buf.implementation), opts)
       vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
       vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
       vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
@@ -131,21 +142,21 @@ function SetupLsp()
       vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
       vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
       vim.keymap.set('n', '<C-f>', function() vim.lsp.buf.format() end, opts)
-      vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+      vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts)
     end
   })
 
   -- Set borders for lspconfig windows
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = "lspinfo",
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'lspinfo',
     callback = function()
-      vim.api.nvim_win_set_config(0, { border = "rounded" })
+      vim.api.nvim_win_set_config(0, { border = 'rounded' })
     end,
   })
 
-  local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+  local signs = { Error = '', Warn = '', Hint = '', Info = '' }
   for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
+    local hl = 'DiagnosticSign' .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
 
