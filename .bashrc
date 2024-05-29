@@ -167,10 +167,6 @@ if [ -d ~/.secret ]; then
   done
 fi
 
-if npm -v &> /dev/null; then
-  source <(npm completion)
-fi
-
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
