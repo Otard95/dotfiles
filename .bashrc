@@ -243,10 +243,10 @@ fi
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
 
 if [[ -z "$TMUX" ]]; then
-  fastfetch
+  clear && fastfetch
 # fi
 else
-  fastfetch
+  fastfetch --logo debian
 fi
 cdnvm .
 
