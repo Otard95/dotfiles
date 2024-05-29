@@ -243,10 +243,10 @@ fi
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
 
 if [[ -z "$TMUX" ]]; then
-  neofetch
+  fastfetch
 # fi
 else
-  clear
+  fastfetch
 fi
 cdnvm .
 

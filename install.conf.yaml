@@ -104,11 +104,11 @@
       create: true
       path: config/kitty
 
-    # Neofetch
-    ~/.config/neofetch:
+    # fastfetch
+    ~/.config/fastfetch:
       force: true
       create: true
-      path: config/neofetch
+      path: config/fastfetch
 
     # nvim
     ~/.config/nvim:
