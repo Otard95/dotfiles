@@ -52,3 +52,6 @@
 
 [includeIf "gitdir:~/dev/personal/"]
   path = ~/dev/personal/.gitconfig
+
+[rerere]
+	enabled = true
