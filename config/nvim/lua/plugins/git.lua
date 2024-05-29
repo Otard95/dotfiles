@@ -107,7 +107,9 @@ local function SetupOcto()
   })
 
   -- highlight group colors
-  vim.api.nvim_set_hl(0, 'OctoUser', { fg = palette.text, bg = palette.overlay1 })
+  vim.api.nvim_set_hl(0, 'OctoUser', { fg = palette.pink })
+  vim.api.nvim_set_hl(0, 'OctoUserViewer', { fg = palette.sapphire })
+  vim.api.nvim_set_hl(0, 'OctoReaction', { bg = palette.overlay2 })
 end
 
 return {
