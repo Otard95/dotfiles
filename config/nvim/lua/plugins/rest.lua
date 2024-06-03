@@ -24,6 +24,48 @@ local function find_env(callback)
   }):find()
 end
 
+local function url_encode(text)
+  local handle = io.popen('python3 -c "import urllib.parse as ul; print(ul.quote(\\"'..text..'\\"))"')
+  if handle == nil then
+    vim.notify('Failed to open pipe for writing', vim.log.levels.ERROR)
+    return nil
+  end
+
+  local result = handle:read('*a')
+  handle:close()
+
+  return result:gsub("\n", "")
+end
+
+local function url_encode_visual()
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+  local lines = vim.fn.getline(start_pos[2], end_pos[2])
+  if #lines == 0 then return end
+
+  -- Handle multi-line selections
+  if #lines > 1 then
+    lines[1] = lines[1]:sub(start_pos[3])
+    lines[#lines] = lines[#lines]:sub(1, end_pos[3])
+  else
+    lines[1] = lines[1]:sub(start_pos[3], end_pos[3])
+  end
+
+  local text = table.concat(lines, "\n")
+  local encoded = url_encode(text)
+  if encoded == nil then
+    vim.notify('URL encoding failed', vim.log.levels.ERROR)
+    return
+  end
+
+  -- Replace only the selected text with encoded text
+  if #lines > 1 then
+    vim.api.nvim_buf_set_text(0, start_pos[2] - 1, start_pos[3] - 1, end_pos[2] - 1, end_pos[3], vim.split(encoded, "\n"))
+  else
+    vim.api.nvim_buf_set_text(0, start_pos[2] - 1, start_pos[3] - 1, start_pos[2] - 1, end_pos[3], { encoded })
+  end
+end
+
 function SetupRest()
   local rest = require 'rest-nvim'
 
@@ -37,6 +79,8 @@ function SetupRest()
       },
     },
   }
+
+  vim.api.nvim_create_user_command('URLEncode', url_encode_visual, { range = true })
 
   vim.api.nvim_create_autocmd('FileType', {
     pattern = { 'http' },
