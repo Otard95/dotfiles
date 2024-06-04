@@ -1,0 +1,6 @@
+*
+!modules/
+!.gitignore
+!<hostname>.ini
+!config.ini
+!launch.sh
