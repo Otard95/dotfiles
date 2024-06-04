@@ -12,3 +12,6 @@ end, { range = true })
 
 local reference = require 'commands.reference'
 vim.api.nvim_create_user_command('Reference', reference, { range = true })
+
+local time = require 'commands.time'
+vim.api.nvim_create_user_command('UnixTime', time, {})

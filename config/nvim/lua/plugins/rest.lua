@@ -1,3 +1,5 @@
+local buffer = require 'utils.buffer'
+
 ---@param callback function
 local function find_env(callback)
   local pickers = require 'telescope.pickers'
@@ -38,32 +40,17 @@ local function url_encode(text)
 end
 
 local function url_encode_visual()
-  local start_pos = vim.fn.getpos("'<")
-  local end_pos = vim.fn.getpos("'>")
-  local lines = vim.fn.getline(start_pos[2], end_pos[2])
-  if #lines == 0 then return end
+  local selected = buffer.get_selected()
+  if selected == nil then return end
 
-  -- Handle multi-line selections
-  if #lines > 1 then
-    lines[1] = lines[1]:sub(start_pos[3])
-    lines[#lines] = lines[#lines]:sub(1, end_pos[3])
-  else
-    lines[1] = lines[1]:sub(start_pos[3], end_pos[3])
-  end
-
-  local text = table.concat(lines, "\n")
+  local text = table.concat(selected.lines, "\n")
   local encoded = url_encode(text)
   if encoded == nil then
     vim.notify('URL encoding failed', vim.log.levels.ERROR)
     return
   end
 
-  -- Replace only the selected text with encoded text
-  if #lines > 1 then
-    vim.api.nvim_buf_set_text(0, start_pos[2] - 1, start_pos[3] - 1, end_pos[2] - 1, end_pos[3], vim.split(encoded, "\n"))
-  else
-    vim.api.nvim_buf_set_text(0, start_pos[2] - 1, start_pos[3] - 1, start_pos[2] - 1, end_pos[3], { encoded })
-  end
+  buffer.replace_visual_text(encoded)
 end
 
 function SetupRest()
