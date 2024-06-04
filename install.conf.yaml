@@ -58,6 +58,11 @@
       force: true
       create: true
       path: config/i3blocks
+    # polybar
+    ~/.config/polybar:
+      force: true
+      create: true
+      path: config/polybar
     # arandr
     ~/.config/arandr:
       force: true
