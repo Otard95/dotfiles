@@ -1,0 +1,14 @@
+@theme "catppuccin-frappe"
+
+* {
+    BG: @bg-col;
+    BGA: @mauve;
+    FG: @text;
+    FGA: @ref;
+    BDR: @sapphire;
+    SEL: @crust;
+    UGT: @ref;
+    IMG: @yellow;
+    O: @bg-light;
+    ON: @green;
+}
