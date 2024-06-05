@@ -68,6 +68,10 @@
       force: true
       create: true
       path: config/arandr
+    # autorandar
+    ~/.config/autorandr/postswitch.d:
+      create: true
+      path: config/autorandr/postswitch.d
 
     # dunst (notifications)
     ~/.config/dunst:

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+betterlockscreen -u /tmp/lock-img.png --fx blur --blur 2 --span > /dev/null

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+xbgdump /tmp/lock-img.png > /dev/null

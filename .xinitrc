@@ -4,18 +4,14 @@ setup_bg() {
   /home/otard/.config/nitrogen/scripts/set-rand > /dev/null
   xbgdump /tmp/lock-img.png > /dev/null
   betterlockscreen -u /tmp/lock-img.png --fx blur --blur 2 --span > /dev/null
-
-  # nitrogen --restore &
-  # betterlockscreen -u /usr/share/ukui-greeter/images/wp_blurred.jpg &
 }
 
-/home/otard/.config/arandr/init.sh &
-# /home/otard/.screenlayout/home.sh &
+autorandr --change
+# /home/otard/.config/arandr/init.sh &
+# setup_bg &
+
 picom -b --experimental-backends --backend glx &
-# /home/otard/.config/nitrogen/scripts/set-rand
-# xbgdump /tmp/lock-img.png
-# betterlockscreen -u /tmp/lock-img.png --fx blur --blur 1 --span
-setup_bg &
+
 emote &
 
 # Start ssh tunnel
