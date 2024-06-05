@@ -146,7 +146,7 @@ configuration {
   }
 }
 
-@theme "/usr/share/rofi/themes/solarized.rasi"
+@theme "catppuccin-frappe"
 
 window {
   border-radius: 10px;
