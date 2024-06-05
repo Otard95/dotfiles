@@ -80,6 +80,11 @@
       force: true
       create: true
       path: config/rofi
+    ~/.local/share/rofi/themes:
+      force: true
+      create: true
+      path: local/share/rofi/themes
+
 
     # gtk
     ~/.config/gtk-3.0/settings.ini:
