@@ -8,7 +8,7 @@ setup_bg() {
 
 autorandr --change
 # /home/otard/.config/arandr/init.sh &
-# setup_bg &
+setup_bg &
 
 picom -b --experimental-backends --backend glx &
 
