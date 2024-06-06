@@ -43,9 +43,6 @@
       create: true
       path: config/fontconfig
 
-    # tig
-    ~/.tigrc: .tigrc
-
     ### config
 
     # i3
