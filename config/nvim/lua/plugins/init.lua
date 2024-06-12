@@ -26,7 +26,7 @@ require 'lazy'.setup({
   { import = 'plugins.dap' },
   { import = 'plugins.git' },
   { import = 'plugins.harpoon' },
-  { import = 'plugins.image' },
+  -- { import = 'plugins.image' },
   { import = 'plugins.linediff' },
   { import = 'plugins.lsp' },
   { import = 'plugins.lualine' },
