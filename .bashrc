@@ -121,7 +121,7 @@ eval "$(zoxide init bash)"
 ################
 
 # Set default shell editor to vim with custom rc
-export EDITOR="nvim -u NONE"
+export EDITOR="nvim -u .config/nvim/minimal.lua"
 set -o vi
 bind -m vi-command 'Control-l: clear-screen'
 bind -m vi-insert 'Control-l: clear-screen'

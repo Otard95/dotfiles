@@ -10,7 +10,7 @@ vim.opt.relativenumber = true
 vim.opt.number = true
 
 -- Colors
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
 
 -- Folding
 vim.opt.foldmethod = 'expr'
