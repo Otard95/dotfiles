@@ -22,7 +22,6 @@ function TSSetup()
       'phpdoc',
       'python',
       'rust',
-      'sql',
       'terraform',
       'tsx',
       'typescript',
