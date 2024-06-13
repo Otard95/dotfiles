@@ -221,6 +221,9 @@ fi
 if [[ -d ~/dev/personal/kbd/qmk_firmware ]]; then
   source ~/dev/personal/kbd/qmk_firmware/util/qmk_tab_complete.sh
 fi
+if [[ -d ~/dev/kbd/qmk_firmware ]]; then
+  source ~/dev/kbd/qmk_firmware/util/qmk_tab_complete.sh
+fi
 
 if [[ -d ~/.local/share/go ]]; then
   export GOPATH="$HOME/.local/share/go"
