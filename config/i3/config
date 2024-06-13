@@ -39,9 +39,15 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3blocks_volume
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3blocks_volume
 
+# Use playerctl to control media
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioStop exec --no-startup-id playerctl stop
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
 ##Screen brightness controls (Pos1/End), needs "apt install xbacklight"
-bindsym XF86MonBrightnessUp exec brightnessctl s +5%
-bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl s +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
 
 # Swap languages
 set $refresh_i3blocks_lang pkill -SIGRTMIN+2 i3blocks
@@ -168,6 +174,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# start powermenu
+bindsym $mod+Shift+p exec "~/.config/rofi/applications/bin/powermenu"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
