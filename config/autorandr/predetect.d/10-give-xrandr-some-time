@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# We just want to wait a little so that when we detect next we get the updated state
+# sleep 3
