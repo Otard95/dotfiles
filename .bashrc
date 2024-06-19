@@ -88,7 +88,7 @@ if [[ -f /etc/profile.d/vte.sh ]]; then
   source /etc/profile.d/vte.sh
 fi
 
-### Defaul aliases
+### Default aliases
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -173,11 +173,17 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # pnpm
-export PNPM_HOME="/home/otard/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+if [ -d /home/otard/.local/share/pnpm ]; then
+  export PNPM_HOME="/home/otard/.local/share/pnpm"
+  case ":$PATH:" in
+    *":$PNPM_HOME:"*) ;;
+    *) export PATH="$PNPM_HOME:$PATH" ;;
+  esac
+  if [ ! -f $PNPM_HOME/.pnpm_bash_compleations ]; then
+    pnpm completion bash > $PNPM_HOME/.pnpm_bash_compleations
+  fi
+  . $PNPM_HOME/.pnpm_bash_compleations
+fi
 # pnpm end
 
 # NVM auto use if CWD contains .nvmrc
