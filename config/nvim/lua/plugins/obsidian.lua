@@ -25,6 +25,11 @@ local function get_daily(t)
   }
 end
 
+---@param url string
+local function follow_url(url)
+  vim.fn.jobstart({ 'open', url })
+end
+
 return {
   {
     'epwalsh/obsidian.nvim',
@@ -49,6 +54,7 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
     opts = {
+      follow_url_func = follow_url,
       workspaces = workspaces,
       -- Date formats see :Man strftime()
       templates = {
