@@ -8,6 +8,9 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+export TERMINAL=kitty
+
 if [ -d "/usr/bin" ] ; then
   PATH="/usr/bin:$PATH"
 fi
@@ -50,14 +53,12 @@ if [ -n "$HOME" ]; then
     export DENO_INSTALL="$HOME/.deno"
     PATH="$DENO_INSTALL/bin:$PATH"
   fi
-fi
 
-# if running bash
-if [[ -n "$BASH_VERSION" && -n "$PS1" ]]; then
-  # include .bashrc if it exists
-  if [ -f "$HOME/.bashrc" ]; then
-    . "$HOME/.bashrc"
+  # if running bash
+  if [ -n "$BASH_VERSION" ] && [ -n "$PS1" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+      . "$HOME/.bashrc"
+    fi
   fi
 fi
-
-export TERMINAL=kitty
