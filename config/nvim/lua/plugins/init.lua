@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require 'lazy'.setup({
   { "folke/lazy.nvim", version = "*" },
   -- { import = 'plugins.autopairs' },
-  -- { import = 'plugins.cloak' },
+  { import = 'plugins.cloak' },
   -- { import = 'plugins.neorg' },
   -- { import = 'plugins.tig' },
   { import = 'plugins.align' },
@@ -30,7 +30,7 @@ require 'lazy'.setup({
   { import = 'plugins.linediff' },
   { import = 'plugins.lsp' },
   { import = 'plugins.lualine' },
-  { import = 'plugins.markdown' },
+  -- { import = 'plugins.markdown' },
   { import = 'plugins.obsidian' },
   { import = 'plugins.oil' },
   { import = 'plugins.quickmaths' },

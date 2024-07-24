@@ -12,12 +12,6 @@ end
 
 return {
   {
-    'preservim/vim-markdown',
-    dependencies = {
-      'godlygeek/tabular'
-    }
-  },
-  {
     'iamcco/markdown-preview.nvim',
     build = 'yarn install',
     init = markdown_preview_init,
