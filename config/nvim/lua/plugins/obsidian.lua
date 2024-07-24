@@ -1,4 +1,5 @@
 local time = require('utils.time')
+local path = require('utils.path')
 
 ---@class Workspace
 ---@field name string
@@ -78,6 +79,12 @@ return {
           end,
         },
       },
+      follow_url_func = function(url)
+        if path.is_relative(url) then
+          url = path.resolve(path.pathname(vim.api.nvim_buf_get_name(0)), url)
+        end
+        vim.fn.jobstart({"open", url})
+      end,
       daily_notes = {
         folder = 'Dailies',
         date_format = '%Y/%b/%d',
