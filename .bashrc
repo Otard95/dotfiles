@@ -187,28 +187,6 @@ if [ -d /home/otard/.local/share/pnpm ]; then
 fi
 # pnpm end
 
-# NVM auto use if CWD contains .nvmrc
-cdnvm() {
-  command cd "$@"
-  if [[ -s ".nvmrc" && -r ".nvmrc" ]]; then
-    nvm_version=$(<.nvmrc)
-    # `nvm ls` will check all locally-available versions
-    # If there are multiple matching versions, take the latest one
-    # Remove the `->` and `*` characters and spaces
-    # `locally_resolved_nvm_version` will be `N/A` if no local versions are found
-    locally_resolved_nvm_version=$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')
-
-    # If it is not already installed, install it
-    # `nvm install` will implicitly use the newly-installed version
-    if [[ "$locally_resolved_nvm_version" == "N/A" ]]; then
-        nvm install "$nvm_version";
-    elif [[ $(nvm current) != "$locally_resolved_nvm_version" ]]; then
-        nvm use;
-    fi
-  fi
-}
-alias cd='cdnvm'
-
 if [ -f "$HOME/.cargo/env" ]; then
   . "$HOME/.cargo/env"
 fi
@@ -254,7 +232,6 @@ if [[ -z "$TMUX" ]]; then
 else
   fastfetch --logo debian
 fi
-cdnvm .
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
