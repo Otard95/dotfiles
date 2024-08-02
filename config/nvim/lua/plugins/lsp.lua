@@ -26,6 +26,7 @@ function SetupLsp()
     automatic_installation = true,
     ensure_installed = {
       'tsserver',
+      'svelte',
       'eslint',
       'emmet_language_server',
       'jsonls',
