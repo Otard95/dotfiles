@@ -49,6 +49,7 @@ fi
 alias gql-gc='/opt/graphql-config-generator/gql-gc'
 alias ngm='/opt/ngm/ngm-linux'
 alias kub='kubectl'
+alias ewine='/home/otard/.local/wine/elemental-warrior-wine/bin/wine'
 
 # Tmux
 alias tn='tmux new -s$(pwd | sed "s/.*\///g")'
