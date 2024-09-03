@@ -34,6 +34,7 @@ function SetupFugitive()
   vim.keymap.set('n', '<leader>gn', ']c', opts)
   vim.keymap.set('n', '<leader>gp', '[c', opts)
   vim.keymap.set('n', '<leader>gs', ':Git<CR>', opts)
+  vim.keymap.set('n', '<leader>gl', ':Git log<CR>', opts)
 
   -- Keybinds in status window
   vim.api.nvim_create_autocmd('FileType', {
