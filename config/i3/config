@@ -274,4 +274,3 @@ for_window [class="^FreeTube$"] floating enable
 
 # Mouse warping
 mouse_warping output
-
