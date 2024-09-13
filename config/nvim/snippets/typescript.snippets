@@ -102,7 +102,7 @@ snippet gqltest "Boiler plate for a GraphQL integration test"
 	import { initializeTestServer } from '@/utils/test/initializeTestServer';
 
 	const query = gql\`
-		query FOO_BAR(\$input: FooBarInput!) {
+		$0query FOO_BAR(\$input: FooBarInput!) {
 			fooBar(input: \$input) {
 				# fields...
 			}
