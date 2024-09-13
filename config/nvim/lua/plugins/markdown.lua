@@ -10,10 +10,32 @@ function markdown_preview_init()
   vim.g.mkdp_page_title = '「${name}」 - Markdown Preview'
 end
 
+function render_markdown_init()
+  require 'render-markdown'.setup {
+    bullet = {
+      right_pad = 1,
+    },
+    checkbox = {
+      custom = {
+        todo = { raw = '[-]', rendered = '󰥔 ', highlight = 'RenderMarkdownTodo' },
+        follow_up = { raw = '[>]', rendered = '󰬪 ', highlight = 'WarningMsg' },
+        canceled = { raw = '[~]', rendered = '󰅙 ', highlight = 'ErrorMsg' },
+      },
+    },
+  }
+end
+
 return {
+  -- {
+  --   'iamcco/markdown-preview.nvim',
+  --   build = 'yarn install',
+  --   init = markdown_preview_init,
+  -- },
   {
-    'iamcco/markdown-preview.nvim',
-    build = 'yarn install',
-    init = markdown_preview_init,
+    'MeanderingProgrammer/render-markdown.nvim',
+    init = render_markdown_init,
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   }
 }

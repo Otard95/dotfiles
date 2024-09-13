@@ -30,7 +30,7 @@ require 'lazy'.setup({
   { import = 'plugins.linediff' },
   { import = 'plugins.lsp' },
   { import = 'plugins.lualine' },
-  -- { import = 'plugins.markdown' },
+  { import = 'plugins.markdown' },
   { import = 'plugins.obsidian' },
   { import = 'plugins.oil' },
   { import = 'plugins.quickmaths' },
