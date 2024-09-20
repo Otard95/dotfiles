@@ -244,6 +244,8 @@ bindsym $mod+Shift+q kill
 # start flameshot
 bindsym $mod+Shift+s exec flameshot gui
 
+bindsym Mod1+Ctrl+e exec emote
+
 ###############
 #   Windows   #
 ###############
