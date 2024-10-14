@@ -1,6 +1,7 @@
 #!/bin/bash
 
 setup_bg() {
+  /home/otard/.config/i3/scripts/set-monitor-conf.sh > /dev/null
   /home/otard/.config/nitrogen/scripts/set-rand > /dev/null
   xbgdump /tmp/lock-img.png > /dev/null
   betterlockscreen -u /tmp/lock-img.png --fx blur --blur 2 --span > /dev/null

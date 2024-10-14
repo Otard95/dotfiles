@@ -221,9 +221,8 @@ bindsym $mod+r mode "resize"
 # Theme
 include ~/.config/i3/theme.conf
 
-# Setup specific
-
-include ~/.config/i3/work.conf
+# Monitor specific
+include ~/.config/i3/monitors.conf
 # include ~/.config/i3/home.conf
 
 ################
