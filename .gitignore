@@ -4,6 +4,8 @@ config/thefuck/rules
 
 # i3blocks
 config/i3blocks/config
+config/i3/*.monitors.conf
+config/i3/current.log
 
 # Nitrogen
 config/nitrogen/backgrounds/
