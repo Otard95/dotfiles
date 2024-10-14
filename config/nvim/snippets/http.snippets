@@ -45,13 +45,13 @@ snippet dartuser "Add user behalf header"
 	Dart-Behalf-Company: ${2:company_id}
 
 snippet graphql "Create graphql query"
-	POST {{host}}
-	Content-Type: graphql
+	GRAPHQL {{host}}
+	Content-Type: application/json
 
 	${1:query} ${2:OPERATION_NAME} {
 		$0
 	}
-	---
+
 	{}
 
 snippet gateway "Gateway header"

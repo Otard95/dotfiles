@@ -11,7 +11,6 @@ function TSSetup()
       'html',
       'http',
       'javascript',
-      'jsdoc',
       'json',
       'json5',
       'jsonc',
@@ -64,7 +63,7 @@ end
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    tag = 'v0.9.2',
+    -- tag = 'v0.9.2',
     build=':TSUpdate',
     config=TSSetup,
   }

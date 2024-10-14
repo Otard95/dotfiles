@@ -13,9 +13,17 @@ function commentary_init()
   })
 end
 
+function visual_multi_init(plugins)
+  table.insert(plugins, { 'mg979/vim-visual-multi', { branch = 'master'} })
+end
+
 return {
+  { 'RRethy/nvim-align' },
   {
     'tpope/vim-commentary',
     init = commentary_init,
-  }
+  },
+  { 'tpope/vim-surround' },
+  { 'mg979/vim-visual-multi', branch = 'master' },
+  { 'tpope/vim-abolish' }
 }

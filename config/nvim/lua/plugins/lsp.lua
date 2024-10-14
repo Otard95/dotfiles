@@ -12,7 +12,8 @@ function SetupLsp()
     require('cmp_nvim_lsp').default_capabilities()
   )
   local default_handlers = {
-    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' }),
+    vim.lsp.handlers,
+    ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded', width = 80,  }),
     ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
   }
   local function default_setup(server_name)
@@ -25,7 +26,7 @@ function SetupLsp()
   require 'mason-lspconfig'.setup {
     automatic_installation = true,
     ensure_installed = {
-      'tsserver',
+      'ts_ls',
       'svelte',
       'eslint',
       'emmet_language_server',
@@ -40,8 +41,8 @@ function SetupLsp()
       default_setup,
       eslint = function()
         require 'lspconfig'.eslint.setup {
-          capabilities = default_capabilities,
-          handlers = default_handlers,
+          -- capabilities = default_capabilities,
+          -- handlers = default_handlers,
           setting = { packageManager = 'pnpm' },
           on_attach = function(client, bufnr)
             vim.api.nvim_create_autocmd('BufWritePre', {

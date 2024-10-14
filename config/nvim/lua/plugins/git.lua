@@ -14,12 +14,12 @@ local function reload_branch_list()
 end
 local function delete_branch_under_cursor()
   local line = vim.api.nvim_get_current_line()
-  local branch = string.gsub(line, '^%s*%*?%s*(.-)%s*$', '%1')
+  local branch = string.gsub(line, '^%s?[%*%+]%*?%s*(.-)%s*$', '%1')
   vim.cmd('Git branch -d ' .. branch)
 end
 local function merge_branch_under_cursor()
   local line = vim.api.nvim_get_current_line()
-  local branch = string.gsub(line, '^%s*%*?%s*(.-)%s*$', '%1')
+  local branch = string.gsub(line, '^%s?[%*%+]%*?%s*(.-)%s*$', '%1')
   vim.cmd('Git merge ' .. branch)
 end
 

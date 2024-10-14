@@ -1,3 +1,5 @@
+local move = require "utils.move"
+local fn = require "utils.fn"
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ';'
 
@@ -43,6 +45,8 @@ vim.keymap.set('n', 'j', 'gj', { noremap = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true })
 vim.keymap.set('v', 'j', 'gj', { noremap = true })
 vim.keymap.set('v', 'k', 'gk', { noremap = true })
+vim.keymap.set('n', '{', fn.partial(move.skipping_folds, '{'), { noremap = true })
+vim.keymap.set('n', '}', fn.partial(move.skipping_folds, '}'), { noremap = true })
 
 -- Paste replace visual selection without copy
 vim.keymap.set('v', '<leader>p', '"_dP', { noremap = true })

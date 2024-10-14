@@ -11,10 +11,13 @@ local options = {
   markdown = {
     conceallevel = 2,
   },
+  json = {
+    formatprg = 'jq'
+  }
 }
 
-vim.api.nvim_create_autocmd({"FileType"}, {
-  pattern = {"*"},
+vim.api.nvim_create_autocmd({'FileType'}, {
+  pattern = {'*'},
   callback = function (event)
     local ft = event.match
     if options[ft] then

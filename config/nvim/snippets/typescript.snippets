@@ -88,7 +88,7 @@ snippet set "setter"
 	}
 
 snippet gqltest "Boiler plate for a GraphQL integration test"
-	import faker from 'faker';
+	import { faker } from '@faker-js/faker';
 	import gql from 'graphql-tag';
 	import { print } from 'graphql/index';
 	import { http, HttpResponse } from 'msw';
@@ -119,8 +119,8 @@ snippet gqltest "Boiler plate for a GraphQL integration test"
 			// setMockUnleashFlag('some-feature-flag', true);
 			mockUserInContext({
 				user: {
-					id: \`\${faker.random.number()}\`,
-					operatingAsId: faker.random.number(),
+					id: \`\${faker.number.int()}\`,
+					operatingAsId: faker.number.int(),
 				},
 			});
 

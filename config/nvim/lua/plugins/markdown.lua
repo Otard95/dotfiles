@@ -12,14 +12,11 @@ end
 
 function render_markdown_init()
   require 'render-markdown'.setup {
-    bullet = {
-      right_pad = 1,
-    },
     checkbox = {
       custom = {
-        todo = { raw = '[-]', rendered = '󰥔 ', highlight = 'RenderMarkdownTodo' },
-        follow_up = { raw = '[>]', rendered = '󰬪 ', highlight = 'WarningMsg' },
-        canceled = { raw = '[~]', rendered = '󰅙 ', highlight = 'ErrorMsg' },
+        todo = { raw = '[-]', rendered = '󰥔', highlight = 'RenderMarkdownTodo' },
+        follow_up = { raw = '[>]', rendered = '󰬪', highlight = 'WarningMsg' },
+        canceled = { raw = '[~]', rendered = '󰅙', highlight = 'ErrorMsg' },
       },
     },
   }

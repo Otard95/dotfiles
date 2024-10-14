@@ -1,7 +1,7 @@
 require 'additional-filetypes'
 require 'set'
 require 'lang-specific-set'
-require 'remap'
+require 'keymap'
 require 'commands'
 require 'plugins'
 require 'presentation'
