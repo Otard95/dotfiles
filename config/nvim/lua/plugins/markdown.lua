@@ -10,16 +10,32 @@ function markdown_preview_init()
   vim.g.mkdp_page_title = '「${name}」 - Markdown Preview'
 end
 
-function render_markdown_init()
-  require 'render-markdown'.setup {
-    checkbox = {
-      custom = {
-        todo = { raw = '[-]', rendered = '󰥔', highlight = 'RenderMarkdownTodo' },
-        follow_up = { raw = '[>]', rendered = '󰬪', highlight = 'WarningMsg' },
-        canceled = { raw = '[~]', rendered = '󰅙', highlight = 'ErrorMsg' },
+return {
+  -- {
+  --   'iamcco/markdown-preview.nvim',
+  --   build = 'yarn install',
+  --   init = markdown_preview_init,
+  -- },
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    opts = {
+      checkbox = {
+        unchecked = {
+          icon = '󰄱',
+        },
+        checked = {
+          icon = '󰱒',
+        },
+        custom = {
+          todo = { raw = '[-]', rendered = '󰥔', highlight = 'RenderMarkdownTodo' },
+          follow_up = { raw = '[>]', rendered = '󰬪', highlight = 'WarningMsg' },
+          canceled = { raw = '[~]', rendered = '󰅙', highlight = 'ErrorMsg' },
+        },
       },
-    },
-    code = {
+      code = {
         -- Width of the code block background:
         --  block: width of the code block
         --  full:  full width of the window
@@ -30,21 +46,7 @@ function render_markdown_init()
         right_pad = 1,
         -- Minimum width to use for code blocks when width is 'block'
         min_width = 80,
+      },
     },
-  }
-end
-
-return {
-  -- {
-  --   'iamcco/markdown-preview.nvim',
-  --   build = 'yarn install',
-  --   init = markdown_preview_init,
-  -- },
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    init = render_markdown_init,
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   }
 }
