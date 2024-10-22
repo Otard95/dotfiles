@@ -24,9 +24,3 @@ vim.api.nvim_create_autocmd({ "BufReadPre", "FileReadPre" }, {
     end
   end
 })
-
-vim.keymap.set('n', '<leader>lfi', function()
-  print('syntax: ', vim.opt_local.syntax)
-  print('\nswapfile: ', vim.opt_local.swapfile)
-  print('\nundofile: ', vim.opt_local.undofile)
-end)
