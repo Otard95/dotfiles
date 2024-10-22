@@ -53,7 +53,7 @@ return {
     dependencies = {
       'nvim-telescope/telescope.nvim',
     },
-    tag = 'v3.8.2',
+    tag = 'v3.8.3',
     ft = { 'http', 'rest' },
     config = SetupRest,
   }
