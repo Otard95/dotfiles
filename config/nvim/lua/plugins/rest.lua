@@ -29,8 +29,7 @@ function SetupRest()
   local rest = require 'rest-nvim'
   local telescope = require 'telescope'
 
-  rest.setup {
-  }
+  rest.setup { }
 
   telescope.load_extension('rest')
 
@@ -42,7 +41,7 @@ function SetupRest()
       local opts = { buffer = ev.buf }
       vim.keymap.set({ 'n' }, '<leader>rr', '<cmd>Rest run<CR>', opts)
       vim.keymap.set({ 'n' }, '<leader>rl', '<cmd>Rest run last<CR>', opts)
-      vim.keymap.set({ 'n' }, '<leader>rs', telescope.extensions.rest.select_env, opts)
+      vim.keymap.set({ 'n' }, '<leader>re', telescope.extensions.rest.select_env, opts)
     end
   })
 end
