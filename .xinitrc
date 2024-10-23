@@ -12,7 +12,7 @@ autorandr --change
 setup_bg &
 
 if [ -f /usr/src/i3-battery-popup/i3-battery-popup ]; then 
-  nohup /usr/src/i3-battery-popup/i3-battery-popup -t 1m -n -I 2% -s /usr/src/i3-battery-popup/i3-battery-popup.wav > /dev/null &
+  /usr/src/i3-battery-popup/i3-battery-popup -t 1m -n -I 2% -s /usr/src/i3-battery-popup/i3-battery-popup.wav &
 fi
 
 picom -b --experimental-backends --backend glx &
