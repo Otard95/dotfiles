@@ -12,7 +12,10 @@ local options = {
     conceallevel = 2,
   },
   json = {
-    formatprg = 'jq'
+    formatprg = 'jq',
+  },
+  go = {
+    expandtab = false,
   }
 }
 
