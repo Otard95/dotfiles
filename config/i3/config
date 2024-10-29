@@ -270,6 +270,12 @@ for_window [class="^System-power-dialog$"] sticky enable
 # window floating protonvpn
 for_window [class="^protonvpn$"] floating enable
 
+# window floating kooha
+for_window [class="^kooha$"] floating enable
+
+# window floating kdeconnect
+for_window [class="^kdeconnect"] floating enable
+
 # window floating freetube
 for_window [class="^FreeTube$"] floating enable
 
