@@ -51,6 +51,7 @@ function SetupDap()
   -- NodeJS adapter
   local node_dap_adapter = {
     type = 'server',
+    host = '::1',
     port = 8123,
     executable = {
       command = 'js-debug-adapter',
