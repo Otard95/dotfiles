@@ -52,7 +52,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl s 5%-
 # Swap languages
 # set $refresh_i3blocks_lang pkill -SIGRTMIN+2 i3blocks
 # bindsym Mod1+space exec ~/scripts/kbmap-toggle us no && $refresh_i3blocks_lang
-exec --no-startup-id setxkbmap -layout no,us  -option 'grp:alt_space_toggle'
+# exec --no-startup-id setxkbmap -layout no,us  -option 'grp:alt_space_toggle'
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

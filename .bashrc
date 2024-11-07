@@ -128,7 +128,7 @@ bind -m vi-insert 'Control-l: clear-screen'
 
 # Set key repeat delay, rate, and layout
 xset r rate 160 45
-setxkbmap -layout no,us  -option 'grp:alt_space_toggle'
+# setxkbmap -layout no,us  -option 'grp:alt_space_toggle'
 
 # Git completion
 if [[ -f /usr/share/git/completion/git-completion.bash ]]; then
