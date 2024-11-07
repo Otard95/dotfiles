@@ -8,7 +8,7 @@ local function large_file_disable(bufnr)
   vim.opt_local.undofile = false
   vim.opt_local.foldmethod = 'manual'
 
-  vim.diagnostic.disable(bufnr)
+  vim.diagnostic.enable(false, { bufnr = bufnr })
 
   vim.cmd('NoMatchParen')
 end
