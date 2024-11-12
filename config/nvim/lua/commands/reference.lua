@@ -7,9 +7,10 @@ local function get_lines(from, to)
 end
 
 local function reference(opts)
-  local local_path = vim.fn.expand("%")
+  local full_file_path = vim.fn.expand("%:p")
   local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-  local path = project_name .. '/' .. local_path
+  local local_path = full_file_path:gsub(vim.fn.getcwd(), '')
+  local path = project_name .. local_path
 
   local line_start = opts.line1 or vim.fn.line(".")
   local line_end = opts.line2 or line_start
