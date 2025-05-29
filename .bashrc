@@ -63,6 +63,8 @@ else
 fi
 unset color_prompt force_color_prompt
 
+TERM=xterm
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)

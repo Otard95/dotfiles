@@ -13,3 +13,5 @@
   sta = subtree add --squash --prefix
   stu = subtree pull --squash --prefix
   stp = subtree push --prefix
+[init]
+	defaultBranch = main
