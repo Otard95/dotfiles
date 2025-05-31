@@ -118,15 +118,15 @@ return {
     'tpope/vim-fugitive',
     init = SetupFugitive,
   },
-  {
-    'pwntester/octo.nvim',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = SetupOcto,
-  },
+  -- {
+  --   'pwntester/octo.nvim',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-telescope/telescope.nvim',
+  --     'nvim-tree/nvim-web-devicons',
+  --   },
+  --   config = SetupOcto,
+  -- },
   {
     'lewis6991/gitsigns.nvim',
     opts = {

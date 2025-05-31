@@ -27,15 +27,15 @@ function SetupLsp()
     automatic_installation = true,
     ensure_installed = {
       'ts_ls',
-      'svelte',
+      -- 'svelte',
       'eslint',
-      'emmet_language_server',
+      -- 'emmet_language_server',
       'jsonls',
       'intelephense',
       'rust_analyzer',
       'lua_ls',
       'clangd',
-      'gopls',
+      -- 'gopls',
     },
     handlers = {
       default_setup,
